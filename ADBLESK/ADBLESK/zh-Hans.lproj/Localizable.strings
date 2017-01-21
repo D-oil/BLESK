@@ -1,0 +1,15 @@
+/* 
+  Localizable.string.strings
+  ADBLESK
+
+  Created by 董安东 on 2017/1/21.
+  Copyright © 2017年 andong. All rights reserved.
+*/
+"Cancel" = "取消";
+//settingVC
+"settingVC_version" = "版本号 %@";
+"settingVC_selectAlarmTitle" = "提醒类型";
+"settingVC_selectAlarmMessage" = "请选择一个提醒类型";
+"settingVC_selectSoundAction" = "声音";
+"settingVC_selectVibrationAction" = "震动";
+"settingVC_selectSoundAndVibrationAction" = "声音和振动";

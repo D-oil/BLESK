@@ -1,0 +1,39 @@
+
+/* Class = "UIButton"; normalTitle = "1"; ObjectID = "4GO-3h-Uxf"; */
+"4GO-3h-Uxf.normalTitle" = "1";
+
+/* Class = "UIButton"; normalTitle = "2"; ObjectID = "H0L-hz-pwQ"; */
+"H0L-hz-pwQ.normalTitle" = "2";
+
+/* Class = "UILabel"; text = "Setting"; ObjectID = "HIh-OL-dFc"; */
+"HIh-OL-dFc.text" = "设置";
+
+/* Class = "UIButton"; normalTitle = "4"; ObjectID = "KYU-62-QFm"; */
+"KYU-62-QFm.normalTitle" = "4";
+
+/* Class = "UILabel"; text = "All Probes"; ObjectID = "MFC-fo-pdV"; */
+"MFC-fo-pdV.text" = "全部探针";
+
+/* Class = "UIButton"; normalTitle = "Select"; ObjectID = "O8u-dw-FeM"; */
+"O8u-dw-FeM.normalTitle" = "选择";
+
+/* Class = "UILabel"; text = "Shenzhen Flamingo Technology Co.,Ltd"; ObjectID = "PP7-bo-XZQ"; */
+"PP7-bo-XZQ.text" = "Shenzhen Flamingo Technology Co.,Ltd";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "dj5-kP-16F"; */
+"dj5-kP-16F.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "℃"; ObjectID = "g0p-KT-5Iz"; */
+"g0p-KT-5Iz.normalTitle" = "℃";
+
+/* Class = "UIButton"; normalTitle = "℉"; ObjectID = "r8f-MB-q5P"; */
+"r8f-MB-q5P.normalTitle" = "℉";
+
+/* Class = "UIButton"; normalTitle = "3"; ObjectID = "uAY-Be-s4l"; */
+"uAY-Be-s4l.normalTitle" = "3";
+
+/* Class = "UILabel"; text = "Version 1.0"; ObjectID = "xOe-fj-a3G"; */
+"xOe-fj-a3G.text" = "版本号 1.0";
+
+/* Class = "UIButton"; normalTitle = "All Probes"; ObjectID = "z3p-xS-5IU"; */
+"z3p-xS-5IU.normalTitle" = "全部探针";
