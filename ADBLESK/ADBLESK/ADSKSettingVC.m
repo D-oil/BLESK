@@ -8,12 +8,22 @@
 //
 
 #import "ADSKSettingVC.h"
+#import "AppDelegate.h"
 
 @interface ADSKSettingVC ()
 
+@property (nonatomic,weak) AppDelegate *shareDelegate;
 @end
 
 @implementation ADSKSettingVC
+
+- (AppDelegate *)shareDelegate
+{
+    if (_shareDelegate == nil) {
+        _shareDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    }
+    return _shareDelegate;
+}
 
 - (IBAction)back:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -24,12 +34,18 @@
     // Do any additional setup after loading the view.
 
     [self.versionLabel setText:[NSString stringWithFormat:NSLocalizedString(@"settingVC_version", nil),[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]]];
+    \
 }
 
 - (IBAction)ConnectionNumAction:(UIButton *)sender {
 }
 
 - (IBAction)temperatureUnitAction:(UIButton *)sender {
+    if ([sender.titleLabel.text isEqualToString:@"℃"]) {
+        [self.shareDelegate setSymbol:temperatureSymbolC];
+    } else {
+        [self.shareDelegate setSymbol:temperatureSymbolF];
+    }
 }
 
 

@@ -35,5 +35,16 @@
     self.gauge.foodValue = 0;
     self.gauge.grillValue = 0;
 }
+
+- (void)changeToTemSymbol:(temperatureSymbol)symbol
+{
+    if (symbol == temperatureSymbolC) {
+        self.minTemLabel.text = @"0℃";
+        self.maxTemLabel.text = @"300℃";
+    } else if (symbol == temperatureSymbolF) {
+        self.minTemLabel.text = @"32℉";
+        self.maxTemLabel.text = @"572℉";
+    }
+}
          
 @end

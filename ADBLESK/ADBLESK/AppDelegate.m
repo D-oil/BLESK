@@ -8,12 +8,24 @@
 
 #import "AppDelegate.h"
 
+NSString *const kApptempertureSymbolChangeNotification = @"kApptempertureSymbolChangeNotification";
+
 @interface AppDelegate ()
 
 @end
 
-@implementation AppDelegate
 
+
+@implementation AppDelegate
+//@synthesize symbol = _symbol;
+- (void)setSymbol:(temperatureSymbol)symbol {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kApptempertureSymbolChangeNotification object:nil];
+    [[NSUserDefaults standardUserDefaults] setInteger:symbol forKey:KtemperatureSymbol];
+}
+    
+- (temperatureSymbol)symbol{
+    return [[NSUserDefaults standardUserDefaults] integerForKey:KtemperatureSymbol];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.

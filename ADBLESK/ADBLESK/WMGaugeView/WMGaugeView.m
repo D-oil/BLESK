@@ -254,7 +254,7 @@
             
             backgroundPointLineLayer = [CAShapeLayer layer];
             
-            CGPoint point = [WMGaugeView calcCircleCoordinateWithCenter:CGPointMake(self.frame.size.width / 2 - self.frame.size.width / 2*0.01, self.frame.size.height /2) andWithAngle:140 andWithRadius:self.frame.size.width / 8 /*- (self.frame.size.width / 2)*0.015*/];
+            CGPoint point = [WMGaugeView calcCircleCoordinateWithCenter:CGPointMake(self.frame.size.width / 2 - self.frame.size.width / 2*0.01, self.frame.size.height /2) andWithAngle:150 andWithRadius:self.frame.size.width / 8 /*- (self.frame.size.width / 2)*0.015*/];
             
             UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(point.x -self.frame.size.width / 4  +i *(self.frame.size.width / 2)*0.02, point.y-self.frame.size.width / 4 + i *(self.frame.size.width / 2)*0.02, (self.frame.size.width / 2)*0.015, (self.frame.size.width / 2)*0.015)];
             backgroundPointLineLayer.path = path.CGPath;

@@ -14,17 +14,30 @@
 
 @property (weak, nonatomic) IBOutlet ADSKGaugeView *gaugeView;
 
+
+
 @end
 
 @implementation MainViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+
+    
+}
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self.gaugeView initGaugeView];
+    [self.gaugeView changeToTemSymbol:1];
 }
 
+- (IBAction)recipeButtonAction:(id)sender {
+    [self performSegueWithIdentifier:@"recipeSegue" sender:nil];
+}
 
 
 - (IBAction)settingsAction:(id)sender {

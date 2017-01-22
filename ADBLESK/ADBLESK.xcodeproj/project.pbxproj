@@ -13,9 +13,11 @@
 		92AD3A6A1E330DF700BE40FA /* ADSKGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A691E330DF700BE40FA /* ADSKGaugeView.m */; };
 		92AD3A6E1E33262800BE40FA /* ADSKAllProbesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A6D1E33262800BE40FA /* ADSKAllProbesVC.m */; };
 		92AD3A721E3349C600BE40FA /* ADSKBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A711E3349C600BE40FA /* ADSKBottomView.m */; };
+		92C8DF6A1E339CA000E95372 /* ADSKRecipeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C8DF691E339CA000E95372 /* ADSKRecipeVC.m */; };
 		92DE00591E324FF300A8EA5F /* ADSKNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DE00581E324FF300A8EA5F /* ADSKNavigationBar.m */; };
 		92DE005E1E3269D100A8EA5F /* ADSKSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DE005D1E3269D100A8EA5F /* ADSKSettingVC.m */; };
 		92DE00651E3280FA00A8EA5F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92DE00671E3280FA00A8EA5F /* Localizable.strings */; };
+		92F318BE1E3455410016C762 /* ADSKCookDegreeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F318BD1E3455410016C762 /* ADSKCookDegreeVC.m */; };
 		92F462111E3109D000C9B2B3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F462101E3109D000C9B2B3 /* main.m */; };
 		92F462141E3109D000C9B2B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F462131E3109D000C9B2B3 /* AppDelegate.m */; };
 		92F462171E3109D000C9B2B3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F462161E3109D000C9B2B3 /* MainViewController.m */; };
@@ -58,6 +60,8 @@
 		92AD3A6D1E33262800BE40FA /* ADSKAllProbesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKAllProbesVC.m; sourceTree = "<group>"; };
 		92AD3A701E3349C600BE40FA /* ADSKBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKBottomView.h; sourceTree = "<group>"; };
 		92AD3A711E3349C600BE40FA /* ADSKBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKBottomView.m; sourceTree = "<group>"; };
+		92C8DF681E339CA000E95372 /* ADSKRecipeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKRecipeVC.h; sourceTree = "<group>"; };
+		92C8DF691E339CA000E95372 /* ADSKRecipeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKRecipeVC.m; sourceTree = "<group>"; };
 		92DE00571E324FF300A8EA5F /* ADSKNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKNavigationBar.h; sourceTree = "<group>"; };
 		92DE00581E324FF300A8EA5F /* ADSKNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKNavigationBar.m; sourceTree = "<group>"; };
 		92DE005C1E3269D100A8EA5F /* ADSKSettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKSettingVC.h; sourceTree = "<group>"; };
@@ -65,6 +69,8 @@
 		92DE00611E327E9000A8EA5F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		92DE00661E3280FA00A8EA5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		92DE00681E3280FC00A8EA5F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		92F318BC1E3455410016C762 /* ADSKCookDegreeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKCookDegreeVC.h; sourceTree = "<group>"; };
+		92F318BD1E3455410016C762 /* ADSKCookDegreeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKCookDegreeVC.m; sourceTree = "<group>"; };
 		92F4620C1E3109D000C9B2B3 /* ADBLESK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADBLESK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F462101E3109D000C9B2B3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		92F462121E3109D000C9B2B3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -169,6 +175,10 @@
 				92DE005D1E3269D100A8EA5F /* ADSKSettingVC.m */,
 				92AD3A6C1E33262800BE40FA /* ADSKAllProbesVC.h */,
 				92AD3A6D1E33262800BE40FA /* ADSKAllProbesVC.m */,
+				92C8DF681E339CA000E95372 /* ADSKRecipeVC.h */,
+				92C8DF691E339CA000E95372 /* ADSKRecipeVC.m */,
+				92F318BC1E3455410016C762 /* ADSKCookDegreeVC.h */,
+				92F318BD1E3455410016C762 /* ADSKCookDegreeVC.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -387,7 +397,9 @@
 				92AD3A721E3349C600BE40FA /* ADSKBottomView.m in Sources */,
 				92AD3A6E1E33262800BE40FA /* ADSKAllProbesVC.m in Sources */,
 				92F462171E3109D000C9B2B3 /* MainViewController.m in Sources */,
+				92C8DF6A1E339CA000E95372 /* ADSKRecipeVC.m in Sources */,
 				92DE00591E324FF300A8EA5F /* ADSKNavigationBar.m in Sources */,
+				92F318BE1E3455410016C762 /* ADSKCookDegreeVC.m in Sources */,
 				92AD3A671E33096D00BE40FA /* WMGaugeViewStyleFlatThin.m in Sources */,
 				92F462141E3109D000C9B2B3 /* AppDelegate.m in Sources */,
 				92AD3A5E1E32E8FC00BE40FA /* ADSKProbes.m in Sources */,
