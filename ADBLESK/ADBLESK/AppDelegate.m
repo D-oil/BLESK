@@ -17,7 +17,7 @@ NSString *const kApptempertureSymbolChangeNotification = @"kApptempertureSymbolC
 
 
 @implementation AppDelegate
-//@synthesize symbol = _symbol;
+
 - (void)setSymbol:(temperatureSymbol)symbol {
     [[NSNotificationCenter defaultCenter] postNotificationName:kApptempertureSymbolChangeNotification object:nil];
     [[NSUserDefaults standardUserDefaults] setInteger:symbol forKey:KtemperatureSymbol];
@@ -25,6 +25,13 @@ NSString *const kApptempertureSymbolChangeNotification = @"kApptempertureSymbolC
     
 - (temperatureSymbol)symbol{
     return [[NSUserDefaults standardUserDefaults] integerForKey:KtemperatureSymbol];
+}
+
+- (void)setRingType:(ringType)ringType {
+    [[NSUserDefaults standardUserDefaults] setInteger:ringType forKey:KringType];
+}
+- (ringType)ringType {
+    return [[NSUserDefaults standardUserDefaults] integerForKey:KringType];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

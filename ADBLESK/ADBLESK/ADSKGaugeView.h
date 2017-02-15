@@ -24,9 +24,14 @@
 @property (nonatomic,weak) IBOutlet UILabel *leftTimeValueLabel;
 
 //画出仪表盘的指针
--(void)initGaugeView;
+- (void)initGaugeView;
 
+//compeleted
+- (void)LowBatteryModelOpen:(BOOL)open;
+
+//no implementation
+
+//building
+- (void)disConnectionModel;
 - (void)changeToTemSymbol:(temperatureSymbol)symbol;
-- (void)LowBatteryModelhide:(BOOL)hidden;
-
 @end

@@ -13,6 +13,9 @@
 "settingVC_version" = "Version %@";
 "settingVC_selectAlarmTitle" = "Alarm Type";
 "settingVC_selectAlarmMessage" = "Please select a alerm type";
-"settingVC_selectSoundAction" = "Sound";
+"settingVC_selectSoundAction" = "Ring";
 "settingVC_selectVibrationAction" = "vibration";
-"settingVC_selectSoundAndVibrationAction" = "Sound and vibration";
+"settingVC_selectSoundAndVibrationAction" = "Ring and vibration";
+
+
+"disConnect_message" = "Disconnect with %@ ?";

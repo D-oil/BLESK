@@ -7,12 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		92AD3A5E1E32E8FC00BE40FA /* ADSKProbes.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A5D1E32E8FC00BE40FA /* ADSKProbes.m */; };
+		92088BA61E50B57E00ED301F /* LxxSoundPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 92088BA51E50B57E00ED301F /* LxxSoundPlay.m */; };
+		92088BA81E50B62500ED301F /* alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 92088BA71E50B62500ED301F /* alarm.caf */; };
+		925B4B8A1E35E9E50085A599 /* ADSKProbeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 925B4B891E35E9E50085A599 /* ADSKProbeList.m */; };
+		9280D5EF1E3F1EE700412831 /* ADSKMainViewNavItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9280D5EE1E3F1EE700412831 /* ADSKMainViewNavItem.m */; };
+		9280D5F41E3F3B4D00412831 /* ADSKSmallGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9280D5F31E3F3B4D00412831 /* ADSKSmallGaugeView.m */; };
+		92815A5B1E49788C006F0BF8 /* ADSKBLETableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 92815A5A1E49788C006F0BF8 /* ADSKBLETableViewCell.m */; };
+		92815A5E1E497F39006F0BF8 /* ADSKBLEConnectionTabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92815A5D1E497F39006F0BF8 /* ADSKBLEConnectionTabel.m */; };
+		92815A611E4AEF7D006F0BF8 /* ADSKTimerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92815A601E4AEF7D006F0BF8 /* ADSKTimerVC.m */; };
+		92815A651E4AEFCE006F0BF8 /* UICircularSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 92815A641E4AEFCE006F0BF8 /* UICircularSlider.m */; };
+		92815A681E4AF7A7006F0BF8 /* ADSKTimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92815A671E4AF7A7006F0BF8 /* ADSKTimerView.m */; };
+		92815A6B1E4B4E30006F0BF8 /* ADSKTemperatureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92815A6A1E4B4E30006F0BF8 /* ADSKTemperatureVC.m */; };
+		92815A721E4B5B0A006F0BF8 /* UITemperatureSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 92815A711E4B5B0A006F0BF8 /* UITemperatureSlider.m */; };
+		928D21391E3DDABD004D69CF /* ADSKCookDegreeSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 928D21381E3DDABD004D69CF /* ADSKCookDegreeSelectView.m */; };
+		928D213D1E3DDFBD004D69CF /* ADSKCookDegreeSelectItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 928D213C1E3DDFBD004D69CF /* ADSKCookDegreeSelectItem.m */; };
+		92AD3A5E1E32E8FC00BE40FA /* ADSKProbe.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A5D1E32E8FC00BE40FA /* ADSKProbe.m */; };
 		92AD3A661E33096D00BE40FA /* WMGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A621E33096D00BE40FA /* WMGaugeView.m */; };
 		92AD3A671E33096D00BE40FA /* WMGaugeViewStyleFlatThin.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A651E33096D00BE40FA /* WMGaugeViewStyleFlatThin.m */; };
 		92AD3A6A1E330DF700BE40FA /* ADSKGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A691E330DF700BE40FA /* ADSKGaugeView.m */; };
 		92AD3A6E1E33262800BE40FA /* ADSKAllProbesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A6D1E33262800BE40FA /* ADSKAllProbesVC.m */; };
 		92AD3A721E3349C600BE40FA /* ADSKBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A711E3349C600BE40FA /* ADSKBottomView.m */; };
+		92BA28BE1E51FA41009E644D /* ADSKNavItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA28BD1E51FA41009E644D /* ADSKNavItemButton.m */; };
 		92C8DF6A1E339CA000E95372 /* ADSKRecipeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C8DF691E339CA000E95372 /* ADSKRecipeVC.m */; };
 		92DE00591E324FF300A8EA5F /* ADSKNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DE00581E324FF300A8EA5F /* ADSKNavigationBar.m */; };
 		92DE005E1E3269D100A8EA5F /* ADSKSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DE005D1E3269D100A8EA5F /* ADSKSettingVC.m */; };
@@ -47,8 +62,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		92AD3A5C1E32E8FC00BE40FA /* ADSKProbes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKProbes.h; sourceTree = "<group>"; };
-		92AD3A5D1E32E8FC00BE40FA /* ADSKProbes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKProbes.m; sourceTree = "<group>"; };
+		92088BA41E50B57E00ED301F /* LxxSoundPlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LxxSoundPlay.h; sourceTree = "<group>"; };
+		92088BA51E50B57E00ED301F /* LxxSoundPlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LxxSoundPlay.m; sourceTree = "<group>"; };
+		92088BA71E50B62500ED301F /* alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm.caf; sourceTree = "<group>"; };
+		925B4B881E35E9E50085A599 /* ADSKProbeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKProbeList.h; sourceTree = "<group>"; };
+		925B4B891E35E9E50085A599 /* ADSKProbeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKProbeList.m; sourceTree = "<group>"; };
+		9280D5ED1E3F1EE700412831 /* ADSKMainViewNavItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKMainViewNavItem.h; sourceTree = "<group>"; };
+		9280D5EE1E3F1EE700412831 /* ADSKMainViewNavItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKMainViewNavItem.m; sourceTree = "<group>"; };
+		9280D5F21E3F3B4D00412831 /* ADSKSmallGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKSmallGaugeView.h; sourceTree = "<group>"; };
+		9280D5F31E3F3B4D00412831 /* ADSKSmallGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKSmallGaugeView.m; sourceTree = "<group>"; };
+		92815A591E49788C006F0BF8 /* ADSKBLETableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKBLETableViewCell.h; sourceTree = "<group>"; };
+		92815A5A1E49788C006F0BF8 /* ADSKBLETableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKBLETableViewCell.m; sourceTree = "<group>"; };
+		92815A5C1E497F39006F0BF8 /* ADSKBLEConnectionTabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKBLEConnectionTabel.h; sourceTree = "<group>"; };
+		92815A5D1E497F39006F0BF8 /* ADSKBLEConnectionTabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKBLEConnectionTabel.m; sourceTree = "<group>"; };
+		92815A5F1E4AEF7D006F0BF8 /* ADSKTimerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKTimerVC.h; sourceTree = "<group>"; };
+		92815A601E4AEF7D006F0BF8 /* ADSKTimerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKTimerVC.m; sourceTree = "<group>"; };
+		92815A631E4AEFCE006F0BF8 /* UICircularSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICircularSlider.h; sourceTree = "<group>"; };
+		92815A641E4AEFCE006F0BF8 /* UICircularSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICircularSlider.m; sourceTree = "<group>"; };
+		92815A661E4AF7A7006F0BF8 /* ADSKTimerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKTimerView.h; sourceTree = "<group>"; };
+		92815A671E4AF7A7006F0BF8 /* ADSKTimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKTimerView.m; sourceTree = "<group>"; };
+		92815A691E4B4E30006F0BF8 /* ADSKTemperatureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKTemperatureVC.h; sourceTree = "<group>"; };
+		92815A6A1E4B4E30006F0BF8 /* ADSKTemperatureVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKTemperatureVC.m; sourceTree = "<group>"; };
+		92815A701E4B5B0A006F0BF8 /* UITemperatureSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITemperatureSlider.h; sourceTree = "<group>"; };
+		92815A711E4B5B0A006F0BF8 /* UITemperatureSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITemperatureSlider.m; sourceTree = "<group>"; };
+		928D21371E3DDABD004D69CF /* ADSKCookDegreeSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKCookDegreeSelectView.h; sourceTree = "<group>"; };
+		928D21381E3DDABD004D69CF /* ADSKCookDegreeSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKCookDegreeSelectView.m; sourceTree = "<group>"; };
+		928D213B1E3DDFBD004D69CF /* ADSKCookDegreeSelectItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKCookDegreeSelectItem.h; sourceTree = "<group>"; };
+		928D213C1E3DDFBD004D69CF /* ADSKCookDegreeSelectItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKCookDegreeSelectItem.m; sourceTree = "<group>"; };
+		92AD3A5C1E32E8FC00BE40FA /* ADSKProbe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKProbe.h; sourceTree = "<group>"; };
+		92AD3A5D1E32E8FC00BE40FA /* ADSKProbe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKProbe.m; sourceTree = "<group>"; };
 		92AD3A611E33096D00BE40FA /* WMGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMGaugeView.h; sourceTree = "<group>"; };
 		92AD3A621E33096D00BE40FA /* WMGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMGaugeView.m; sourceTree = "<group>"; };
 		92AD3A631E33096D00BE40FA /* WMGaugeViewStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMGaugeViewStyle.h; sourceTree = "<group>"; };
@@ -60,6 +102,8 @@
 		92AD3A6D1E33262800BE40FA /* ADSKAllProbesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKAllProbesVC.m; sourceTree = "<group>"; };
 		92AD3A701E3349C600BE40FA /* ADSKBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKBottomView.h; sourceTree = "<group>"; };
 		92AD3A711E3349C600BE40FA /* ADSKBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKBottomView.m; sourceTree = "<group>"; };
+		92BA28BC1E51FA41009E644D /* ADSKNavItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKNavItemButton.h; sourceTree = "<group>"; };
+		92BA28BD1E51FA41009E644D /* ADSKNavItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKNavItemButton.m; sourceTree = "<group>"; };
 		92C8DF681E339CA000E95372 /* ADSKRecipeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKRecipeVC.h; sourceTree = "<group>"; };
 		92C8DF691E339CA000E95372 /* ADSKRecipeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKRecipeVC.m; sourceTree = "<group>"; };
 		92DE00571E324FF300A8EA5F /* ADSKNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKNavigationBar.h; sourceTree = "<group>"; };
@@ -115,11 +159,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92088BA31E50B57500ED301F /* other */ = {
+			isa = PBXGroup;
+			children = (
+				92088BA71E50B62500ED301F /* alarm.caf */,
+				92088BA41E50B57E00ED301F /* LxxSoundPlay.h */,
+				92088BA51E50B57E00ED301F /* LxxSoundPlay.m */,
+			);
+			name = other;
+			sourceTree = "<group>";
+		};
+		9280D5F01E3F213400412831 /* NAVItem */ = {
+			isa = PBXGroup;
+			children = (
+				9280D5ED1E3F1EE700412831 /* ADSKMainViewNavItem.h */,
+				9280D5EE1E3F1EE700412831 /* ADSKMainViewNavItem.m */,
+				92BA28BC1E51FA41009E644D /* ADSKNavItemButton.h */,
+				92BA28BD1E51FA41009E644D /* ADSKNavItemButton.m */,
+			);
+			name = NAVItem;
+			sourceTree = "<group>";
+		};
+		9280D5F11E3F3ADD00412831 /* allProbesVCViews */ = {
+			isa = PBXGroup;
+			children = (
+				9280D5F21E3F3B4D00412831 /* ADSKSmallGaugeView.h */,
+				9280D5F31E3F3B4D00412831 /* ADSKSmallGaugeView.m */,
+			);
+			name = allProbesVCViews;
+			sourceTree = "<group>";
+		};
+		92815A4C1E496B16006F0BF8 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				92815A5C1E497F39006F0BF8 /* ADSKBLEConnectionTabel.h */,
+				92815A5D1E497F39006F0BF8 /* ADSKBLEConnectionTabel.m */,
+				92815A591E49788C006F0BF8 /* ADSKBLETableViewCell.h */,
+				92815A5A1E49788C006F0BF8 /* ADSKBLETableViewCell.m */,
+			);
+			name = TableView;
+			sourceTree = "<group>";
+		};
+		92815A621E4AEF91006F0BF8 /* TimerVCViews */ = {
+			isa = PBXGroup;
+			children = (
+				92815A661E4AF7A7006F0BF8 /* ADSKTimerView.h */,
+				92815A671E4AF7A7006F0BF8 /* ADSKTimerView.m */,
+				92815A631E4AEFCE006F0BF8 /* UICircularSlider.h */,
+				92815A641E4AEFCE006F0BF8 /* UICircularSlider.m */,
+			);
+			name = TimerVCViews;
+			sourceTree = "<group>";
+		};
+		92815A6C1E4B4EB5006F0BF8 /* TemperatureVCViews */ = {
+			isa = PBXGroup;
+			children = (
+				92815A701E4B5B0A006F0BF8 /* UITemperatureSlider.h */,
+				92815A711E4B5B0A006F0BF8 /* UITemperatureSlider.m */,
+			);
+			name = TemperatureVCViews;
+			sourceTree = "<group>";
+		};
+		928D213A1E3DDAC5004D69CF /* cookDegreeVCViews */ = {
+			isa = PBXGroup;
+			children = (
+				928D21371E3DDABD004D69CF /* ADSKCookDegreeSelectView.h */,
+				928D21381E3DDABD004D69CF /* ADSKCookDegreeSelectView.m */,
+				928D213B1E3DDFBD004D69CF /* ADSKCookDegreeSelectItem.h */,
+				928D213C1E3DDFBD004D69CF /* ADSKCookDegreeSelectItem.m */,
+			);
+			name = cookDegreeVCViews;
+			sourceTree = "<group>";
+		};
 		92AD3A5F1E32E90600BE40FA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				92AD3A5C1E32E8FC00BE40FA /* ADSKProbes.h */,
-				92AD3A5D1E32E8FC00BE40FA /* ADSKProbes.m */,
+				92AD3A5C1E32E8FC00BE40FA /* ADSKProbe.h */,
+				92AD3A5D1E32E8FC00BE40FA /* ADSKProbe.m */,
+				925B4B881E35E9E50085A599 /* ADSKProbeList.h */,
+				925B4B891E35E9E50085A599 /* ADSKProbeList.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -139,6 +257,8 @@
 		92AD3A6F1E33494800BE40FA /* MainVCViews */ = {
 			isa = PBXGroup;
 			children = (
+				92815A4C1E496B16006F0BF8 /* TableView */,
+				9280D5F01E3F213400412831 /* NAVItem */,
 				92AD3A601E33096D00BE40FA /* WMGaugeView */,
 				92AD3A681E330DF700BE40FA /* ADSKGaugeView.h */,
 				92AD3A691E330DF700BE40FA /* ADSKGaugeView.m */,
@@ -151,8 +271,12 @@
 		92DE005A1E3250D800A8EA5F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				92AD3A6F1E33494800BE40FA /* MainVCViews */,
 				92DE005B1E3250E200A8EA5F /* NAVView */,
+				92AD3A6F1E33494800BE40FA /* MainVCViews */,
+				928D213A1E3DDAC5004D69CF /* cookDegreeVCViews */,
+				9280D5F11E3F3ADD00412831 /* allProbesVCViews */,
+				92815A621E4AEF91006F0BF8 /* TimerVCViews */,
+				92815A6C1E4B4EB5006F0BF8 /* TemperatureVCViews */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -179,6 +303,10 @@
 				92C8DF691E339CA000E95372 /* ADSKRecipeVC.m */,
 				92F318BC1E3455410016C762 /* ADSKCookDegreeVC.h */,
 				92F318BD1E3455410016C762 /* ADSKCookDegreeVC.m */,
+				92815A5F1E4AEF7D006F0BF8 /* ADSKTimerVC.h */,
+				92815A601E4AEF7D006F0BF8 /* ADSKTimerVC.m */,
+				92815A691E4B4E30006F0BF8 /* ADSKTemperatureVC.h */,
+				92815A6A1E4B4E30006F0BF8 /* ADSKTemperatureVC.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -212,6 +340,7 @@
 				92AD3A5F1E32E90600BE40FA /* Models */,
 				92DE005F1E3269D700A8EA5F /* Controllers */,
 				92DE005A1E3250D800A8EA5F /* Views */,
+				92088BA31E50B57500ED301F /* other */,
 				92F4620F1E3109D000C9B2B3 /* Supporting Files */,
 			);
 			path = ADBLESK;
@@ -366,6 +495,7 @@
 			files = (
 				92F462221E3109D000C9B2B3 /* LaunchScreen.storyboard in Resources */,
 				92DE00651E3280FA00A8EA5F /* Localizable.strings in Resources */,
+				92088BA81E50B62500ED301F /* alarm.caf in Resources */,
 				92F4621F1E3109D000C9B2B3 /* Assets.xcassets in Resources */,
 				92F4621A1E3109D000C9B2B3 /* Main.storyboard in Resources */,
 			);
@@ -393,19 +523,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				92AD3A661E33096D00BE40FA /* WMGaugeView.m in Sources */,
+				9280D5EF1E3F1EE700412831 /* ADSKMainViewNavItem.m in Sources */,
+				925B4B8A1E35E9E50085A599 /* ADSKProbeList.m in Sources */,
 				92DE005E1E3269D100A8EA5F /* ADSKSettingVC.m in Sources */,
+				9280D5F41E3F3B4D00412831 /* ADSKSmallGaugeView.m in Sources */,
 				92AD3A721E3349C600BE40FA /* ADSKBottomView.m in Sources */,
+				92815A5B1E49788C006F0BF8 /* ADSKBLETableViewCell.m in Sources */,
 				92AD3A6E1E33262800BE40FA /* ADSKAllProbesVC.m in Sources */,
 				92F462171E3109D000C9B2B3 /* MainViewController.m in Sources */,
+				92815A721E4B5B0A006F0BF8 /* UITemperatureSlider.m in Sources */,
 				92C8DF6A1E339CA000E95372 /* ADSKRecipeVC.m in Sources */,
 				92DE00591E324FF300A8EA5F /* ADSKNavigationBar.m in Sources */,
 				92F318BE1E3455410016C762 /* ADSKCookDegreeVC.m in Sources */,
 				92AD3A671E33096D00BE40FA /* WMGaugeViewStyleFlatThin.m in Sources */,
 				92F462141E3109D000C9B2B3 /* AppDelegate.m in Sources */,
-				92AD3A5E1E32E8FC00BE40FA /* ADSKProbes.m in Sources */,
+				928D21391E3DDABD004D69CF /* ADSKCookDegreeSelectView.m in Sources */,
+				92AD3A5E1E32E8FC00BE40FA /* ADSKProbe.m in Sources */,
+				92BA28BE1E51FA41009E644D /* ADSKNavItemButton.m in Sources */,
+				92088BA61E50B57E00ED301F /* LxxSoundPlay.m in Sources */,
+				92815A5E1E497F39006F0BF8 /* ADSKBLEConnectionTabel.m in Sources */,
+				92815A681E4AF7A7006F0BF8 /* ADSKTimerView.m in Sources */,
 				92AD3A6A1E330DF700BE40FA /* ADSKGaugeView.m in Sources */,
 				92F4621D1E3109D000C9B2B3 /* ADBLESK.xcdatamodeld in Sources */,
+				928D213D1E3DDFBD004D69CF /* ADSKCookDegreeSelectItem.m in Sources */,
+				92815A651E4AEFCE006F0BF8 /* UICircularSlider.m in Sources */,
 				92F462111E3109D000C9B2B3 /* main.m in Sources */,
+				92815A611E4AEF7D006F0BF8 /* ADSKTimerVC.m in Sources */,
+				92815A6B1E4B4E30006F0BF8 /* ADSKTemperatureVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,8 +716,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.skylight.dad.ADBLESK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "76dac80f-0759-49f9-84d6-006471185b71";
+				PROVISIONING_PROFILE = "c11e557c-937d-43aa-9895-d06f8857c740";
 				PROVISIONING_PROFILE_SPECIFIER = DADpersonaldevelopmentProfile;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -587,6 +732,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.skylight.dad.ADBLESK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

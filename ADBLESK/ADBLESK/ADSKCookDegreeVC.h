@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ADSKCookDegreeSelectView.h"
+#import "ADSKProbe.h"
 
 @interface ADSKCookDegreeVC : UIViewController
+
+@property (nonatomic,strong) ADSKProbe *probe;
+
+@property (nonatomic,strong) NSNumber *tag;
+
+@property (weak, nonatomic) IBOutlet ADSKCookDegreeSelectView *cookDegreeSelectView;
+
 
 @end

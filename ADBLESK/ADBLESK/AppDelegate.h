@@ -12,10 +12,17 @@
 extern  NSString *const kApptempertureSymbolChangeNotification;
 
 #define KtemperatureSymbol @"KtemperatureSymbol"
+#define KringType          @"KringType"
 
 typedef NS_ENUM(NSUInteger, temperatureSymbol) {
     temperatureSymbolC,
     temperatureSymbolF,
+};
+
+typedef NS_ENUM(NSUInteger, ringType) {
+    ringTypeRing,
+    ringTypeVibration,
+    ringTypeRingAndVibration
 };
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -26,6 +33,7 @@ typedef NS_ENUM(NSUInteger, temperatureSymbol) {
 
 //温度符号类型
 @property (nonatomic,assign)temperatureSymbol symbol;
+@property (nonatomic,assign)ringType ringType;
 
 - (void)saveContext;
 

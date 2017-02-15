@@ -13,3 +13,7 @@
 "settingVC_selectSoundAction" = "声音";
 "settingVC_selectVibrationAction" = "震动";
 "settingVC_selectSoundAndVibrationAction" = "声音和振动";
+
+
+//TabelView
+"disConnect_message" = "与%@断开连接？";

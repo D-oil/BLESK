@@ -9,6 +9,7 @@
 
 #import "ADSKSettingVC.h"
 #import "AppDelegate.h"
+#import "LxxSoundPlay.h"
 
 @interface ADSKSettingVC ()
 
@@ -34,33 +35,67 @@
     // Do any additional setup after loading the view.
 
     [self.versionLabel setText:[NSString stringWithFormat:NSLocalizedString(@"settingVC_version", nil),[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]]];
-    \
+    
+    if (self.shareDelegate.symbol == temperatureSymbolC) {
+        [self isSelectedC:YES];
+    } else {
+        [self isSelectedC:NO];
+    }
+    
+    [self setRingButtonStr];
+    
 }
 
 - (IBAction)ConnectionNumAction:(UIButton *)sender {
 }
 
 - (IBAction)temperatureUnitAction:(UIButton *)sender {
-    if ([sender.titleLabel.text isEqualToString:@"℃"]) {
+    if ([sender isEqual:self.Cbutton]) {
         [self.shareDelegate setSymbol:temperatureSymbolC];
+        [self isSelectedC:YES];
     } else {
         [self.shareDelegate setSymbol:temperatureSymbolF];
+        [self isSelectedC:NO];
     }
 }
 
+- (void)isSelectedC:(BOOL)isC
+{
+    if (isC) {
+        [self.Cbutton setSelected:YES];
+        [self.Fbutton setSelected:NO];
+    } else {
+        [self.Fbutton setSelected:YES];
+        [self.Cbutton setSelected:NO];
+    }
+}
+
+- (void)setRingButtonStr
+{
+    NSArray *ringTypeStrs = @[@"Ring",@"Vibration",@"Ring&Vibration"];
+    [self.ringTypeButton setTitle:ringTypeStrs[self.shareDelegate.ringType] forState:UIControlStateNormal];
+}
 
 - (IBAction)AlarmSelect:(UIButton *)sender {
     
     UIAlertController *alertC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"settingVC_selectAlarmTitle", nil) message:NSLocalizedString(@"settingVC_selectAlarmMessage", nil) preferredStyle:UIAlertControllerStyleActionSheet];
 
         UIAlertAction *soundAndVibration= [UIAlertAction actionWithTitle:NSLocalizedString(@"settingVC_selectSoundAndVibrationAction", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    
+            [self tapSound];
+            [self tapVibration];
+            [self.shareDelegate setRingType:ringTypeRingAndVibration];
+            [self setRingButtonStr];
         }];
         UIAlertAction *Vibration= [UIAlertAction actionWithTitle:NSLocalizedString(@"settingVC_selectVibrationAction", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
+            [self tapVibration];
+            [self.shareDelegate setRingType:ringTypeVibration];
+            [self setRingButtonStr];
         }];
         UIAlertAction *Sound= [UIAlertAction actionWithTitle:NSLocalizedString(@"settingVC_selectSoundAction", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
+            [self tapSound];
+            [self.shareDelegate setRingType:ringTypeRing];
+            [self setRingButtonStr];
         }];
     
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil];
@@ -73,7 +108,18 @@
     
 }
 
-
+-(void)tapSound
+{
+    SystemSoundID soundId;
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"alarm" ofType:@"caf"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:path], &soundId);
+    AudioServicesPlaySystemSound(soundId);
+}
+-(void)tapVibration
+{
+    LxxSoundPlay *playSound =[[LxxSoundPlay alloc]initForPlayingVibrate];
+    [playSound play];
+}
 
 
 @end

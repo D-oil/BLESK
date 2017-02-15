@@ -199,7 +199,7 @@
                       endAngle:M_PI*0.35
                      clockwise:YES];
         [path addArcWithCenter:CGPointMake(self.frame.size.width / 2 , self.frame.size.height /2)
-                                radius:(self.frame.size.width / 2 ) /2
+                                radius:(self.frame.size.width / 2 ) /1.65
                             startAngle:M_PI*0.35
                               endAngle:M_PI*0.65
                      clockwise:NO];
@@ -248,7 +248,8 @@
         
         
         float numOfLinePoint = 0;
-        numOfLinePoint = (self.frame.size.width / 4) / ((self.frame.size.width / 2)*0.02);
+                            //圆环的宽度               ／    点的大小
+        numOfLinePoint = (self.frame.size.width / 4) / ((self.frame.size.width / 2) * 0.02 * 2);
         
         for (int i = 0 ;  i <= numOfLinePoint; i++) {
             
@@ -1037,4 +1038,13 @@
     [self invalidateNeedle];
 }
 
+- (void)deallocAllNeedle
+{
+    [rootNeedleLayer removeFromSuperlayer];
+    rootNeedleLayer = nil;
+    [tagTemlayer removeFromSuperlayer];
+    tagTemlayer = nil;
+    [foodTemlayer removeFromSuperlayer];
+    foodTemlayer = nil;
+}
 @end

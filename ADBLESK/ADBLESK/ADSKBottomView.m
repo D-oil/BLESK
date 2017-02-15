@@ -10,12 +10,31 @@
 
 @implementation ADSKBottomView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)setfoodImageStr:(NSString *)imageStr foodType:(NSString *)foodTypeStr cookDegreeStr:(NSString *)cookDegreeStr
+{
+    [self.foodTypeImageView setImage:[UIImage imageNamed:imageStr]];
+    [self.foodNameLabel setText:foodTypeStr];
+    [self.cookDegreeLabel setText:cookDegreeStr];
+    
 }
-*/
+- (void)setTagTemLabelText:(NSString *)tagTem
+{
+    if ([tagTem containsString:@"-1"]) {
+        [self.targetImageView setHidden:YES];
+        [self.targetLabel setHidden:YES];
+        [self.taggetTemLabel setHidden:YES];
+    } else {
+        [self.targetImageView setHidden:NO];
+        [self.targetLabel setHidden:NO];
+        [self.taggetTemLabel setHidden:NO];
+        [self.taggetTemLabel setText:tagTem];
+    }
+    
+}
+- (void)setGrillTemLabelText:(NSString *)grillTem
+{
+    [self.grillTemLabel setText:grillTem];
+}
+
 
 @end

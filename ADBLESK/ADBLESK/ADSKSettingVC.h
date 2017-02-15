@@ -11,5 +11,10 @@
 @interface ADSKSettingVC : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *Cbutton;
+@property (weak, nonatomic) IBOutlet UIButton *Fbutton;
+
+@property (weak, nonatomic) IBOutlet UIButton *ringTypeButton;
+
 
 @end

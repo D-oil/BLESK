@@ -10,4 +10,18 @@
 
 @interface ADSKBottomView : UIView
 
+@property (nonatomic,weak) IBOutlet UIImageView *foodTypeImageView;
+@property (nonatomic,weak) IBOutlet UILabel *foodNameLabel;
+@property (nonatomic,weak) IBOutlet UILabel *cookDegreeLabel;
+
+@property (nonatomic,weak) IBOutlet UIImageView *targetImageView;
+@property (nonatomic,weak) IBOutlet UILabel *targetLabel;
+@property (nonatomic,weak) IBOutlet UILabel *taggetTemLabel;
+
+@property (nonatomic,weak) IBOutlet UILabel *grillTemLabel;
+
+- (void)setfoodImageStr:(NSString *)imageStr foodType:(NSString *)foodTypeStr cookDegreeStr:(NSString *)cookDegreeStr;
+- (void)setTagTemLabelText:(NSString *)tagTem;
+- (void)setGrillTemLabelText:(NSString *)grillTem;
+
 @end

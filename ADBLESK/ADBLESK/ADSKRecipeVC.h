@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ADSKProbe.h"
+
 
 @interface ADSKRecipeVC : UIViewController
+
+@property (nonatomic,strong) ADSKProbe *probe;
 
 @end
