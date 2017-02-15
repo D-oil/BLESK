@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "BLEManager.h"
 
-@interface ViewController ()
+@interface ViewController () <BLEManagerDelegate>
 
 @property (nonatomic,strong)BLEManager *bleManager;
 @property (nonatomic,strong)NSArray *CBPeripherals;
@@ -23,9 +23,10 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.bleManager = [[BLEManager alloc] init];
+    self.bleManager.delegate = self;
 }
 - (IBAction)scanAction:(UIButton *)sender {
-    [self.bleManager startScanOnceWithDelay:2 withFinishedBlock:^(BOOL success, NSArray<CBPeripheral *> *CBPeripherals) {
+    [self.bleManager startScanOnceWithDelay:5 withFinishedBlock:^(BOOL success, NSArray<CBPeripheral *> *CBPeripherals) {
         self.CBPeripherals = CBPeripherals;
         [self.tableView reloadData];
     }];
@@ -41,6 +42,19 @@
     }];
 }
 
+- (IBAction)readbatteryAction:(UIButton *)sender {
+    [self.bleManager readStatusCharacteristicFromPeripheral:[self.bleManager.connectedCBPeripherals firstObject]];
+}
+
+- (void)peripheral:(CBPeripheral *)peripheral receiveInfoWithTemperatureCharacteristic:(NSString *)receiveInfo
+{
+    
+}
+
+- (void)peripheral:(CBPeripheral *)peripheral receiveInfoWithStatusCharacteristic:(NSString *)receiveInfo
+{
+
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -61,6 +75,7 @@
     [self.bleManager connectPeripheral:self.CBPeripherals[indexPath.row] withFinshedBlock:^(BOOL success, CBPeripheral *CBPeripheral) {
         if (success) {
             NSLog(@"connected success!");
+            [self.bleManager openPeripheral:self.CBPeripherals[indexPath.row] open:YES];
         } else {
             NSLog(@"connected fail!");
         }

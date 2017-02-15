@@ -30,11 +30,8 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BK3-eu-ujB">
-                                <rect key="frame" x="16" y="66" width="343" height="226"/>
+                                <rect key="frame" x="16" y="66" width="343" height="593"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="226" id="Uhb-QS-MbD"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="S6J-y5-znk"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="8zh-g2-8Mc"/>
@@ -47,6 +44,13 @@
                                     <action selector="disconnectAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hpq-XC-1ek"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rq0-cv-2V7">
+                                <rect key="frame" x="155" y="28" width="80" height="30"/>
+                                <state key="normal" title="readbattery"/>
+                                <connections>
+                                    <action selector="readbatteryAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ajO-li-szX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -55,8 +59,11 @@
                             <constraint firstItem="hK3-Jb-qLf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="RVV-PF-hXR"/>
                             <constraint firstItem="BK3-eu-ujB" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="SqH-yI-iCO"/>
                             <constraint firstItem="BK3-eu-ujB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cL7-4O-sb8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BK3-eu-ujB" secondAttribute="bottom" constant="8" symbolic="YES" id="dDe-jk-35m"/>
+                            <constraint firstItem="rq0-cv-2V7" firstAttribute="leading" secondItem="hK3-Jb-qLf" secondAttribute="trailing" constant="8" id="iBd-kf-SSW"/>
                             <constraint firstItem="BK3-eu-ujB" firstAttribute="top" secondItem="8Uk-ZQ-oUT" secondAttribute="bottom" constant="8" id="oZz-pL-KSZ"/>
                             <constraint firstItem="8Uk-ZQ-oUT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="orI-77-pfJ"/>
+                            <constraint firstItem="rq0-cv-2V7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="tSc-Et-jhy"/>
                         </constraints>
                     </view>
                     <connections>
@@ -65,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-144.80000000000001" y="-36.431784107946029"/>
+            <point key="canvasLocation" x="-222" y="-43"/>
         </scene>
     </scenes>
 </document>
