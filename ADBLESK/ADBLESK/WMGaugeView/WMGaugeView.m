@@ -10,7 +10,7 @@
 /* Scale conversion macro from [0-1] range to view  real size range */
 #define FULL_SCALE(x,y)    (x)*self.bounds.size.width, (y)*self.bounds.size.height
 
-@implementation WMGaugeView
+@implementation WMGaugeView 
 {
     /* Drawing rects */
     CGRect fullRect;
@@ -59,6 +59,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     [self initialize];
 }
 

@@ -13,7 +13,7 @@
 
 @property (nonatomic,strong) NSArray *imageNameList;
 @property (nonatomic,strong) NSArray *foodNameList;
-@property (nonatomic,strong) NSArray *TemperatureList;
+
 @property (nonatomic,strong) ADSKCookDegreeSelectItem *selectedItem;
 
 @property (weak, nonatomic) IBOutlet UIButton *foodTypeImageView;
@@ -40,14 +40,7 @@
     [super viewWillAppear:animated];
     
     AppDelegate *shareDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-
-    if (shareDelegate.symbol == temperatureSymbolF) {
-       [self.cookDegreeSelectView setSymbol:temperatureSymbolF];
-    } else {
-        [self.cookDegreeSelectView setSymbol:temperatureSymbolC];
-    }
-    //默认0
-    [self cookDegreeItemAction:[[UIButton alloc]init]];
+    [self.cookDegreeSelectView setTagTemperatureArrayWithTag:([self.tag intValue] +1) andTemperatureSymbol:shareDelegate.symbol];
 }
 
 - (void)viewDidLoad {
@@ -56,11 +49,26 @@
     
     self.imageNameList = @[@"",@"Beef暗红",@"Veal暗红",@"Lamb暗红",@"Venison暗红",@"Pork暗红",@"Chicken暗红",@"Duck暗红",@"Fish暗红",@"Hamburger暗红"];
     self.foodNameList = @[@"",@"Beef",@"Veal",@"Lamb",@"Venison",@"Pork",@"Chicken",@"Duck",@"Fish",@"Hamburger"];
-    self.TemperatureList = @[@52,@57,@62,@66,@70,@85];
+    
     
     [self loadImageWithTag:self.tag];
 
+    AppDelegate *shareDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [self.cookDegreeSelectView setTagTemperatureArrayWithTag:([self.tag intValue] +1) andTemperatureSymbol:shareDelegate.symbol];
 
+    //默认选项
+    UIButton *button = [[UIButton alloc]init];
+    NSInteger num = [self.tag integerValue];
+    if (num == 0) {
+        button.tag = 0;
+    } else if (num == 2 || num == 3 ){
+        button.tag = 1;
+    } else if (num == 1 || num == 4) {
+        button.tag = 2;
+    } else {
+        button.tag = 3;
+    }
+    [self cookDegreeItemAction:button];
 }
 
 - (void)loadImageWithTag:(NSNumber *)tag
@@ -76,9 +84,7 @@
 - (IBAction)cookDegreeItemAction:(UIButton *)sender {
 
     self.selectedItem = self.cookDegreeSelectView.itemArray[sender.tag];
-    
-    self.targetTem = [self.TemperatureList[sender.tag] integerValue];
-    
+    self.targetTem = self.selectedItem.tem;
     [self.currentTemLabel setText:self.selectedItem.temLabel.text];
     [self.currentDegreeLabel setText:self.selectedItem.rareLabel.text];
     

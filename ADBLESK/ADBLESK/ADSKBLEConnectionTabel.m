@@ -36,4 +36,9 @@
                      }];
 }
 
++ (NSArray *)getItemImageStrs
+{
+    return @[@"通道1标志",@"通道2标志",@"通道3标志",@"通道4标志"];
+}
+
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		347B575844D043092D0BFF0F /* libPods-ADBLESKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D1CA0D39FEEE221D18208C4 /* libPods-ADBLESKTests.a */; };
 		92088BA61E50B57E00ED301F /* LxxSoundPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 92088BA51E50B57E00ED301F /* LxxSoundPlay.m */; };
 		92088BA81E50B62500ED301F /* alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 92088BA71E50B62500ED301F /* alarm.caf */; };
 		925B4B8A1E35E9E50085A599 /* ADSKProbeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 925B4B891E35E9E50085A599 /* ADSKProbeList.m */; };
@@ -19,6 +20,7 @@
 		92815A681E4AF7A7006F0BF8 /* ADSKTimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92815A671E4AF7A7006F0BF8 /* ADSKTimerView.m */; };
 		92815A6B1E4B4E30006F0BF8 /* ADSKTemperatureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92815A6A1E4B4E30006F0BF8 /* ADSKTemperatureVC.m */; };
 		92815A721E4B5B0A006F0BF8 /* UITemperatureSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 92815A711E4B5B0A006F0BF8 /* UITemperatureSlider.m */; };
+		928628CA1E56913300092BCD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 928628C91E56913300092BCD /* MBProgressHUD.m */; };
 		928D21391E3DDABD004D69CF /* ADSKCookDegreeSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 928D21381E3DDABD004D69CF /* ADSKCookDegreeSelectView.m */; };
 		928D213D1E3DDFBD004D69CF /* ADSKCookDegreeSelectItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 928D213C1E3DDFBD004D69CF /* ADSKCookDegreeSelectItem.m */; };
 		92AD3A5E1E32E8FC00BE40FA /* ADSKProbe.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A5D1E32E8FC00BE40FA /* ADSKProbe.m */; };
@@ -27,8 +29,11 @@
 		92AD3A6A1E330DF700BE40FA /* ADSKGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A691E330DF700BE40FA /* ADSKGaugeView.m */; };
 		92AD3A6E1E33262800BE40FA /* ADSKAllProbesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A6D1E33262800BE40FA /* ADSKAllProbesVC.m */; };
 		92AD3A721E3349C600BE40FA /* ADSKBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A711E3349C600BE40FA /* ADSKBottomView.m */; };
+		92B873EC1E59D5AB00D448E2 /* ADSKWarningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B873EB1E59D5AB00D448E2 /* ADSKWarningView.m */; };
 		92BA28BE1E51FA41009E644D /* ADSKNavItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA28BD1E51FA41009E644D /* ADSKNavItemButton.m */; };
 		92C8DF6A1E339CA000E95372 /* ADSKRecipeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C8DF691E339CA000E95372 /* ADSKRecipeVC.m */; };
+		92C96C081E55C8E8009C839A /* BLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C96C071E55C8E8009C839A /* BLEManager.m */; };
+		92D8762E1E5D64A900528EFC /* ADSKStartButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D8762D1E5D64A900528EFC /* ADSKStartButton.m */; };
 		92DE00591E324FF300A8EA5F /* ADSKNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DE00581E324FF300A8EA5F /* ADSKNavigationBar.m */; };
 		92DE005E1E3269D100A8EA5F /* ADSKSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DE005D1E3269D100A8EA5F /* ADSKSettingVC.m */; };
 		92DE00651E3280FA00A8EA5F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92DE00671E3280FA00A8EA5F /* Localizable.strings */; };
@@ -42,6 +47,9 @@
 		92F462221E3109D000C9B2B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F462201E3109D000C9B2B3 /* LaunchScreen.storyboard */; };
 		92F4622D1E3109D000C9B2B3 /* ADBLESKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F4622C1E3109D000C9B2B3 /* ADBLESKTests.m */; };
 		92F462381E3109D000C9B2B3 /* ADBLESKUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F462371E3109D000C9B2B3 /* ADBLESKUITests.m */; };
+		92FC37231E5E67DE00CA9670 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92FC37221E5E67DE00CA9670 /* GoogleService-Info.plist */; };
+		C4242191877D0077C1C7D8A9 /* libPods-ADBLESKUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F42195C186CB65ABCCB6078 /* libPods-ADBLESKUITests.a */; };
+		CF56C7E8B08CD88FCFD686B9 /* libPods-ADBLESK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A80D8A9050B8FDAFDBDDCDA /* libPods-ADBLESK.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +70,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18A4BC655D77AC8F3FD1A8A3 /* Pods-ADBLESKUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADBLESKUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ADBLESKUITests/Pods-ADBLESKUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1A80D8A9050B8FDAFDBDDCDA /* libPods-ADBLESK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ADBLESK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F00E6914503DD0A2C6D90D1 /* Pods-ADBLESKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADBLESKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ADBLESKTests/Pods-ADBLESKTests.release.xcconfig"; sourceTree = "<group>"; };
+		5FCC7D6F530C08D0F1CA2401 /* Pods-ADBLESKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADBLESKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ADBLESKTests/Pods-ADBLESKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7B59C01ECEE57D0CAC9D0AEB /* Pods-ADBLESKUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADBLESKUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ADBLESKUITests/Pods-ADBLESKUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8D1CA0D39FEEE221D18208C4 /* libPods-ADBLESKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ADBLESKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92088BA41E50B57E00ED301F /* LxxSoundPlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LxxSoundPlay.h; sourceTree = "<group>"; };
 		92088BA51E50B57E00ED301F /* LxxSoundPlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LxxSoundPlay.m; sourceTree = "<group>"; };
 		92088BA71E50B62500ED301F /* alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm.caf; sourceTree = "<group>"; };
@@ -85,6 +99,8 @@
 		92815A6A1E4B4E30006F0BF8 /* ADSKTemperatureVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKTemperatureVC.m; sourceTree = "<group>"; };
 		92815A701E4B5B0A006F0BF8 /* UITemperatureSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITemperatureSlider.h; sourceTree = "<group>"; };
 		92815A711E4B5B0A006F0BF8 /* UITemperatureSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITemperatureSlider.m; sourceTree = "<group>"; };
+		928628C81E56913300092BCD /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		928628C91E56913300092BCD /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		928D21371E3DDABD004D69CF /* ADSKCookDegreeSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKCookDegreeSelectView.h; sourceTree = "<group>"; };
 		928D21381E3DDABD004D69CF /* ADSKCookDegreeSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKCookDegreeSelectView.m; sourceTree = "<group>"; };
 		928D213B1E3DDFBD004D69CF /* ADSKCookDegreeSelectItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKCookDegreeSelectItem.h; sourceTree = "<group>"; };
@@ -102,10 +118,16 @@
 		92AD3A6D1E33262800BE40FA /* ADSKAllProbesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKAllProbesVC.m; sourceTree = "<group>"; };
 		92AD3A701E3349C600BE40FA /* ADSKBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKBottomView.h; sourceTree = "<group>"; };
 		92AD3A711E3349C600BE40FA /* ADSKBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKBottomView.m; sourceTree = "<group>"; };
+		92B873EA1E59D5AB00D448E2 /* ADSKWarningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKWarningView.h; sourceTree = "<group>"; };
+		92B873EB1E59D5AB00D448E2 /* ADSKWarningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKWarningView.m; sourceTree = "<group>"; };
 		92BA28BC1E51FA41009E644D /* ADSKNavItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKNavItemButton.h; sourceTree = "<group>"; };
 		92BA28BD1E51FA41009E644D /* ADSKNavItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKNavItemButton.m; sourceTree = "<group>"; };
 		92C8DF681E339CA000E95372 /* ADSKRecipeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKRecipeVC.h; sourceTree = "<group>"; };
 		92C8DF691E339CA000E95372 /* ADSKRecipeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKRecipeVC.m; sourceTree = "<group>"; };
+		92C96C061E55C8E8009C839A /* BLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEManager.h; sourceTree = "<group>"; };
+		92C96C071E55C8E8009C839A /* BLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEManager.m; sourceTree = "<group>"; };
+		92D8762C1E5D64A900528EFC /* ADSKStartButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKStartButton.h; sourceTree = "<group>"; };
+		92D8762D1E5D64A900528EFC /* ADSKStartButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKStartButton.m; sourceTree = "<group>"; };
 		92DE00571E324FF300A8EA5F /* ADSKNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKNavigationBar.h; sourceTree = "<group>"; };
 		92DE00581E324FF300A8EA5F /* ADSKNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKNavigationBar.m; sourceTree = "<group>"; };
 		92DE005C1E3269D100A8EA5F /* ADSKSettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKSettingVC.h; sourceTree = "<group>"; };
@@ -132,6 +154,10 @@
 		92F462331E3109D000C9B2B3 /* ADBLESKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADBLESKUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F462371E3109D000C9B2B3 /* ADBLESKUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADBLESKUITests.m; sourceTree = "<group>"; };
 		92F462391E3109D000C9B2B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92FC37221E5E67DE00CA9670 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9F42195C186CB65ABCCB6078 /* libPods-ADBLESKUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ADBLESKUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C73E1F1BB2249552FACD569D /* Pods-ADBLESK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADBLESK.release.xcconfig"; path = "Pods/Target Support Files/Pods-ADBLESK/Pods-ADBLESK.release.xcconfig"; sourceTree = "<group>"; };
+		D19811F2EFFF31886210B7D3 /* Pods-ADBLESK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADBLESK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ADBLESK/Pods-ADBLESK.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF56C7E8B08CD88FCFD686B9 /* libPods-ADBLESK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				347B575844D043092D0BFF0F /* libPods-ADBLESKTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,18 +181,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4242191877D0077C1C7D8A9 /* libPods-ADBLESKUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63646B550BF72054DD5DD276 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D19811F2EFFF31886210B7D3 /* Pods-ADBLESK.debug.xcconfig */,
+				C73E1F1BB2249552FACD569D /* Pods-ADBLESK.release.xcconfig */,
+				5FCC7D6F530C08D0F1CA2401 /* Pods-ADBLESKTests.debug.xcconfig */,
+				4F00E6914503DD0A2C6D90D1 /* Pods-ADBLESKTests.release.xcconfig */,
+				7B59C01ECEE57D0CAC9D0AEB /* Pods-ADBLESKUITests.debug.xcconfig */,
+				18A4BC655D77AC8F3FD1A8A3 /* Pods-ADBLESKUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		92088BA31E50B57500ED301F /* other */ = {
 			isa = PBXGroup;
 			children = (
 				92088BA71E50B62500ED301F /* alarm.caf */,
 				92088BA41E50B57E00ED301F /* LxxSoundPlay.h */,
 				92088BA51E50B57E00ED301F /* LxxSoundPlay.m */,
+				928628C81E56913300092BCD /* MBProgressHUD.h */,
+				928628C91E56913300092BCD /* MBProgressHUD.m */,
 			);
 			name = other;
 			sourceTree = "<group>";
@@ -257,6 +301,8 @@
 		92AD3A6F1E33494800BE40FA /* MainVCViews */ = {
 			isa = PBXGroup;
 			children = (
+				92D8762B1E5D648700528EFC /* Button */,
+				92B873E91E59D55900D448E2 /* warningView */,
 				92815A4C1E496B16006F0BF8 /* TableView */,
 				9280D5F01E3F213400412831 /* NAVItem */,
 				92AD3A601E33096D00BE40FA /* WMGaugeView */,
@@ -266,6 +312,24 @@
 				92AD3A711E3349C600BE40FA /* ADSKBottomView.m */,
 			);
 			name = MainVCViews;
+			sourceTree = "<group>";
+		};
+		92B873E91E59D55900D448E2 /* warningView */ = {
+			isa = PBXGroup;
+			children = (
+				92B873EA1E59D5AB00D448E2 /* ADSKWarningView.h */,
+				92B873EB1E59D5AB00D448E2 /* ADSKWarningView.m */,
+			);
+			name = warningView;
+			sourceTree = "<group>";
+		};
+		92D8762B1E5D648700528EFC /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				92D8762C1E5D64A900528EFC /* ADSKStartButton.h */,
+				92D8762D1E5D64A900528EFC /* ADSKStartButton.m */,
+			);
+			name = Button;
 			sourceTree = "<group>";
 		};
 		92DE005A1E3250D800A8EA5F /* Views */ = {
@@ -318,6 +382,8 @@
 				92F4622B1E3109D000C9B2B3 /* ADBLESKTests */,
 				92F462361E3109D000C9B2B3 /* ADBLESKUITests */,
 				92F4620D1E3109D000C9B2B3 /* Products */,
+				63646B550BF72054DD5DD276 /* Pods */,
+				A806F8690BFF017B00E7C883 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -337,6 +403,8 @@
 				92F462181E3109D000C9B2B3 /* Main.storyboard */,
 				92F462121E3109D000C9B2B3 /* AppDelegate.h */,
 				92F462131E3109D000C9B2B3 /* AppDelegate.m */,
+				92C96C061E55C8E8009C839A /* BLEManager.h */,
+				92C96C071E55C8E8009C839A /* BLEManager.m */,
 				92AD3A5F1E32E90600BE40FA /* Models */,
 				92DE005F1E3269D700A8EA5F /* Controllers */,
 				92DE005A1E3250D800A8EA5F /* Views */,
@@ -349,6 +417,7 @@
 		92F4620F1E3109D000C9B2B3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				92FC37221E5E67DE00CA9670 /* GoogleService-Info.plist */,
 				92F4621E1E3109D000C9B2B3 /* Assets.xcassets */,
 				92F462231E3109D000C9B2B3 /* Info.plist */,
 				92F462201E3109D000C9B2B3 /* LaunchScreen.storyboard */,
@@ -377,6 +446,16 @@
 			path = ADBLESKUITests;
 			sourceTree = "<group>";
 		};
+		A806F8690BFF017B00E7C883 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A80D8A9050B8FDAFDBDDCDA /* libPods-ADBLESK.a */,
+				8D1CA0D39FEEE221D18208C4 /* libPods-ADBLESKTests.a */,
+				9F42195C186CB65ABCCB6078 /* libPods-ADBLESKUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -384,9 +463,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92F4623C1E3109D000C9B2B3 /* Build configuration list for PBXNativeTarget "ADBLESK" */;
 			buildPhases = (
+				D4293103A3E336BD0EF3EC03 /* [CP] Check Pods Manifest.lock */,
 				92F462081E3109D000C9B2B3 /* Sources */,
 				92F462091E3109D000C9B2B3 /* Frameworks */,
 				92F4620A1E3109D000C9B2B3 /* Resources */,
+				2FAA8BF374FCC6AB01621B33 /* [CP] Embed Pods Frameworks */,
+				4DD86D56F5E31A67134767B4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -401,9 +483,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92F4623F1E3109D000C9B2B3 /* Build configuration list for PBXNativeTarget "ADBLESKTests" */;
 			buildPhases = (
+				9C03B530E0BE6362A68BCEB1 /* [CP] Check Pods Manifest.lock */,
 				92F462241E3109D000C9B2B3 /* Sources */,
 				92F462251E3109D000C9B2B3 /* Frameworks */,
 				92F462261E3109D000C9B2B3 /* Resources */,
+				9F9D074325DCD52175D7E73E /* [CP] Embed Pods Frameworks */,
+				CA296C5D40E948E8C0CC34D5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -419,9 +504,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92F462421E3109D000C9B2B3 /* Build configuration list for PBXNativeTarget "ADBLESKUITests" */;
 			buildPhases = (
+				6567FA9EE0BA575E026E6B67 /* [CP] Check Pods Manifest.lock */,
 				92F4622F1E3109D000C9B2B3 /* Sources */,
 				92F462301E3109D000C9B2B3 /* Frameworks */,
 				92F462311E3109D000C9B2B3 /* Resources */,
+				01060A062236A78361CDED4D /* [CP] Embed Pods Frameworks */,
+				3BA01D4918CEBA1048A0B687 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -498,6 +586,7 @@
 				92088BA81E50B62500ED301F /* alarm.caf in Resources */,
 				92F4621F1E3109D000C9B2B3 /* Assets.xcassets in Resources */,
 				92F4621A1E3109D000C9B2B3 /* Main.storyboard in Resources */,
+				92FC37231E5E67DE00CA9670 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +606,144 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		01060A062236A78361CDED4D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ADBLESKUITests/Pods-ADBLESKUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2FAA8BF374FCC6AB01621B33 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ADBLESK/Pods-ADBLESK-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3BA01D4918CEBA1048A0B687 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ADBLESKUITests/Pods-ADBLESKUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4DD86D56F5E31A67134767B4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ADBLESK/Pods-ADBLESK-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6567FA9EE0BA575E026E6B67 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9C03B530E0BE6362A68BCEB1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9F9D074325DCD52175D7E73E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ADBLESKTests/Pods-ADBLESKTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA296C5D40E948E8C0CC34D5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ADBLESKTests/Pods-ADBLESKTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4293103A3E336BD0EF3EC03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		92F462081E3109D000C9B2B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -528,7 +755,9 @@
 				92DE005E1E3269D100A8EA5F /* ADSKSettingVC.m in Sources */,
 				9280D5F41E3F3B4D00412831 /* ADSKSmallGaugeView.m in Sources */,
 				92AD3A721E3349C600BE40FA /* ADSKBottomView.m in Sources */,
+				92B873EC1E59D5AB00D448E2 /* ADSKWarningView.m in Sources */,
 				92815A5B1E49788C006F0BF8 /* ADSKBLETableViewCell.m in Sources */,
+				928628CA1E56913300092BCD /* MBProgressHUD.m in Sources */,
 				92AD3A6E1E33262800BE40FA /* ADSKAllProbesVC.m in Sources */,
 				92F462171E3109D000C9B2B3 /* MainViewController.m in Sources */,
 				92815A721E4B5B0A006F0BF8 /* UITemperatureSlider.m in Sources */,
@@ -542,8 +771,10 @@
 				92BA28BE1E51FA41009E644D /* ADSKNavItemButton.m in Sources */,
 				92088BA61E50B57E00ED301F /* LxxSoundPlay.m in Sources */,
 				92815A5E1E497F39006F0BF8 /* ADSKBLEConnectionTabel.m in Sources */,
+				92C96C081E55C8E8009C839A /* BLEManager.m in Sources */,
 				92815A681E4AF7A7006F0BF8 /* ADSKTimerView.m in Sources */,
 				92AD3A6A1E330DF700BE40FA /* ADSKGaugeView.m in Sources */,
+				92D8762E1E5D64A900528EFC /* ADSKStartButton.m in Sources */,
 				92F4621D1E3109D000C9B2B3 /* ADBLESK.xcdatamodeld in Sources */,
 				928D213D1E3DDFBD004D69CF /* ADSKCookDegreeSelectItem.m in Sources */,
 				92815A651E4AEFCE006F0BF8 /* UICircularSlider.m in Sources */,
@@ -708,6 +939,7 @@
 		};
 		92F4623D1E3109D000C9B2B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D19811F2EFFF31886210B7D3 /* Pods-ADBLESK.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4D49NLC4WA;
@@ -718,12 +950,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c11e557c-937d-43aa-9895-d06f8857c740";
 				PROVISIONING_PROFILE_SPECIFIER = DADpersonaldevelopmentProfile;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		92F4623E1E3109D000C9B2B3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C73E1F1BB2249552FACD569D /* Pods-ADBLESK.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
@@ -732,12 +965,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.skylight.dad.ADBLESK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		92F462401E3109D000C9B2B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FCC7D6F530C08D0F1CA2401 /* Pods-ADBLESKTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 4D49NLC4WA;
@@ -751,6 +985,7 @@
 		};
 		92F462411E3109D000C9B2B3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F00E6914503DD0A2C6D90D1 /* Pods-ADBLESKTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 4D49NLC4WA;
@@ -764,6 +999,7 @@
 		};
 		92F462431E3109D000C9B2B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B59C01ECEE57D0CAC9D0AEB /* Pods-ADBLESKUITests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 4D49NLC4WA;
 				INFOPLIST_FILE = ADBLESKUITests/Info.plist;
@@ -776,6 +1012,7 @@
 		};
 		92F462441E3109D000C9B2B3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18A4BC655D77AC8F3FD1A8A3 /* Pods-ADBLESKUITests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 4D49NLC4WA;
 				INFOPLIST_FILE = ADBLESKUITests/Info.plist;

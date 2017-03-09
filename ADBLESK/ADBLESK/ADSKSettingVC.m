@@ -81,20 +81,23 @@
     UIAlertController *alertC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"settingVC_selectAlarmTitle", nil) message:NSLocalizedString(@"settingVC_selectAlarmMessage", nil) preferredStyle:UIAlertControllerStyleActionSheet];
 
         UIAlertAction *soundAndVibration= [UIAlertAction actionWithTitle:NSLocalizedString(@"settingVC_selectSoundAndVibrationAction", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self tapSound];
-            [self tapVibration];
             [self.shareDelegate setRingType:ringTypeRingAndVibration];
+            [[[LxxSoundPlay alloc] init] playwarning];
+//            [LxxSoundPlay tapSound];
+//            [LxxSoundPlay tapVibration];
+            
             [self setRingButtonStr];
         }];
         UIAlertAction *Vibration= [UIAlertAction actionWithTitle:NSLocalizedString(@"settingVC_selectVibrationAction", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-            [self tapVibration];
+        
             [self.shareDelegate setRingType:ringTypeVibration];
+            [[[LxxSoundPlay alloc] init] playwarning];
             [self setRingButtonStr];
         }];
         UIAlertAction *Sound= [UIAlertAction actionWithTitle:NSLocalizedString(@"settingVC_selectSoundAction", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self tapSound];
+            
             [self.shareDelegate setRingType:ringTypeRing];
+            [[[LxxSoundPlay alloc] init] playwarning];
             [self setRingButtonStr];
         }];
     
@@ -108,18 +111,7 @@
     
 }
 
--(void)tapSound
-{
-    SystemSoundID soundId;
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"alarm" ofType:@"caf"];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:path], &soundId);
-    AudioServicesPlaySystemSound(soundId);
-}
--(void)tapVibration
-{
-    LxxSoundPlay *playSound =[[LxxSoundPlay alloc]initForPlayingVibrate];
-    [playSound play];
-}
+
 
 
 @end

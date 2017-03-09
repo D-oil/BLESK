@@ -27,11 +27,19 @@
     }
     NSInteger minute = [[[self.timeLabel.text componentsSeparatedByString:@":"] lastObject] integerValue];
     self.timeLabel.text = [NSString stringWithFormat:@"%ld:%02ld",hoursButton.tag,minute];
+     self.time = [self compuertTime];
 }
 - (void)updateTimeLabelAfterSliderBar
 {
     NSInteger hour = [[[self.timeLabel.text componentsSeparatedByString:@":"] firstObject] integerValue];
     NSInteger minute = 60 * self.circularSlider.value;
     self.timeLabel.text = [NSString stringWithFormat:@"%ld:%02ld",hour,minute];
+    self.time = [self compuertTime];
+}
+
+- (NSUInteger)compuertTime{
+    NSInteger hour = [[[self.timeLabel.text componentsSeparatedByString:@":"] firstObject] integerValue];
+    NSInteger minute = [[[self.timeLabel.text componentsSeparatedByString:@":"] lastObject] integerValue];
+    return  hour * 3600 + minute *60;
 }
 @end

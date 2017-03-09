@@ -6,6 +6,10 @@
   Copyright © 2017年 andong. All rights reserved.
 */
 
+//mainViewController
+"Please_open_BLE" = "Please open Bluetooth";
+"Bluetooth_scanning_Please_wait" = "Bluetooth scanning,Please wait!...";
+
 //setting vc
 "Cancel" = "Cancel";
 

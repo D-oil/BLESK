@@ -7,19 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BLEManager.h"
 
 extern  NSString *const kConnectionChangeNotification;
 extern  NSString *const kBatteryLowNotification;
 
 extern  NSString *const kFoodTypeChangeNotification;
 extern  NSString *const kFoodDegreeChangeNotification;
+
 extern  NSString *const ktargetTemperatureNotification;
+extern  NSString *const kfoodTemperatureNotification;
+extern  NSString *const kgrillTemperatureNotification;
 
+extern  NSString *const ktimeChangedNotification;
 
-typedef NS_ENUM(NSUInteger, notificationType) {
-    notificationType_lowBattery,
-    notificationType_FoodTypeChange,
-};
+extern NSString *const kBBQfinishedWarningNotification;
+
+extern NSString *const kgrillTemperatureWarningNotification;
+extern NSString *const kfoodTemperatureWarningNotification;
 
 typedef NS_ENUM(NSUInteger, foodType) {
     foodType_Null,      //空
@@ -45,9 +50,7 @@ typedef NS_ENUM(NSUInteger, foodDegree) {
     foodDegree_SlowDone
 };
 
-
-
-
+typedef void(^timeRemainningfinishedBlock)(BOOL finished);
 @interface ADSKProbe : NSObject
 //探针对应的编号
 @property (nonatomic,strong) NSString *UUID;
@@ -60,23 +63,34 @@ typedef NS_ENUM(NSUInteger, foodDegree) {
 
 //定义为摄氏度
 @property (nonatomic,assign) NSInteger targetTem;
-@property (nonatomic,assign) NSInteger grillTem;
-@property (nonatomic,assign) NSInteger foodTem;
+@property (nonatomic,assign) float grillTem;
+@property (nonatomic,assign) float foodTem;
 @property (nonatomic,assign) NSUInteger batteryLevel;
 //食物类型
 @property (nonatomic,assign) foodType foodType;
 //生熟程度
 @property (nonatomic,assign) foodDegree foodDegree;
 
+//剩余完成时间
+@property (nonatomic,assign) NSUInteger time;
 
+//是否开启了烧烤模式
+@property (nonatomic,assign) BOOL isOpen;
 
 //探针正在报警状态
 @property (nonatomic,assign) BOOL isAlarm;
 
+@property (nonatomic,strong) CBPeripheral *peripheral;
 //tools
 + (foodDegree)getFoodDegreeFromString:(NSString *)string;
 + (foodType)getFoodTypeFromString:(NSString *)string;
 
 + (NSString *)getStringFromFoodDegree:(foodDegree)foodDegree;
 + (NSString *)getStringFromFoodType:(foodType)foodType;
+
+
+- (void)startRemainingTimeWithTime:(NSUInteger)time completion:(timeRemainningfinishedBlock) completion;
+- (void)stopRemainingTime;
+
+- (NSUInteger)computeRemainingTimeWithTem:(float)tem;
 @end

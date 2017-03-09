@@ -10,7 +10,21 @@
 
 
 #import "LxxSoundPlay.h"
+
+@interface LxxSoundPlay ()
+
+@property (nonatomic,strong)NSTimer *playerTimer;
+
+@end
+
 @implementation LxxSoundPlay
+- (NSTimer *)playerTimer {
+    if (_playerTimer == nil) {
+        _playerTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(playwarning) userInfo:nil repeats:YES];
+    }
+    return _playerTimer;
+}
+
 -(id)initForPlayingVibrate
 {
     self = [super init];
@@ -75,4 +89,39 @@
     AudioServicesDisposeSystemSoundID(soundID);
 }
 
+
+-(void)playwarning
+{
+    AppDelegate *sharedelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if (sharedelegate.ringType == ringTypeRing) {
+        [LxxSoundPlay playSound];
+    } else if (sharedelegate.ringType == ringTypeVibration){
+        [LxxSoundPlay playVibrate];
+    } else if (sharedelegate.ringType == ringTypeRingAndVibration) {
+        [LxxSoundPlay playVibrate];
+        [LxxSoundPlay playSound];
+    }
+    
+}
++(void)playSound
+{
+    SystemSoundID soundId;
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"alarm" ofType:@"caf"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:path], &soundId);
+    AudioServicesPlaySystemSound(soundId);
+}
+
++ (void)playVibrate {
+    LxxSoundPlay *playSound =[[LxxSoundPlay alloc]initForPlayingVibrate];
+    [playSound play];
+}
+
+- (void)startWarning {
+    [self.playerTimer fire];
+}
+- (void)stopWarning
+{
+    [self.playerTimer invalidate];
+    self.playerTimer = nil;
+}
 @end

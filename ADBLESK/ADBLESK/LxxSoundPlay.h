@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "AppDelegate.h"
 
 @interface LxxSoundPlay : NSObject
 {
@@ -46,4 +47,7 @@
  */
 -(void)play;
 
+-(void)playwarning;
+- (void)startWarning;
+- (void)stopWarning;
 @end

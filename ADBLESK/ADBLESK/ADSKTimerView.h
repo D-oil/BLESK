@@ -18,6 +18,8 @@
 
 @property (nonatomic,weak) IBOutlet UILabel *timeLabel;
 
+@property (nonatomic,assign)NSUInteger time ;
+
 - (void)updateTimeLabelAfterchooseHoursButton:(UIButton *)hoursButton;
 
 - (void)updateTimeLabelAfterSliderBar;

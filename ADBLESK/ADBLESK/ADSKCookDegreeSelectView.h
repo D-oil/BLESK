@@ -28,7 +28,9 @@
 
 @property (nonatomic,weak) IBOutlet ADSKCookDegreeSelectItem *slowDoneItem;
 
-@property (nonatomic,assign)temperatureSymbol symbol;
+
+
 
 - (void) selectItemWithHighted:(ADSKCookDegreeSelectItem *)item;
+- (void)setTagTemperatureArrayWithTag:(NSInteger)tag andTemperatureSymbol:(temperatureSymbol)symbol;
 @end

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import <UserNotifications/UserNotifications.h>
+
+
 
 extern  NSString *const kApptempertureSymbolChangeNotification;
 

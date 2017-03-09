@@ -10,6 +10,8 @@
 
 @interface ADSKTimerVC ()
 
+@property (nonatomic,assign)NSUInteger time;
+
 @end
 
 @implementation ADSKTimerVC
@@ -27,16 +29,15 @@
     [self.timerView.circularSlider addTarget:self action:@selector(sliderTouchedUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [self.timerView.circularSlider addTarget:self action:@selector(sliderTouchedUpOutside:) forControlEvents:UIControlEventTouchUpOutside];
     self.timerView.circularSlider.minimumValue = 0;
-    self.timerView.circularSlider.maximumValue = 1;
+    self.timerView.circularSlider.maximumValue = 0.99;
     self.timerView.circularSlider.continuous = YES;
 }
 
 - (IBAction)updateProgress:(UISlider *)sender {
     
-    float progress = translateValueFromSourceIntervalToDestinationInterval(sender.value, sender.minimumValue, sender.maximumValue, 0.0, 1.0);
+//    float progress = translateValueFromSourceIntervalToDestinationInterval(sender.value, sender.minimumValue, sender.maximumValue, 0.0, 1.0);
     [self.timerView updateTimeLabelAfterSliderBar];
-    
-    
+    self.time = self.timerView.time;
 }
 
 - (IBAction)sliderTouchedDown:(id)sender {
@@ -51,9 +52,11 @@
     
 }
 - (IBAction)TimerStrat:(UIButton *)sender {
+    
     self.probe.foodType = foodType_Timer;
     self.probe.foodDegree = foodType_Null;
     self.probe.targetTem = -1;
+    self.probe.time = self.time;
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

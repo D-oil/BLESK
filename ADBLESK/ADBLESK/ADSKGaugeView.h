@@ -23,15 +23,23 @@
 @property (nonatomic,weak) IBOutlet UILabel *currentTemValueLabel;
 @property (nonatomic,weak) IBOutlet UILabel *leftTimeValueLabel;
 
+@property (nonatomic,assign) temperatureSymbol temSymbol;
+
 //画出仪表盘的指针
 - (void)initGaugeView;
 
+- (void)setTimeLabelWithTime:(NSUInteger)time;
+
 //compeleted
 - (void)LowBatteryModelOpen:(BOOL)open;
-
+//set Temperature
+- (void)setCurrentTemperature:(float)currentTem;
+- (void)setTagTemperature:(float)tagTem;
+- (void)setgrillTemperature:(float)grillTem;
 //no implementation
 
 //building
 - (void)disConnectionModel;
-- (void)changeToTemSymbol:(temperatureSymbol)symbol;
+
+
 @end

@@ -39,7 +39,7 @@ WMGaugeViewSubdivisionsAlignment;
 /**
  * WMGaugeView class
  */
-@interface WMGaugeView : UIView
+@interface WMGaugeView : UIView <CAAnimationDelegate>
 
 /**
  * WMGaugeView properties

@@ -10,6 +10,8 @@
 
 @interface ADSKBLEConnectionTabel : UIView
 
+@property (nonatomic,weak) IBOutlet UITableView *tableView;
+
 @property (nonatomic,weak) IBOutlet UILabel  *numOfConnectedLabel;
 
 @property (nonatomic,weak) IBOutlet UIView *disConnectView;
@@ -21,5 +23,7 @@
 - (void)showDisconnectViewWith:(NSString *)BLEName;
 
 - (void)hideDisconnectView;
+
++ (NSArray *)getItemImageStrs;
 
 @end

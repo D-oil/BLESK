@@ -5,6 +5,10 @@
   Created by 董安东 on 2017/1/21.
   Copyright © 2017年 andong. All rights reserved.
 */
+//mainView controller
+"Please_open_BLE" = "请打开蓝牙开关";
+"Bluetooth_scanning_Please_wait" = "蓝牙扫描中，请稍后";
+
 "Cancel" = "取消";
 //settingVC
 "settingVC_version" = "版本号 %@";

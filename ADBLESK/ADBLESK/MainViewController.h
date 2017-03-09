@@ -12,6 +12,8 @@
 
 @interface MainViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
+//allprobesVC 返回的tag
+@property (nonatomic,assign)NSInteger tag;
 
 @end
 

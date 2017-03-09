@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-
 NSString *const kApptempertureSymbolChangeNotification = @"kApptempertureSymbolChangeNotification";
 
 @interface AppDelegate ()
@@ -36,6 +35,26 @@ NSString *const kApptempertureSymbolChangeNotification = @"kApptempertureSymbolC
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+ 
+    
+    //iOS 10 before
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    [application registerUserNotificationSettings:settings];
+    
+    //iOS 10
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"request authorization succeeded!");
+        }
+    }];
+    
+    [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+        NSLog(@"%@",settings);
+    }];
+    
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
     return YES;
 }
 

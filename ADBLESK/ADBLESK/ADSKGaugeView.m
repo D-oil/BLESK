@@ -12,6 +12,7 @@
 
 @property (nonatomic,strong) NSTimer *lowBatteryTimer;
 
+
 @end
 
 @implementation ADSKGaugeView
@@ -20,17 +21,10 @@
 - (NSTimer *)lowBatteryTimer
 {
     if (_lowBatteryTimer == nil) {
-        _lowBatteryTimer = [NSTimer timerWithTimeInterval:0.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            [UIView animateWithDuration:0.5 animations:^{
-                self.lowBatteryImageView.alpha = self.lowBatteryImageView.alpha ? 0 : 1;
-            }];
-            
-        }];
-        [[NSRunLoop mainRunLoop] addTimer:_lowBatteryTimer forMode:NSRunLoopCommonModes];
+        _lowBatteryTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(batteryHideOrShow) userInfo:nil repeats:YES];
     }
     return _lowBatteryTimer;
 }
-
 
 
 - (void)awakeFromNib {
@@ -39,7 +33,7 @@
 }
 
  - (void)initGaugeView
-{
+{  
     self.gauge.style = [WMGaugeViewStyleFlatThin new];
     self.gauge.maxValue = 300.0;
     self.gauge.showInnerRim = YES;
@@ -54,23 +48,61 @@
     self.gauge.scaleSubdivisionsLength = 0.004;
     self.gauge.scaleDivisionsWidth = 0.004;
     self.gauge.scaleDivisionsLength = 0.004;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.gauge setValue:0.0 animated:YES];
-        [self.gauge setTagTmpValue:0.0 animated:YES duration:1 completion:nil];
-        [self.gauge setfoodTmpValue:0.0 animated:YES duration:1 completion:nil];
-    });
-
+    
+    [self.lowBatteryImageView setAlpha:0];
 }
 
-- (void)changeToTemSymbol:(temperatureSymbol)symbol
+- (void)setCurrentTemperature:(float)currentTem
 {
-    if (symbol == temperatureSymbolC) {
+    if (self.temSymbol == temperatureSymbolC) {
+        self.currentTemValueLabel.text = [NSString stringWithFormat:@"%d℃",(int)currentTem];
+    } else if (self.temSymbol == temperatureSymbolF) {
+        self.currentTemValueLabel.text = [NSString stringWithFormat:@"%d℉",(int)(currentTem * 1.8) +32];
+    }
+    [self.gauge setTagTmpValue:currentTem animated:YES duration:1.0 completion:^(BOOL finished) {}];
+}
+
+- (void)setTagTemperature:(float)tagTem
+{
+    [self.gauge setfoodTmpValue:tagTem animated:YES duration:1.0 completion:^(BOOL finished) {}];
+}
+- (void)setgrillTemperature:(float)grillTem
+{
+    [self.gauge setValue:grillTem animated:YES duration:1.0 completion:^(BOOL finished) {}];
+}
+
+- (void)setTimeLabelWithTime:(NSUInteger)time
+{
+    [self.leftTimeValueLabel setText:[self getTimeStrWithtime:time]];
+}
+
+- (NSString *)getTimeStrWithtime:(NSUInteger)time
+{
+    NSUInteger currentTime = time;
+    NSUInteger hour = currentTime / 3600;
+    NSUInteger min = (currentTime - hour *3600) / 60;
+    NSUInteger s   = (currentTime - hour *3600 - min * 60);
+    
+    NSString *timeStr = [NSString stringWithFormat:@"%02lu:%02lu:%02lu",(unsigned long)hour,(unsigned long)min,(unsigned long)s];
+    
+    return timeStr;
+}
+
+- (void)setTemSymbol:(temperatureSymbol)temSymbol {
+    _temSymbol = temSymbol;
+    if (temSymbol == temperatureSymbolC) {
         self.minTemLabel.text = @"0℃";
         self.maxTemLabel.text = @"300℃";
-    } else if (symbol == temperatureSymbolF) {
+    } else if (temSymbol == temperatureSymbolF) {
         self.minTemLabel.text = @"32℉";
         self.maxTemLabel.text = @"572℉";
     }
+}
+
+- (void)batteryHideOrShow {
+    [UIView animateWithDuration:0.5 animations:^{
+        self.lowBatteryImageView.alpha = self.lowBatteryImageView.alpha ? 0 : 1;
+    }];
 }
 
 - (void)LowBatteryModelOpen:(BOOL)open

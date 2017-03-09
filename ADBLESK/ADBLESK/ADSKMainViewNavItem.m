@@ -102,9 +102,7 @@
                 
             }
     }
-    
 
-    
     
 }
 
@@ -128,10 +126,13 @@
     if (isConnected) {
         [self.tintButton setHighlighted:NO];
         [self.backgroundButton setUserInteractionEnabled:YES];
-        [self.BLEConnectionButton setSelected:YES];
+        [self.BLEConnectionButton setImage:[UIImage imageNamed:@"蓝牙连接图标"] forState:UIControlStateNormal];
+        [self.BLEConnectionButton setImage:[UIImage imageNamed:@"蓝牙连接图标"] forState:UIControlStateHighlighted];
+        
     } else {
         [self.tintButton setHighlighted:YES];
-        [self.BLEConnectionButton setSelected:NO];
+        [self.BLEConnectionButton setImage:[UIImage imageNamed:@"蓝牙断开图标"] forState:UIControlStateNormal];
+        [self.BLEConnectionButton setImage:[UIImage imageNamed:@"蓝牙断开图标"] forState:UIControlStateHighlighted];
         [self.backgroundButton setUserInteractionEnabled:NO];
     }
 }

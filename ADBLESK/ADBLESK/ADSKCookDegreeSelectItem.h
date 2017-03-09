@@ -20,6 +20,8 @@
 
 @property (nonatomic,weak) IBOutlet UIButton *actionButton;
 
+@property (nonatomic,assign)NSInteger tem;
+
 - (void)setItemHighlighted:(BOOL)highLighted;
 
 @end
