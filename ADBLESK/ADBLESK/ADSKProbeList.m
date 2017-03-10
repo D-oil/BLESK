@@ -23,6 +23,8 @@
         for (int index = 0; index < 4; index++) {
             ADSKProbe *probe = [[ADSKProbe alloc] init];
             probe.ID = index;
+            probe.time = -1;
+            probe.foodTem = -1;
             probe.targetTem = -1;
             [_probes addObject:probe];
         }

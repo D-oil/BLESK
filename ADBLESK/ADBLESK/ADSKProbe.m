@@ -101,7 +101,7 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
 {
     if (_foodTem != foodTem) {
         if(self.isOpen && foodTem < _targetTem){
-            self.time = [self computeRemainingTimeWithTem:foodTem];
+            _time = [self computeRemainingTimeWithTem:foodTem];
         }
         _foodTem = foodTem;
         [[NSNotificationCenter defaultCenter] postNotificationName:kfoodTemperatureNotification object:self];
@@ -126,12 +126,12 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
     }
 }
 
-- (void)setTime:(NSUInteger)time
+- (void)setTime:(NSInteger)time
 {
-    if (_time != time) {
-        _time = time;
-        [[NSNotificationCenter defaultCenter] postNotificationName:ktimeChangedNotification object:self];
-    }
+    
+    _time = time;
+    [[NSNotificationCenter defaultCenter] postNotificationName:ktimeChangedNotification object:self];
+    
 }
 
 #pragma mark - Tools
@@ -243,7 +243,12 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
     if (_time > 0) {
         self.time = _time-1 ;
     } else {
+        
+        if (self.block){
         self.block (YES);
+        self.block = nil;
+        }
+        self.isTimerFire = NO;
         [self.timeLabelTimer invalidate];
         self.timeLabelTimer  = nil;
     }
@@ -251,14 +256,20 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
 
 
 - (void)startRemainingTimeWithTime:(NSUInteger)time completion:(timeRemainningfinishedBlock) completion; {
-    self.time = time;
+    
+    self.isTimerFire = YES;
     self.block = completion;
     self.timeLabelTimer;
+    _time = time;
 }
 - (void)stopRemainingTime {
-    self.block (NO);
-    [self.timeLabelTimer invalidate];
-    self.timeLabelTimer  = nil;
+    if (self.block){
+        self.block (NO);
+        self.block = nil;
+        self.isTimerFire = NO;
+        [self.timeLabelTimer invalidate];
+        self.timeLabelTimer  = nil;
+    }
 }
 
 
@@ -276,6 +287,10 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
 {
     float lastFoodTem = self.foodTem;
     float currentFoodTem = tem;
+    if (lastFoodTem > currentFoodTem) {
+        return 0;
+    }
+    
     NSInteger targetTem = self.targetTem;
     NSInteger grillTem = self.grillTem;
     NSInteger tCycle;
@@ -284,6 +299,7 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
     } else {
         tCycle = 4;
     }
+    
     
     NSInteger remainingTime = (targetTem - currentFoodTem)* tCycle / (currentFoodTem - lastFoodTem);
     return remainingTime;

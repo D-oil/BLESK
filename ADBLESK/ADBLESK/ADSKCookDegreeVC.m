@@ -99,7 +99,7 @@
     [self.probe setFoodDegree:foodDegree];
     [self.probe setFoodType:foodType];
     [self.probe setTargetTem:self.targetTem];
-    
+
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

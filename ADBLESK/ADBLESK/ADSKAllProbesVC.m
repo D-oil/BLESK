@@ -41,22 +41,25 @@
     [super viewWillAppear:animated];
     
     AppDelegate *shareDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [self.probeList.probes enumerateObjectsUsingBlock:^(ADSKProbe  * _Nonnull probe, NSUInteger idx, BOOL * _Nonnull stop) {
-        ADSKSmallGaugeView *gaugeView = [self getGaugeViewArray][idx];
-        
-        
-        [gaugeView setTagTemperatureWith:(int)probe.targetTem WithTemSymbol:shareDelegate.symbol];
-        [gaugeView setGrillTemperatureWith:(int)probe.grillTem WithTemSymbol:shareDelegate.symbol];
-        [gaugeView setFoodTemperatureWith:(int)probe.foodTem WithTemSymbol:shareDelegate.symbol];
-        
-        NSString *foodTypeStr = [ADSKProbe getStringFromFoodType:probe.foodType];
-        NSString *foodTypeImageStr = [NSString stringWithFormat:@"%@状态图标",foodTypeStr];
-        NSString *cookDegreeStr = [ADSKProbe getStringFromFoodDegree:probe.foodDegree];
-        [gaugeView setfoodTypeImageStr:foodTypeImageStr foodTypeStr:foodTypeStr cookDegreeStr:cookDegreeStr];
-        
-        [gaugeView isOnlineStatus:probe.isConnected];
-        
-    }];
+        [self.probeList.probes enumerateObjectsUsingBlock:^(ADSKProbe  * _Nonnull probe, NSUInteger idx, BOOL * _Nonnull stop) {
+            ADSKSmallGaugeView *gaugeView = [self getGaugeViewArray][idx];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [gaugeView setTagTemperatureWith:(int)probe.targetTem WithTemSymbol:shareDelegate.symbol];
+                [gaugeView setGrillTemperatureWith:(int)probe.grillTem WithTemSymbol:shareDelegate.symbol];
+                [gaugeView setFoodTemperatureWith:(int)probe.foodTem WithTemSymbol:shareDelegate.symbol];
+            });
+           
+            
+            NSString *foodTypeStr = [ADSKProbe getStringFromFoodType:probe.foodType];
+            NSString *foodTypeImageStr = [NSString stringWithFormat:@"%@状态图标",foodTypeStr];
+            NSString *cookDegreeStr = [ADSKProbe getStringFromFoodDegree:probe.foodDegree];
+            [gaugeView setfoodTypeImageStr:foodTypeImageStr foodTypeStr:foodTypeStr cookDegreeStr:cookDegreeStr];
+            
+            [gaugeView isOnlineStatus:probe.isConnected];
+            
+        }];
+
 }
 
 - (void)viewDidLoad {

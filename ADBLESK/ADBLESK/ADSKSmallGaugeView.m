@@ -104,6 +104,11 @@
 
 - (void)setFoodTemperatureWith:(int)foodTem WithTemSymbol:(temperatureSymbol)symbol
 {
+    if (foodTem == -1) {
+        self.temperatureLabel.text = @"_ _";
+        return;
+    }
+    
     [self.guaue setTagTmpValue:(float)foodTem animated:YES duration:1.0 completion:^(BOOL finished) {}];
     if (symbol == temperatureSymbolC) {
         self.temperatureLabel.text = [NSString stringWithFormat:@"%d℃",foodTem];

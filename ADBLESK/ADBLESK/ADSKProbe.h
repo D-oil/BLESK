@@ -72,13 +72,16 @@ typedef void(^timeRemainningfinishedBlock)(BOOL finished);
 @property (nonatomic,assign) foodDegree foodDegree;
 
 //剩余完成时间
-@property (nonatomic,assign) NSUInteger time;
+@property (nonatomic,assign) NSInteger time;
 
 //是否开启了烧烤模式
 @property (nonatomic,assign) BOOL isOpen;
 
 //探针正在报警状态
 @property (nonatomic,assign) BOOL isAlarm;
+
+////计时器是否正在运行
+@property (nonatomic,assign) BOOL isTimerFire;
 
 @property (nonatomic,strong) CBPeripheral *peripheral;
 //tools

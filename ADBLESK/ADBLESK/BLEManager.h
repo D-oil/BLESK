@@ -27,7 +27,7 @@
 //#define TEMPERATURE_SERVICE_UPLOADTIME_CHARACTERISTIC_NOTIFY   @"FB04"
 #define TEMPERATURE_SERVICE_STATUS_CHARACTERISTIC_READ_NOTIFY @"FB05"
 
-typedef void (^connectFinished)(BOOL success,CBPeripheral *CBPeripheral);
+typedef void (^connectFinished)(BOOL success,CBPeripheral *peripheral);
 
 
 @protocol BLEManagerDelegate <NSObject>

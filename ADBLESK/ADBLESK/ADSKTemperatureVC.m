@@ -70,6 +70,7 @@
     self.probe.targetTem = tagTem;
     self.probe.foodDegree = foodType_Null;
     self.probe.foodType = foodType_Tempareture;
+
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

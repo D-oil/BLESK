@@ -119,44 +119,7 @@
     [self ItemNumButtonAction:self.navItem.oneButton];
     //
     self.tag = -1;
-    
-    
-//    [self.currentProbe startRemainingTimeWithTime:3 completion:^(BOOL finished) {
-//        if (finished ) {
-//            NSLog(@"正常结束");
-//            [self.warningView warningViewHidden:NO withString:@"hhhh"];
-//            [self.navItem numButtonStateChange:numButtonTypeSelected_Alarm numButton:self.navItem.oneButton];
-//        } else {
-//            NSLog(@"人为结束");
-//        }
-//        
-//    }];
-    
-//    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-//    content.title = @"Introduction to Notifications";
-//    content.subtitle = @"Session 707";
-//    content.body = @"Woah! These new notifications look amazing! Don’t you agree?";
-//    content.badge = @1;
-//    content.sound = [UNNotificationSound defaultSound];
-//    
-//    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:10 repeats:NO];
-//    
-//    UNNotificationRequest *localNot = [UNNotificationRequest requestWithIdentifier:@"hhhhh" content:content trigger:trigger];
-//    [[UNUserNotificationCenter currentNotificationCenter]addNotificationRequest:localNot withCompletionHandler:^(NSError * _Nullable error) {
-//        NSLog(@"本地推送完成！");
-//    }];
-    
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self.soundPlay startWarning];
-//    });
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self.soundPlay stopWarning];
-//    });
-//    
-//    
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self.soundPlay startWarning];
-//    });
+
 }
 
 
@@ -176,9 +139,7 @@
         [self.recipeAddionButton setUserInteractionEnabled:NO];
         [self.bottomView setHidden:YES];
         [self.startButton setHidden:YES];
-        
-        
-        [self.allProbesButton setEnabled:YES];
+        [self.allProbesButton setEnabled:NO];
     }
 }
 
@@ -213,6 +174,8 @@
         grillTemStr = @"-1";
     }
     [self.bottomView setGrillTemLabelText:grillTemStr];
+    
+    [self.startButton setStopOrStart:!self.currentProbe.isOpen];
 }
 
 - (void)updateGaugeViewWithProbe:(ADSKProbe *)probe
@@ -221,9 +184,14 @@
     float foodTem = (float)probe.foodTem;
     float grillTem = (float)probe.grillTem;
     
-    [self.gaugeView setCurrentTemperature:foodTem];
-    [self.gaugeView setTagTemperature:targerTem];
-    [self.gaugeView setgrillTemperature:grillTem];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.gaugeView setCurrentTemperature:foodTem];
+        [self.gaugeView setTagTemperature:targerTem];
+        [self.gaugeView setgrillTemperature:grillTem];
+    });
+    
+    [self.gaugeView setTimeLabelWithTime:self.currentProbe.time];
+    
 
 }
 
@@ -243,27 +211,17 @@
             [self updateGaugeViewWithProbe:self.currentProbe];
         } else if([noti.name isEqualToString:ktimeChangedNotification]) {
             [self.gaugeView setTimeLabelWithTime:self.currentProbe.time];
-            if (self.currentProbe.foodType == foodType_Timer) {
+            
+            if (self.currentProbe.foodType == foodType_Timer && self.currentProbe.isTimerFire == NO) {
                 
                 [self.currentProbe startRemainingTimeWithTime:self.currentProbe.time completion:^(BOOL finished) {
                     if (finished) {
                         
                         [self.warningView warningViewHidden:NO withString:@"烧烤时间到"];
                         [self startButtonAction:nil];
+                         [self.soundPlay startWarning];
+                        [self alertMessageWithIdentifier:@"timeOut" title:@"烧烤时间到" subTitle:@"" body:@"您的食物已经烤熟"];
                         
-                        UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-                        content.title = @"Introduction to Notifications";
-                        content.subtitle = @"Session 707";
-                        content.body = @"Woah! These new notifications look amazing! Don’t you agree?";
-                        content.badge = @1;
-                        content.sound = [UNNotificationSound defaultSound];
-                        
-                        UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:10 repeats:NO];
-                        
-                        UNNotificationRequest *localNot = [UNNotificationRequest requestWithIdentifier:@"hhhhh" content:content trigger:trigger];
-                        [[UNUserNotificationCenter currentNotificationCenter]addNotificationRequest:localNot withCompletionHandler:^(NSError * _Nullable error) {
-                            NSLog(@"本地推送完成！");
-                        }];
                     }
                 }];
                 
@@ -271,6 +229,7 @@
         } else if ([noti.name isEqualToString:kFoodTypeChangeNotification]) {
             //foodType的变化要作为页面返回开始变了烧烤的模式标志
             [self startButtonAction:nil];
+            [self updateBottomViewWithProbe:self.currentProbe];
             switch (self.currentProbe.foodType) {
                 case foodType_Null:
                     break;
@@ -301,23 +260,38 @@
         
     }
     
+    
+    
+    
+    
     //这里要处理所有的报警事件
     if ([noti.name isEqualToString:kfoodTemperatureWarningNotification]){
         //处理当前探针的警告
+//        [self.navItem numButtonStateChange:<#(numButtonType)#> numButton:<#(ADSKNavItemButton *)#>]
         [self.warningView warningViewHidden:NO withString:@"food Temperature Warning!"];
         [self.soundPlay startWarning];
+        [self alertMessageWithIdentifier:@"foodTemWarning" title:@"食物高温报警" subTitle:nil body:nil];
+        
     } else if ([noti.name isEqualToString:kgrillTemperatureWarningNotification]){
         [self.soundPlay startWarning];
+        [self alertMessageWithIdentifier:@"grillTemWarning" title:@"炉温报警" subTitle:nil body:nil];
     } else if ([noti.name isEqualToString:kBBQfinishedWarningNotification]){
-        [self.warningView warningViewHidden:NO withString:@"BBQ finished!"];
+        [self.warningView warningViewHidden:NO withString:@"烧烤时间到"];
         [self.soundPlay startWarning];
+        [self alertMessageWithIdentifier:@"timeOut" title:@"烧烤时间到" subTitle:@"" body:@"您的食物已经烤熟"];
+        ADSKProbe *probe = (ADSKProbe *)noti.object;
+        probe.time = -1;
+        [self startButtonAction:nil];
     }
+    
+     
 }
 
 #pragma mark - All Action
 - (IBAction)ItemNumButtonAction:(ADSKNavItemButton *)sender {
     self.currentProbe = self.probelist.probes[sender.tag];
     [self updateUIWithProbe:self.currentProbe];
+    [self updateGaugeViewWithProbe:self.currentProbe];
     [self updateBottomViewWithProbe:self.currentProbe];
     [self.navItem selectedNumButton:sender];
 }
@@ -349,6 +323,9 @@
 }
 
 - (IBAction)recipeButtonAction:(id)sender {
+    if (self.currentProbe.isOpen == YES) {
+        return;
+    }
     [self performSegueWithIdentifier:@"recipeSegue" sender:nil];
 }
 
@@ -362,9 +339,15 @@
 
 - (IBAction)startButtonAction:(id)sender
 {
+    if (self.currentProbe.foodType == foodType_Null) {
+        return;
+    }
+    
     if (!self.currentProbe.isOpen) {  //
         [self.startButton setStopOrStart:NO];
         self.currentProbe.isOpen = YES;
+        
+
     } else {
         [self.startButton setStopOrStart:YES];
         self.currentProbe.isOpen = NO;
@@ -372,8 +355,9 @@
         //如果是定时模式，要暂停定时
         if(self.currentProbe.foodType == foodType_Timer) {
             [self.currentProbe stopRemainingTime];
+            [self.gaugeView setTimeLabelWithTime:-1];
         }
-        [self.gaugeView.leftTimeValueLabel setText:@"_ _ _ _"];
+    
     }
 }
 
@@ -395,8 +379,8 @@
     for (ADSKProbe *probe in self.probelist.probes) {
         if ([probe.UUID isEqualToString:peripheral.identifier.UUIDString]) {
             //当前设备UUID与当前模型对应，复制数据
-            self.tem = self.tem + 0.5;
-            probe.foodTem  = self.tem;
+
+            probe.foodTem  = foodTem;
             probe.grillTem  = grillTem;
         }
     }
@@ -453,7 +437,7 @@
     //当前选择设备未连接
     else if (!self.currentProbe.isConnected) {
         CBPeripheral *currentPeripheral = self.AllCBPeripherals[indexPath.row];
-        [self.bleManager connectPeripheral:currentPeripheral withFinshedBlock:^(BOOL success, CBPeripheral *CBPeripheral) {
+        [self.bleManager connectPeripheral:currentPeripheral withFinshedBlock:^(BOOL success, CBPeripheral *peripheral) {
             //如果蓝牙连接成功，走成功流程
             if (success) {
                 self.currentProbe.peripheral = currentPeripheral;
@@ -474,6 +458,31 @@
                 [self.navItem numButtonStateChange:numButtonTypeSelected_Connected numButton:self.navItem.buttonArray[ID]];
             } else {
                 //失败
+                NSLog(@"ble断开连接！");
+                
+                ADSKProbe *disconnectProbe = nil;
+                for (ADSKProbe *probe in self.probelist.probes) {
+                    if ([probe.UUID isEqualToString:peripheral.identifier.UUIDString]) {
+                        disconnectProbe = probe;
+                        disconnectProbe.isConnected = NO;
+                    }
+                }
+                //检测是否是当前的探针
+                if ([self.currentProbe isEqual:disconnectProbe]) {
+                    [self.navItem numButtonStateChange:numButtonTypeSelected_Disconnected numButton:self.navItem.buttonArray[disconnectProbe.ID]];
+                    [self.probelist setProbeDisconnectedWithIndex:disconnectProbe.ID];
+                    [disconnectProbe stopRemainingTime];
+                    [self.AllCBPeripherals removeObject:disconnectProbe];
+                } else {
+                    [self.navItem numButtonStateChange:numButtonTypeNoSelected_Disconnected numButton:self.navItem.buttonArray[disconnectProbe.ID]];
+                    [self.AllCBPeripherals removeObject:disconnectProbe];
+                    [disconnectProbe stopRemainingTime];
+                }
+                
+                
+                
+                
+                
             }
         }];
 
@@ -519,4 +528,22 @@
 }
 
 
+- (void)alertMessageWithIdentifier:(NSString *)identifier title:(NSString *)tltle subTitle:(NSString *)subTitle  body:(NSString *)body
+{
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    content.title = tltle;
+    content.subtitle = subTitle;
+    content.body = body;
+    content.badge = @1;
+    content.sound = [UNNotificationSound defaultSound];
+    
+//    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
+    
+    UNNotificationRequest *localNot = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:nil];
+    [[UNUserNotificationCenter currentNotificationCenter]addNotificationRequest:localNot withCompletionHandler:^(NSError * _Nullable error) {
+        NSLog(@"本地推送完成！");
+    }];
+
+}
+                 
 @end

@@ -54,21 +54,23 @@
 
 - (void)setCurrentTemperature:(float)currentTem
 {
-    if (self.temSymbol == temperatureSymbolC) {
-        self.currentTemValueLabel.text = [NSString stringWithFormat:@"%d℃",(int)currentTem];
-    } else if (self.temSymbol == temperatureSymbolF) {
-        self.currentTemValueLabel.text = [NSString stringWithFormat:@"%d℉",(int)(currentTem * 1.8) +32];
+    if (currentTem != -1) {
+        if (self.temSymbol == temperatureSymbolC) {
+            self.currentTemValueLabel.text = [NSString stringWithFormat:@"%d℃",(int)currentTem];
+        } else if (self.temSymbol == temperatureSymbolF) {
+            self.currentTemValueLabel.text = [NSString stringWithFormat:@"%d℉",(int)(currentTem * 1.8) +32];
+        }
     }
-    [self.gauge setTagTmpValue:currentTem animated:YES duration:1.0 completion:^(BOOL finished) {}];
+    [self.gauge setTagTmpValue:currentTem animated:YES duration:0.5 completion:^(BOOL finished) {}];
 }
 
 - (void)setTagTemperature:(float)tagTem
 {
-    [self.gauge setfoodTmpValue:tagTem animated:YES duration:1.0 completion:^(BOOL finished) {}];
+    [self.gauge setfoodTmpValue:tagTem animated:YES duration:0.5 completion:^(BOOL finished) {}];
 }
 - (void)setgrillTemperature:(float)grillTem
 {
-    [self.gauge setValue:grillTem animated:YES duration:1.0 completion:^(BOOL finished) {}];
+    [self.gauge setValue:grillTem animated:YES duration:0.5 completion:^(BOOL finished) {}];
 }
 
 - (void)setTimeLabelWithTime:(NSUInteger)time
@@ -78,6 +80,10 @@
 
 - (NSString *)getTimeStrWithtime:(NSUInteger)time
 {
+    if (time == -1) {
+      return @"_ _ _ _";
+    }
+    
     NSUInteger currentTime = time;
     NSUInteger hour = currentTime / 3600;
     NSUInteger min = (currentTime - hour *3600) / 60;

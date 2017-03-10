@@ -942,11 +942,12 @@
 			baseConfigurationReference = D19811F2EFFF31886210B7D3 /* Pods-ADBLESK.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: dong andong (QD95D6H6A8)";
 				DEVELOPMENT_TEAM = 4D49NLC4WA;
 				INFOPLIST_FILE = ADBLESK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.skylight.dad.ADBLESK;
+				PRODUCT_BUNDLE_IDENTIFIER = com.helio.vww01;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c11e557c-937d-43aa-9895-d06f8857c740";
 				PROVISIONING_PROFILE_SPECIFIER = DADpersonaldevelopmentProfile;
@@ -959,12 +960,16 @@
 			baseConfigurationReference = C73E1F1BB2249552FACD569D /* Pods-ADBLESK.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: dong andong (QD95D6H6A8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 4D49NLC4WA;
 				INFOPLIST_FILE = ADBLESK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.skylight.dad.ADBLESK;
+				PRODUCT_BUNDLE_IDENTIFIER = com.helio.vww01;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0409ac80-93ff-49e6-a204-647ed8e41361";
+				PROVISIONING_PROFILE_SPECIFIER = vww01_20160729_INHOUSEProfile;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

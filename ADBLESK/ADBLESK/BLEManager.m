@@ -157,7 +157,7 @@ didDisconnectPeripheral:(CBPeripheral *)peripheral
     } else {
         self.connectFinishedBlock(YES,peripheral);
     }
-    self.connectFinishedBlock = nil;
+//    self.connectFinishedBlock = nil;
 }
 
 //discover server
@@ -176,7 +176,7 @@ didDiscoverCharacteristicsForService:(CBService *)service
 {
     
     self.connectFinishedBlock(YES,peripheral);
-    self.connectFinishedBlock = nil;
+//    self.connectFinishedBlock = nil;
 //    for (CBCharacteristic *characteristic in service.characteristics) {
 //        NSLog(@"Discovered characteristic %@", characteristic);
 //        //对不同的characteristic执行不同的操作,有的通知状态设为YES
@@ -243,4 +243,6 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
     }
 
 }
+
+
 @end
