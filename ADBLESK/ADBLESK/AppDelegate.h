@@ -32,6 +32,8 @@ typedef NS_ENUM(NSUInteger, ringType) {
 
 @property (strong, nonatomic) UIWindow *window;
 
++ (AppDelegate *)sharedDelegate;
+
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
 
 //温度符号类型

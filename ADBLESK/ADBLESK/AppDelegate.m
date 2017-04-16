@@ -17,6 +17,11 @@ NSString *const kApptempertureSymbolChangeNotification = @"kApptempertureSymbolC
 
 @implementation AppDelegate
 
++ (AppDelegate *)sharedDelegate
+{
+    return (AppDelegate *)[UIApplication sharedApplication].delegate;
+}
+
 - (void)setSymbol:(temperatureSymbol)symbol {
     [[NSNotificationCenter defaultCenter] postNotificationName:kApptempertureSymbolChangeNotification object:nil];
     [[NSUserDefaults standardUserDefaults] setInteger:symbol forKey:KtemperatureSymbol];

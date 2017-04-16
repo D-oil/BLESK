@@ -14,11 +14,11 @@
 {
     [self.selectImageView setHighlighted:highLighted];
     if (highLighted) {
-        [self.temLabel setTextColor:[UIColor colorWithRed:254/255.0 green:214/255.0 blue:130/255.0 alpha:1.0]];
-        [self.rareLabel setTextColor:[UIColor colorWithRed:254/255.0 green:214/255.0 blue:130/255.0 alpha:1.0]];
+        [self.temLabel setTextColor:[UIColor colorWithRed:255/255.0 green:222/255.0 blue:148/255.0 alpha:1.0]];
+        [self.rareLabel setTextColor:[UIColor colorWithRed:255/255.0 green:222/255.0 blue:148/255.0 alpha:1.0]];
     } else {
-        [self.temLabel setTextColor:[UIColor orangeColor]];
-        [self.rareLabel setTextColor:[UIColor orangeColor]];
+        [self.temLabel setTextColor:[UIColor colorWithRed:255/255.0 green:148/255.0 blue:31/255.0 alpha:1.0]];
+        [self.rareLabel setTextColor:[UIColor colorWithRed:255/255.0 green:148/255.0 blue:31/255.0 alpha:1.0]];
     }
 }
 

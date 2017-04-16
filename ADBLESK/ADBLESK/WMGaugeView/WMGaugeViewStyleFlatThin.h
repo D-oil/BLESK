@@ -14,7 +14,7 @@
 
 #define kNeedleRedColor       CGRGB(242, 22, 23)
 
-#define kNeedleScrewColor        CGRGB(253, 128, 26)
+#define kNeedleScrewColor        CGRGB(255, 148, 31)
 
 @interface WMGaugeViewStyleFlatThin : NSObject<WMGaugeViewStyle>
 

@@ -13,18 +13,18 @@
 - (CGSize)sizeThatFits:(CGSize)size {
     // Change navigation bar height. The height must be even, otherwise there will be a white line above the navigation bar.
     [super sizeThatFits:size];
-    return CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.15);;
+    return CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.08);;
 }
 
 -(void)layoutSubviews {
     [super layoutSubviews];
     
     CGRect barFrame = self.frame;
-    barFrame.size.height = [UIScreen mainScreen].bounds.size.height * 0.15;
+    barFrame.size.height = [UIScreen mainScreen].bounds.size.height * 0.08;
     self.frame = barFrame;
     
     for (UINavigationItem *item in self.items) {
-        item.titleView.center = CGPointMake(self.bounds.size.width / 2, ([UIScreen mainScreen].bounds.size.height * 0.18) - item.titleView.frame.size.height - 20);
+        item.titleView.center = CGPointMake(self.bounds.size.width / 2, barFrame.size.height / 2);
     }
     
     // Make items on navigation bar vertically centered.

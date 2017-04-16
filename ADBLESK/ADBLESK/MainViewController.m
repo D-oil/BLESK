@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "AppDelegate.h"
 
 //view
 #import "ADSKMainViewNavItem.h"
@@ -98,6 +99,9 @@
     
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [[AppDelegate sharedDelegate].window addSubview:self.connectionTabel];
+    
+    
     self.bleManager = [[BLEManager alloc] init];
     self.bleManager.delegate = self;
     //Add allNotificationCenter Observer
@@ -113,6 +117,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kBBQfinishedWarningNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kgrillTemperatureWarningNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kfoodTemperatureWarningNotification object:nil];
+    
+    
     //初始化所有model
     self.probelist = [[ADSKProbeList alloc] init];
     //默认选择第一个探针model
@@ -125,6 +131,7 @@
 
 - (void)updateUIWithProbe:(ADSKProbe *)probe
 {
+    probe.isConnected =YES;
         //当前探针已连接
     if (probe.isConnected) {
         [self.gaugeView initGaugeView];
@@ -478,9 +485,7 @@
                     [self.AllCBPeripherals removeObject:disconnectProbe];
                     [disconnectProbe stopRemainingTime];
                 }
-                
-                
-                
+
                 
                 
             }

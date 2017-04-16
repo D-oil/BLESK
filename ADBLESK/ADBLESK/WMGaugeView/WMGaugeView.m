@@ -207,7 +207,7 @@
         [path closePath];
     
         backgroundLayer.path = path.CGPath;
-        backgroundLayer.fillColor = RGB(251, 222, 148).CGColor;
+        backgroundLayer.fillColor = RGB(255, 222, 148).CGColor;
         [self.layer addSublayer: backgroundLayer];
         
     }
