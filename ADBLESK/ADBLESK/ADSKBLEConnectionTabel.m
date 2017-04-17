@@ -10,6 +10,7 @@
 
 @implementation ADSKBLEConnectionTabel
 
+
 - (void)setTitleWithConnectedNum:(NSUInteger) connectedNum
 {
     [self.numOfConnectedLabel setText:[NSString stringWithFormat:@"%ld / 4",connectedNum]];

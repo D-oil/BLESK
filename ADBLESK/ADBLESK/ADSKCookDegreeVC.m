@@ -96,8 +96,9 @@
     
     foodDegree foodDegree = [ADSKProbe getFoodDegreeFromString:self.selectedItem.rareLabel.text];
     foodType foodType = [ADSKProbe getFoodTypeFromString:self.foodTypeLabel.text];
-    [self.probe setFoodDegree:foodDegree];
+    
     [self.probe setFoodType:foodType];
+    [self.probe setFoodDegree:foodDegree];
     [self.probe setTargetTem:self.targetTem];
 
     [self.navigationController popToRootViewControllerAnimated:YES];

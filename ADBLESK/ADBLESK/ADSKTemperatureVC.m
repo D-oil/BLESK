@@ -66,11 +66,12 @@
 }
 
 - (IBAction)TemparetureStrat:(UIButton *)sender {
+    
     NSInteger tagTem = (int)(self.temparetureView.value *85);
     self.probe.targetTem = tagTem;
-    self.probe.foodDegree = foodType_Null;
     self.probe.foodType = foodType_Tempareture;
-
+    self.probe.foodDegree = foodType_Null;
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

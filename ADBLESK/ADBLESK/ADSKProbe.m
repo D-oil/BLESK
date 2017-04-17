@@ -67,35 +67,35 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
 
 - (void)setFoodType:(foodType)foodType
 {
-    if (_foodType != foodType) {
+//    if (_foodType != foodType) {
         _foodType = foodType;
         [[NSNotificationCenter defaultCenter] postNotificationName:kFoodTypeChangeNotification object:self];
         
-    }
+//    }
 }
 
 - (void)setIsConnected:(BOOL)isConnected
 {
-    if (_isConnected != isConnected) {
+//    if (_isConnected != isConnected) {
         _isConnected = isConnected;
        [[NSNotificationCenter defaultCenter] postNotificationName:kConnectionChangeNotification object:self];
-    }
+//    }
 }
 
 - (void)setFoodDegree:(foodDegree)foodDegree
 {
-    if (_foodDegree != foodDegree) {
+//    if (_foodDegree != foodDegree) {
         _foodDegree = foodDegree;
         [[NSNotificationCenter defaultCenter] postNotificationName:kFoodDegreeChangeNotification object:self];
-    }
+//    }
 }
 
 - (void)setTargetTem:(NSInteger)targetTem
 {
-    if (_targetTem != targetTem) {
+//    if (_targetTem != targetTem) {
         _targetTem = targetTem;
         [[NSNotificationCenter defaultCenter] postNotificationName:ktargetTemperatureNotification object:self];
-    }
+//    }
 }
 - (void)setFoodTem:(float)foodTem
 {
@@ -117,18 +117,17 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
 
 - (void)setGrillTem:(float)grillTem
 {
-    if (_grillTem != grillTem) {
+//    if (_grillTem != grillTem) {
         _grillTem = grillTem;
         [[NSNotificationCenter defaultCenter] postNotificationName:kgrillTemperatureNotification object:self];
         if (grillTem == 275) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kgrillTemperatureWarningNotification object:self];
         }
-    }
+//    }
 }
 
 - (void)setTime:(NSInteger)time
 {
-    
     _time = time;
     [[NSNotificationCenter defaultCenter] postNotificationName:ktimeChangedNotification object:self];
     

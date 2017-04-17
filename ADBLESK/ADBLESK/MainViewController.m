@@ -41,6 +41,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UIButton *allProbesButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *recipeAddionButton;
 @property (weak, nonatomic) IBOutlet ADSKStartButton *startButton;
 
@@ -99,11 +100,12 @@
     
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [[AppDelegate sharedDelegate].window addSubview:self.connectionTabel];
+    
     
     
     self.bleManager = [[BLEManager alloc] init];
     self.bleManager.delegate = self;
+    
     //Add allNotificationCenter Observer
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kConnectionChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kBatteryLowNotification object:nil];
@@ -117,106 +119,130 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kBBQfinishedWarningNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kgrillTemperatureWarningNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kfoodTemperatureWarningNotification object:nil];
-    
-    
+
     //初始化所有model
     self.probelist = [[ADSKProbeList alloc] init];
     //默认选择第一个探针model
+
     [self ItemNumButtonAction:self.navItem.oneButton];
+    
+    self.currentProbe.isConnected =YES;
+    
     //
     self.tag = -1;
 
 }
-
-
-- (void)updateUIWithProbe:(ADSKProbe *)probe
+#pragma mark - updateUI
+//更新
+- (void)updateUIWithConnectionState:(BOOL)connectionState
 {
-    probe.isConnected =YES;
         //当前探针已连接
-    if (probe.isConnected) {
+    if (connectionState) {
         [self.gaugeView initGaugeView];
         [self.navItem setItemConnected:YES];
+        [self.allProbesButton setEnabled:YES];
+        [self.allProbesButton setBackgroundColor:[UIColor colorWithRed:46/255.0 green:25/255.0 blue:18/255 alpha:1]];
         [self.recipeAddionButton setUserInteractionEnabled:YES];
         [self.bottomView setHidden:NO];
         [self.startButton setHidden:NO];
-        [self.allProbesButton setEnabled:YES];
+
     } else { //探针未连接
         [self.gaugeView disConnectionModel];
         [self.navItem setItemConnected:NO];
+        [self.allProbesButton setEnabled:NO];
+        [self.allProbesButton setBackgroundColor:[UIColor colorWithRed:108/255.0 green:101/255.0 blue:100/255 alpha:1]];
         [self.recipeAddionButton setUserInteractionEnabled:NO];
         [self.bottomView setHidden:YES];
         [self.startButton setHidden:YES];
-        [self.allProbesButton setEnabled:NO];
     }
 }
 
-- (void)updateBottomViewWithProbe:(ADSKProbe *)probe
+//更新目标温度，bottom and gaugeView
+- (void)updateUIWithTargetTemperature:(NSInteger)TargetTemperature
 {
-    NSString *foodTypeStr = [ADSKProbe getStringFromFoodType:self.currentProbe.foodType];
-    NSString *foodTypeImageStr = [NSString stringWithFormat:@"%@状态图标",foodTypeStr];
-    NSString *cookDegreeStr = [ADSKProbe getStringFromFoodDegree:self.currentProbe.foodDegree];
-    [self.bottomView setfoodImageStr:foodTypeImageStr foodType:foodTypeStr cookDegreeStr:cookDegreeStr];
-    
-    AppDelegate *shareDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    //设置tagTem
     NSString *tagTemStr;
-    if (self.currentProbe.targetTem != -1) {
-        if (shareDelegate.symbol == temperatureSymbolF) {
-           tagTemStr = [NSString stringWithFormat:@"%d℉",(int)(self.currentProbe.targetTem *1.8) +32];
+    if (TargetTemperature != -1) {
+        if ([AppDelegate sharedDelegate].symbol == temperatureSymbolF) {
+            tagTemStr = [NSString stringWithFormat:@"%d℉",(int)(TargetTemperature *1.8) +32];
         } else {
-            tagTemStr = [NSString stringWithFormat:@"%ld℃",self.currentProbe.targetTem];
+            tagTemStr = [NSString stringWithFormat:@"%ld℃",TargetTemperature];
         }
     } else {
         tagTemStr = @"-1";
     }
     [self.bottomView setTagTemLabelText:tagTemStr];
     
+    float targerTem = (float)TargetTemperature;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.gaugeView setTagTemperature:targerTem];
+    });
+}
+//更新foodtype and fooddegree ， bottom
+- (void)updateUIWithFoodType:(foodType)foodType foodDegree:(foodDegree)foodDegree
+{
+    NSString *foodTypeStr = [ADSKProbe getStringFromFoodType:foodType];
+    NSString *foodTypeImageStr = [NSString stringWithFormat:@"%@状态图标",foodTypeStr];
+    NSString *cookDegreeStr = [ADSKProbe getStringFromFoodDegree:foodDegree];
+    [self.bottomView setfoodImageStr:foodTypeImageStr foodType:foodTypeStr cookDegreeStr:cookDegreeStr];
+}
+//更新食物温度UI， gaugeView
+- (void)updateUIWithFoodTemperature:(float)foodTemperature
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.gaugeView setCurrentTemperature:foodTemperature];
+    });
+}
+//更新烤炉温度，bottom and gaugeView
+- (void)updateUIWithGrillTemperature:(float)grillTemperature
+{
     NSString *grillTemStr;
-    if (self.currentProbe.grillTem != -1) {
-        if (shareDelegate.symbol == temperatureSymbolF) {
-            grillTemStr = [NSString stringWithFormat:@"%d℉",(int)(self.currentProbe.grillTem *1.8) +32];
+    if (grillTemperature != -1) {
+        if ([AppDelegate sharedDelegate].symbol == temperatureSymbolF) {
+            grillTemStr = [NSString stringWithFormat:@"%d℉",(int)(grillTemperature *1.8) +32];
         } else {
-            grillTemStr = [NSString stringWithFormat:@"%d℃",(int)self.currentProbe.grillTem];
+            grillTemStr = [NSString stringWithFormat:@"%d℃",(int)grillTemperature];
         }
     } else {
         grillTemStr = @"-1";
     }
     [self.bottomView setGrillTemLabelText:grillTemStr];
     
-    [self.startButton setStopOrStart:!self.currentProbe.isOpen];
+    [self.gaugeView setgrillTemperature:grillTemperature];
 }
 
-- (void)updateGaugeViewWithProbe:(ADSKProbe *)probe
-{
-    float targerTem = (float)probe.targetTem;
-    float foodTem = (float)probe.foodTem;
-    float grillTem = (float)probe.grillTem;
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.gaugeView setCurrentTemperature:foodTem];
-        [self.gaugeView setTagTemperature:targerTem];
-        [self.gaugeView setgrillTemperature:grillTem];
-    });
-    
-    [self.gaugeView setTimeLabelWithTime:self.currentProbe.time];
-    
-
-}
-
+//处理所有Noti
 - (void)probeNotification:(NSNotification *)noti
 {
     //这里判断当前选择的对象和接受到通知的对象是否是同一个对象，是，处理通知，非，不处理通知
     if ([noti.object isEqual:self.currentProbe]) {
-        if ([noti.name isEqualToString:kConnectionChangeNotification]) {
-            [self updateUIWithProbe:noti.object];
-        } else if ([noti.name isEqualToString:kBatteryLowNotification]) {
+        if ([noti.name isEqualToString:kConnectionChangeNotification])
+        {
+            [self updateUIWithConnectionState:self.currentProbe.isConnected];
+        }
+        else if ([noti.name isEqualToString:kBatteryLowNotification])
+        {
             [self.gaugeView LowBatteryModelOpen:YES];
-        } else if ([noti.name isEqualToString:ktargetTemperatureNotification]  ||
-                   [noti.name isEqualToString:kFoodDegreeChangeNotification] ||
-                   [noti.name isEqualToString:kfoodTemperatureNotification] ||
-                   [noti.name isEqualToString:kgrillTemperatureNotification]) {
-            [self updateBottomViewWithProbe:self.currentProbe];
-            [self updateGaugeViewWithProbe:self.currentProbe];
-        } else if([noti.name isEqualToString:ktimeChangedNotification]) {
+        }
+        else if ([noti.name isEqualToString:ktargetTemperatureNotification])
+        {
+            [self updateUIWithTargetTemperature:self.currentProbe.targetTem];
+        }
+        else if ([noti.name isEqualToString:kFoodDegreeChangeNotification])
+        {
+            [self updateUIWithFoodType:self.currentProbe.foodType foodDegree:self.currentProbe.foodDegree];
+        }
+        else if ([noti.name isEqualToString:kfoodTemperatureNotification])
+        {
+            [self updateUIWithFoodTemperature:self.currentProbe.foodTem];
+        }
+        else if ([noti.name isEqualToString:kgrillTemperatureNotification])
+        {
+            [self updateUIWithGrillTemperature:self.currentProbe.grillTem];
+        }
+        else if([noti.name isEqualToString:ktimeChangedNotification])
+        {
+            
             [self.gaugeView setTimeLabelWithTime:self.currentProbe.time];
             
             if (self.currentProbe.foodType == foodType_Timer && self.currentProbe.isTimerFire == NO) {
@@ -236,7 +262,6 @@
         } else if ([noti.name isEqualToString:kFoodTypeChangeNotification]) {
             //foodType的变化要作为页面返回开始变了烧烤的模式标志
             [self startButtonAction:nil];
-            [self updateBottomViewWithProbe:self.currentProbe];
             switch (self.currentProbe.foodType) {
                 case foodType_Null:
                     break;
@@ -249,24 +274,16 @@
                 case foodType_Duck:
                 case foodType_Fish:
                 case foodType_Hamburger:
-                    
                     break;
                 case foodType_Tempareture:
-            
                     break;
                 case foodType_Timer:
-                    
                     break;
                 
                 
             }
         }
     }
-    
-    else{
-        
-    }
-    
     
     
     
@@ -296,15 +313,19 @@
 
 #pragma mark - All Action
 - (IBAction)ItemNumButtonAction:(ADSKNavItemButton *)sender {
+    
     self.currentProbe = self.probelist.probes[sender.tag];
-    [self updateUIWithProbe:self.currentProbe];
-    [self updateGaugeViewWithProbe:self.currentProbe];
-    [self updateBottomViewWithProbe:self.currentProbe];
+    [self updateUIWithConnectionState:self.currentProbe.isConnected];
+    [self updateUIWithTargetTemperature:self.currentProbe.targetTem];
+    [self updateUIWithGrillTemperature:self.currentProbe.grillTem];
+    [self updateUIWithFoodType:self.currentProbe.foodType foodDegree:self.currentProbe.foodDegree];
+    [self updateUIWithFoodTemperature:self.currentProbe.foodTem];
     [self.navItem selectedNumButton:sender];
+    
 }
 
 - (IBAction)BLEAction:(UIButton *)sender {
-
+    
     //提示打开蓝牙开关
     if(self.bleManager.state != CBManagerStatePoweredOn){
         MBProgressHUD *openBLEHUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
@@ -319,7 +340,9 @@
     
     MBProgressHUD *scanHUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     scanHUD.label.text = NSLocalizedString(@"Bluetooth_scanning_Please_wait", nil);
+   
     [self.bleManager startScanOnceWithDelay:3 withFinishedBlock:^(BOOL success, NSMutableArray <CBPeripheral *> *CBPeripherals) {
+
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         self.AllCBPeripherals = CBPeripherals ;
         [self.connectionTabel.tableView reloadData];
@@ -352,13 +375,18 @@
     
     if (!self.currentProbe.isOpen) {  //
         [self.startButton setStopOrStart:NO];
+        [self.recipeAddionButton setUserInteractionEnabled:NO];
+        [self.navItem.tintButton setHighlighted:YES];
+        [self.navItem.backgroundButton setUserInteractionEnabled:NO];
         self.currentProbe.isOpen = YES;
         
-
     } else {
+        
         [self.startButton setStopOrStart:YES];
         self.currentProbe.isOpen = NO;
-        
+        [self.recipeAddionButton setUserInteractionEnabled:YES];
+        [self.navItem.backgroundButton setUserInteractionEnabled:YES];
+        [self.navItem.tintButton setHighlighted:NO];
         //如果是定时模式，要暂停定时
         if(self.currentProbe.foodType == foodType_Timer) {
             [self.currentProbe stopRemainingTime];

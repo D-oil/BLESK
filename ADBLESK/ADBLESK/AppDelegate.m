@@ -17,6 +17,14 @@ NSString *const kApptempertureSymbolChangeNotification = @"kApptempertureSymbolC
 
 @implementation AppDelegate
 
++ (NSUInteger)getTemperatureWithCurrentSymbol:(NSUInteger) tem
+{
+//    if (<#condition#>) {
+//        <#statements#>
+//    }
+    return 0;
+}
+
 + (AppDelegate *)sharedDelegate
 {
     return (AppDelegate *)[UIApplication sharedApplication].delegate;

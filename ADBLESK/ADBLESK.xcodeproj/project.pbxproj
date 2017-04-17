@@ -29,6 +29,7 @@
 		92AD3A6A1E330DF700BE40FA /* ADSKGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A691E330DF700BE40FA /* ADSKGaugeView.m */; };
 		92AD3A6E1E33262800BE40FA /* ADSKAllProbesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A6D1E33262800BE40FA /* ADSKAllProbesVC.m */; };
 		92AD3A721E3349C600BE40FA /* ADSKBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A711E3349C600BE40FA /* ADSKBottomView.m */; };
+		92B52CB01EA48D93005EFF62 /* ADSKBLEConnectionTabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B52CAF1EA48D93005EFF62 /* ADSKBLEConnectionTabel.xib */; };
 		92B873EC1E59D5AB00D448E2 /* ADSKWarningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B873EB1E59D5AB00D448E2 /* ADSKWarningView.m */; };
 		92BA28BE1E51FA41009E644D /* ADSKNavItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA28BD1E51FA41009E644D /* ADSKNavItemButton.m */; };
 		92C8DF6A1E339CA000E95372 /* ADSKRecipeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C8DF691E339CA000E95372 /* ADSKRecipeVC.m */; };
@@ -118,6 +119,7 @@
 		92AD3A6D1E33262800BE40FA /* ADSKAllProbesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKAllProbesVC.m; sourceTree = "<group>"; };
 		92AD3A701E3349C600BE40FA /* ADSKBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKBottomView.h; sourceTree = "<group>"; };
 		92AD3A711E3349C600BE40FA /* ADSKBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKBottomView.m; sourceTree = "<group>"; };
+		92B52CAF1EA48D93005EFF62 /* ADSKBLEConnectionTabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADSKBLEConnectionTabel.xib; sourceTree = "<group>"; };
 		92B873EA1E59D5AB00D448E2 /* ADSKWarningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKWarningView.h; sourceTree = "<group>"; };
 		92B873EB1E59D5AB00D448E2 /* ADSKWarningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKWarningView.m; sourceTree = "<group>"; };
 		92BA28BC1E51FA41009E644D /* ADSKNavItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKNavItemButton.h; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			children = (
 				92815A5C1E497F39006F0BF8 /* ADSKBLEConnectionTabel.h */,
 				92815A5D1E497F39006F0BF8 /* ADSKBLEConnectionTabel.m */,
+				92B52CAF1EA48D93005EFF62 /* ADSKBLEConnectionTabel.xib */,
 				92815A591E49788C006F0BF8 /* ADSKBLETableViewCell.h */,
 				92815A5A1E49788C006F0BF8 /* ADSKBLETableViewCell.m */,
 			);
@@ -583,6 +586,7 @@
 			files = (
 				92F462221E3109D000C9B2B3 /* LaunchScreen.storyboard in Resources */,
 				92DE00651E3280FA00A8EA5F /* Localizable.strings in Resources */,
+				92B52CB01EA48D93005EFF62 /* ADSKBLEConnectionTabel.xib in Resources */,
 				92088BA81E50B62500ED301F /* alarm.caf in Resources */,
 				92F4621F1E3109D000C9B2B3 /* Assets.xcassets in Resources */,
 				92F4621A1E3109D000C9B2B3 /* Main.storyboard in Resources */,
@@ -952,7 +956,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c11e557c-937d-43aa-9895-d06f8857c740";
 				PROVISIONING_PROFILE_SPECIFIER = DADpersonaldevelopmentProfile;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -972,7 +976,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0409ac80-93ff-49e6-a204-647ed8e41361";
 				PROVISIONING_PROFILE_SPECIFIER = vww01_20160729_INHOUSEProfile;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

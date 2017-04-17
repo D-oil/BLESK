@@ -214,6 +214,8 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         
         NSInteger foodTem  = ([mutArray[0] integerValue] + [mutArray[1] integerValue] *16 *16 ) /10 - 40;
         NSInteger grillTem = ([mutArray[2] integerValue] + [mutArray[3] integerValue] *16 *16 ) /10 - 40;
+        NSInteger time =  [[[self getDataValueArrayWithData:[characteristic.value subdataWithRange:NSMakeRange(6, 1)]] firstObject] integerValue];
+        NSLog(@"time ====== %ld",time);
         if ([_delegate respondsToSelector:@selector(peripheral:receiveInfoWithFoodTemperature:grillTemperature:)]) {
             
             [self.delegate peripheral:peripheral receiveInfoWithFoodTemperature:foodTem grillTemperature:grillTem];

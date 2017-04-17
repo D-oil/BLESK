@@ -42,6 +42,6 @@ typedef NS_ENUM(NSUInteger, ringType) {
 
 - (void)saveContext;
 
-
++ (NSUInteger)getTemperatureWithCurrentSymbol:(NSUInteger) tem;
 @end
 

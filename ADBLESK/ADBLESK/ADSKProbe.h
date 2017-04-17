@@ -51,6 +51,7 @@ typedef NS_ENUM(NSUInteger, foodDegree) {
 };
 
 typedef void(^timeRemainningfinishedBlock)(BOOL finished);
+
 @interface ADSKProbe : NSObject
 //探针对应的编号
 @property (nonatomic,strong) NSString *UUID;
@@ -96,4 +97,6 @@ typedef void(^timeRemainningfinishedBlock)(BOOL finished);
 - (void)stopRemainingTime;
 
 - (NSUInteger)computeRemainingTimeWithTem:(float)tem;
+
+
 @end
