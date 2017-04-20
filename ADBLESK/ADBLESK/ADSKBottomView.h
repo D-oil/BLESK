@@ -24,4 +24,7 @@
 - (void)setTagTemLabelText:(NSString *)tagTem;
 - (void)setGrillTemLabelText:(NSString *)grillTem;
 
+- (void)startGrillTemHighlightModel;
+- (void)stopGrillTemHighlightModel;
+
 @end

@@ -8,7 +8,20 @@
 
 #import "ADSKBottomView.h"
 
+@interface ADSKBottomView ()
+
+@property (nonatomic,strong) NSTimer *grillTemHighlightTiemr;
+
+@end
+
 @implementation ADSKBottomView
+
+- (NSTimer *)grillTemHighlightTiemr {
+    if (_grillTemHighlightTiemr == nil) {
+        _grillTemHighlightTiemr = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(grillTemShowOrHide) userInfo:nil repeats:YES];
+    }
+    return _grillTemHighlightTiemr;
+}
 
 - (void)setfoodImageStr:(NSString *)imageStr foodType:(NSString *)foodTypeStr cookDegreeStr:(NSString *)cookDegreeStr
 {
@@ -36,5 +49,21 @@
     [self.grillTemLabel setText:grillTem];
 }
 
+
+- (void)startGrillTemHighlightModel {
+    [self.grillTemHighlightTiemr fire];
+}
+
+- (void)grillTemShowOrHide {
+    [UIView animateWithDuration:0.5 animations:^{
+        self.grillTemLabel.alpha = self.grillTemLabel.alpha ? 0 : 1;
+    }];
+}
+
+- (void)stopGrillTemHighlightModel {
+    [self.grillTemHighlightTiemr invalidate];
+    self.grillTemHighlightTiemr = nil;
+    self.grillTemLabel.alpha = 1;
+}
 
 @end

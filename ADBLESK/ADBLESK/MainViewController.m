@@ -84,9 +84,14 @@
     
     if (shareDelegate.symbol == temperatureSymbolF) {
         [self.gaugeView setTemSymbol:temperatureSymbolF];
+        
     } else {
         [self.gaugeView setTemSymbol:temperatureSymbolC];
     }
+    
+    [self updateUIWithGrillTemperature:self.currentProbe.grillTem];
+    [self updateUIWithFoodTemperature:self.currentProbe.foodTem];
+    [self updateUIWithTargetTemperature:self.currentProbe.targetTem];
     
     if (self.tag != -1) {
         [self ItemNumButtonAction:self.navItem.buttonArray [self.tag]];
@@ -134,6 +139,8 @@
 //    pro.isConnected = YES;
     //
     self.tag = -1;
+    
+
     
 //    self.currentProbe.time = 20;
     
@@ -318,11 +325,13 @@
     if ([noti.name isEqualToString:kfoodTemperatureWarningNotification]){
         //处理当前探针的警告
         [self showWaningViewWithIdentifier:@"foodTemWarning" Title:@"食物高温报警" subTitle:nil body:nil];
+        [self.gaugeView startFoodTemHighlightModel];
+        
         
     } else if ([noti.name isEqualToString:kgrillTemperatureWarningNotification]){
 
         [self showWaningViewWithIdentifier:@"grillTemWarning" Title:@"炉温报警" subTitle:nil body:nil];
-        
+        [self.bottomView startGrillTemHighlightModel];
     } else if ([noti.name isEqualToString:kBBQfinishedWarningNotification]){
         
         [self showWaningViewWithIdentifier:@"bbqfinished" Title:@"烧烤时间到" subTitle:nil body:@"您的食物已经烤熟"];
@@ -347,6 +356,8 @@
 }
 
 - (IBAction)warningViewOKButtonAction:(UIButton *)sender {
+    [self.gaugeView stopFoodTemHighlightModel];
+    [self.bottomView stopGrillTemHighlightModel];
     [self.warningView warningViewHidden:YES withString:nil];
     [self.soundPlay stopWarning];
 }

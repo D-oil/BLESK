@@ -12,6 +12,7 @@
 
 @property (nonatomic,strong) NSTimer *lowBatteryTimer;
 
+@property (nonatomic,strong) NSTimer *foodTemHighlightTiemr;
 
 @end
 
@@ -26,6 +27,12 @@
     return _lowBatteryTimer;
 }
 
+- (NSTimer *)foodTemHighlightTiemr {
+    if (_foodTemHighlightTiemr == nil) {
+        _foodTemHighlightTiemr = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(foodTemShowOrHide) userInfo:nil repeats:YES];
+    }
+    return _foodTemHighlightTiemr;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -143,6 +150,21 @@
     //　去掉表盘上的指针
     [self.gauge deallocAllNeedle];
     
+}
+
+- (void)startFoodTemHighlightModel {
+    [self.foodTemHighlightTiemr fire];
+}
+- (void)foodTemShowOrHide {
+    [UIView animateWithDuration:0.5 animations:^{
+        self.currentTemValueLabel.alpha = self.currentTemValueLabel.alpha ? 0 : 1;
+    }];
+}
+
+- (void)stopFoodTemHighlightModel {
+    [self.foodTemHighlightTiemr invalidate];
+    self.foodTemHighlightTiemr = nil;
+    self.currentTemValueLabel.alpha = 1;
 }
 
 

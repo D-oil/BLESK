@@ -42,4 +42,7 @@
 - (void)disConnectionModel;
 
 
+- (void)startFoodTemHighlightModel;
+- (void)stopFoodTemHighlightModel;
+
 @end
