@@ -60,8 +60,13 @@
         } else if (self.temSymbol == temperatureSymbolF) {
             self.currentTemValueLabel.text = [NSString stringWithFormat:@"%d℉",(int)(currentTem * 1.8) +32];
         }
+    } else {
+        [self.currentTemValueLabel setText:@"_ _"];
     }
-    [self.gauge setTagTmpValue:currentTem animated:YES duration:0.5 completion:^(BOOL finished) {}];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.gauge setTagTmpValue:currentTem animated:YES duration:0.5 completion:^(BOOL finished) {}];
+    });
+
 }
 
 - (void)setTagTemperature:(float)tagTem
@@ -83,6 +88,8 @@
     if (time == -1) {
       return @"_ _ _ _";
     }
+    
+    
     
     NSUInteger currentTime = time;
     NSUInteger hour = currentTime / 3600;
@@ -128,10 +135,10 @@
     if (self.lowBatteryTimer) {
         [self LowBatteryModelOpen:NO];
     }
-    [self.lowBatteryImageView setAlpha:1];
+//    [self.lowBatteryImageView setAlpha:1];
     
     [self.leftTimeValueLabel setText:@"_ _ _ _"];
-    [self.currentTemValueLabel setText:@"_ _"];
+    [self setCurrentTemperature:-1];
  
     //　去掉表盘上的指针
     [self.gauge deallocAllNeedle];

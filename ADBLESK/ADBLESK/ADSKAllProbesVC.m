@@ -71,6 +71,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kBatteryLowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kfoodTemperatureNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kgrillTemperatureNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:ktimeChangedNotification object:nil];
 }
 
 
@@ -90,6 +91,9 @@
         
         [gaugeView setFoodTemperatureWith:(int)probe.foodTem WithTemSymbol:shareDelegate.symbol];
         [gaugeView setGrillTemperatureWith:(int)probe.grillTem WithTemSymbol:shareDelegate.symbol];
+        
+    } else if ([noti.name isEqualToString:ktimeChangedNotification]) {
+        [gaugeView setTimeLabelWithTime:probe.time];
         
     }
     

@@ -208,17 +208,26 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
     if ([characteristic.UUID.UUIDString isEqualToString:TEMPERATURE_SERVICE_TEMPERATURE_CHARACTERISTIC_NOTIFY] ) {
         
         //大小端问题，需要把获取到的3／4字节交换，5/6字节交换。
+        NSData *data = nil;
+        if (characteristic.value.length >6) {
+           data = [characteristic.value subdataWithRange:NSMakeRange(2, 5)];
+        } else {
+        data = [characteristic.value subdataWithRange:NSMakeRange(2, 4)];
+        }
 
-        NSData *data = [characteristic.value subdataWithRange:NSMakeRange(2, 4)];
         NSMutableArray *mutArray = [self getDataValueArrayWithData:data];
         
         NSInteger foodTem  = ([mutArray[0] integerValue] + [mutArray[1] integerValue] *16 *16 ) /10 - 40;
         NSInteger grillTem = ([mutArray[2] integerValue] + [mutArray[3] integerValue] *16 *16 ) /10 - 40;
-        NSInteger time =  [[[self getDataValueArrayWithData:[characteristic.value subdataWithRange:NSMakeRange(6, 1)]] firstObject] integerValue];
+        NSInteger time = 0;
+        if (characteristic.value.length > 6) {
+            time = [[[self getDataValueArrayWithData:[characteristic.value subdataWithRange:NSMakeRange(6, 1)]] firstObject] integerValue];
+        }
+        
         NSLog(@"time ====== %ld",time);
-        if ([_delegate respondsToSelector:@selector(peripheral:receiveInfoWithFoodTemperature:grillTemperature:)]) {
+        if ([_delegate respondsToSelector:@selector(peripheral:receiveInfoWithFoodTemperature:grillTemperature:timeInfo:)]) {
             
-            [self.delegate peripheral:peripheral receiveInfoWithFoodTemperature:foodTem grillTemperature:grillTem];
+            [self.delegate peripheral:peripheral receiveInfoWithFoodTemperature:foodTem grillTemperature:grillTem timeInfo:time];
         }
     } else if ([characteristic.UUID.UUIDString isEqualToString:TEMPERATURE_SERVICE_STATUS_CHARACTERISTIC_READ_NOTIFY] ) {
         

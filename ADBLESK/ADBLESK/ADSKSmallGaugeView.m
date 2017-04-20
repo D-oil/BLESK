@@ -127,4 +127,27 @@
     }
 }
 
+- (void)setTimeLabelWithTime:(NSUInteger)time
+{
+    [self.timeLabel setText:[self getTimeStrWithtime:time]];
+}
+
+- (NSString *)getTimeStrWithtime:(NSUInteger)time
+{
+    if (time == -1) {
+        return @"_ _ _ _";
+    }
+    
+    
+    
+    NSUInteger currentTime = time;
+    NSUInteger hour = currentTime / 3600;
+    NSUInteger min = (currentTime - hour *3600) / 60;
+    NSUInteger s   = (currentTime - hour *3600 - min * 60);
+    
+    NSString *timeStr = [NSString stringWithFormat:@"%02lu:%02lu:%02lu",(unsigned long)hour,(unsigned long)min,(unsigned long)s];
+    
+    return timeStr;
+}
+
 @end

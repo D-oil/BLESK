@@ -45,5 +45,5 @@
 - (void)setFoodTemperatureWith:(int)foodTem WithTemSymbol:(temperatureSymbol)symbol;
 - (void)setGrillTemperatureWith:(int)grillTem WithTemSymbol:(temperatureSymbol)symbol;
 
-
+- (void)setTimeLabelWithTime:(NSUInteger)time;
 @end

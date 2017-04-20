@@ -21,7 +21,7 @@ NSString *const ktimeChangedNotification = @"ktimeChangedNotification";
 
 //warning
 NSString *const kBBQfinishedWarningNotification = @"kBBQfinishedWarningNotification";
-
+NSString *const kBBQTimeOutWarningNotification = @"kBBQTimeOutWarningNotification";
 NSString *const kgrillTemperatureWarningNotification = @"kgrillTemperatureWarningNotification";
 NSString *const kfoodTemperatureWarningNotification = @"kfoodTemperatureWarningNotification";
 
@@ -34,6 +34,11 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
 @property (nonatomic,strong) NSTimer *timeLabelTimer;
 
 @property (nonatomic,strong) timeRemainningfinishedBlock block;
+
+@property (nonatomic,strong) NSTimer *timer;
+
+
+
 @end
 
 @implementation ADSKProbe
@@ -44,6 +49,14 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
         [_timeLabelTimer fire];
     }
     return _timeLabelTimer;
+}
+
+
+- (NSTimer *)timer {
+    if (_timer == nil) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeMinu) userInfo:nil repeats:YES];
+    }
+    return _timer;
 }
 
 - (instancetype)init
@@ -67,70 +80,69 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
 
 - (void)setFoodType:(foodType)foodType
 {
-//    if (_foodType != foodType) {
         _foodType = foodType;
         [[NSNotificationCenter defaultCenter] postNotificationName:kFoodTypeChangeNotification object:self];
-        
-//    }
 }
 
 - (void)setIsConnected:(BOOL)isConnected
 {
-//    if (_isConnected != isConnected) {
         _isConnected = isConnected;
        [[NSNotificationCenter defaultCenter] postNotificationName:kConnectionChangeNotification object:self];
-//    }
+
 }
 
 - (void)setFoodDegree:(foodDegree)foodDegree
 {
-//    if (_foodDegree != foodDegree) {
         _foodDegree = foodDegree;
         [[NSNotificationCenter defaultCenter] postNotificationName:kFoodDegreeChangeNotification object:self];
-//    }
+
 }
 
 - (void)setTargetTem:(NSInteger)targetTem
 {
-//    if (_targetTem != targetTem) {
+
         _targetTem = targetTem;
         [[NSNotificationCenter defaultCenter] postNotificationName:ktargetTemperatureNotification object:self];
-//    }
+
 }
 - (void)setFoodTem:(float)foodTem
 {
     if (_foodTem != foodTem) {
-        if(self.isOpen && foodTem < _targetTem){
-            _time = [self computeRemainingTimeWithTem:foodTem];
-        }
-        _foodTem = foodTem;
-        [[NSNotificationCenter defaultCenter] postNotificationName:kfoodTemperatureNotification object:self];
-        if (foodTem ==  _targetTem) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:kBBQfinishedWarningNotification object:self];
-        }
-        
         if (foodTem == 85) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kfoodTemperatureWarningNotification object:self];
         }
     }
+
+    _foodTem = foodTem;
+    [[NSNotificationCenter defaultCenter] postNotificationName:kfoodTemperatureNotification object:self];
+    if (foodTem ==  _targetTem) {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kBBQfinishedWarningNotification object:self];
+    }
+    
+
 }
 
 - (void)setGrillTem:(float)grillTem
 {
-//    if (_grillTem != grillTem) {
-        _grillTem = grillTem;
-        [[NSNotificationCenter defaultCenter] postNotificationName:kgrillTemperatureNotification object:self];
-        if (grillTem == 275) {
+    if (_grillTem != grillTem) {
+        if (grillTem == 275 || grillTem == 276) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kgrillTemperatureWarningNotification object:self];
         }
-//    }
+    }
+
+    _grillTem = grillTem;
+    [[NSNotificationCenter defaultCenter] postNotificationName:kgrillTemperatureNotification object:self];
+    
 }
 
 - (void)setTime:(NSInteger)time
 {
     _time = time;
     [[NSNotificationCenter defaultCenter] postNotificationName:ktimeChangedNotification object:self];
-    
+    if (self.foodType == foodType_Timer && time == 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kBBQTimeOutWarningNotification object:self];
+    }
 }
 
 #pragma mark - Tools
@@ -224,7 +236,7 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
         case foodType_Pork:
             return @"Pork";
         case foodType_Chicker:
-            return @"Chicker";
+            return @"Chicken";
         case foodType_Duck:
             return @"Duck";
         case foodType_Fish:
@@ -238,70 +250,46 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
     }
 }
 
-- (void)timeRemaining {
-    if (_time > 0) {
-        self.time = _time-1 ;
-    } else {
-        
-        if (self.block){
-        self.block (YES);
-        self.block = nil;
-        }
-        self.isTimerFire = NO;
-        [self.timeLabelTimer invalidate];
-        self.timeLabelTimer  = nil;
-    }
-}
 
 
-- (void)startRemainingTimeWithTime:(NSUInteger)time completion:(timeRemainningfinishedBlock) completion; {
-    
-    self.isTimerFire = YES;
-    self.block = completion;
-    self.timeLabelTimer;
-    _time = time;
-}
-- (void)stopRemainingTime {
-    if (self.block){
-        self.block (NO);
-        self.block = nil;
-        self.isTimerFire = NO;
-        [self.timeLabelTimer invalidate];
-        self.timeLabelTimer  = nil;
-    }
-}
 
-
-//tg= (Tg-Tf)*t / (Tfi-Tfi-1)
-//
-//食物低于 45°C或炉温低于 50°C，发送周期 10 秒;食物高于 45°C或炉温高于
-//50°C，采样周期 4 秒。
-//
-//tg 剩余时间
-//Tfi 物温
-//Tfi-1 上一次物温
-//Tg 目标温度
-//t 采集周期
-- (NSUInteger)computeRemainingTimeWithTem:(float)tem
+- (NSUInteger)calculateNewTime:(NSUInteger) currentFoodTem
 {
-    float lastFoodTem = self.foodTem;
-    float currentFoodTem = tem;
-    if (lastFoodTem > currentFoodTem) {
-        return 0;
-    }
+//    if (!self.lastCalculateToNowTime) {
+//        return 0;
+//    }
     
-    NSInteger targetTem = self.targetTem;
-    NSInteger grillTem = self.grillTem;
-    NSInteger tCycle;
-    if (currentFoodTem < 45 || grillTem < 50 ) {
-        tCycle = 10;
+    self.time = ((self.targetTem - currentFoodTem) * self.lastCalculateToNowTime ) /(currentFoodTem - self.lastCalculateFoodTem);
+    self.lastCalculateFoodTem = currentFoodTem;
+    self.lastCalculateToNowTime = 0;
+    return self.time;
+     
+}
+
+- (void)startTimer
+{
+    [self.timer fire];
+}
+
+
+-(void)timeMinu {
+    if (self.time> 0) {
+        if (self.time == 1 && self.foodTem < self.targetTem) {
+            self.time += 3;
+        }
+        self.time -- ;
+        
     } else {
-        tCycle = 4;
+        [self stopTimer];
     }
-    
-    
-    NSInteger remainingTime = (targetTem - currentFoodTem)* tCycle / (currentFoodTem - lastFoodTem);
-    return remainingTime;
+}
+
+
+- (void)stopTimer
+{
+    self.time = -1;
+    [self.timer invalidate];
+    self.timer  = nil;
 }
 
 

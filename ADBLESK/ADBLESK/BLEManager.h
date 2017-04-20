@@ -32,7 +32,7 @@ typedef void (^connectFinished)(BOOL success,CBPeripheral *peripheral);
 
 @protocol BLEManagerDelegate <NSObject>
 
-- (void)peripheral:(CBPeripheral *)peripheral receiveInfoWithFoodTemperature:(NSInteger)foodTem grillTemperature:(NSInteger) grillTem;
+- (void)peripheral:(CBPeripheral *)peripheral receiveInfoWithFoodTemperature:(NSInteger)foodTem grillTemperature:(NSInteger) grillTem timeInfo:(NSInteger)timeInfo;
 - (void)peripheral:(CBPeripheral *)peripheral receiveInfoWithStatusCharacteristic:(NSString *)receiveInfo;
 
 @end

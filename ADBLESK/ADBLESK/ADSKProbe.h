@@ -22,7 +22,7 @@ extern  NSString *const kgrillTemperatureNotification;
 extern  NSString *const ktimeChangedNotification;
 
 extern NSString *const kBBQfinishedWarningNotification;
-
+extern NSString *const kBBQTimeOutWarningNotification;
 extern NSString *const kgrillTemperatureWarningNotification;
 extern NSString *const kfoodTemperatureWarningNotification;
 
@@ -85,6 +85,10 @@ typedef void(^timeRemainningfinishedBlock)(BOOL finished);
 @property (nonatomic,assign) BOOL isTimerFire;
 
 @property (nonatomic,strong) CBPeripheral *peripheral;
+
+@property (nonatomic,assign) NSInteger lastCalculateFoodTem;
+@property (nonatomic,assign) NSInteger lastCalculateToNowTime;
+
 //tools
 + (foodDegree)getFoodDegreeFromString:(NSString *)string;
 + (foodType)getFoodTypeFromString:(NSString *)string;
@@ -93,10 +97,12 @@ typedef void(^timeRemainningfinishedBlock)(BOOL finished);
 + (NSString *)getStringFromFoodType:(foodType)foodType;
 
 
-- (void)startRemainingTimeWithTime:(NSUInteger)time completion:(timeRemainningfinishedBlock) completion;
-- (void)stopRemainingTime;
 
-- (NSUInteger)computeRemainingTimeWithTem:(float)tem;
+- (void)startTimer;
+- (void)stopTimer;
 
+
+
+- (NSUInteger)calculateNewTime:(NSUInteger) currentFoodTem;
 
 @end

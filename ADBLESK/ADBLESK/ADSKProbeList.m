@@ -50,6 +50,7 @@
 - (void)setProbeDisconnectedWithIndex:(NSUInteger)index
 {
     ADSKProbe *probe = self.probes[index];
+    [probe stopTimer];
     probe.isConnected = NO;
 }
 

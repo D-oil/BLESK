@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ADSKBLEConnectionTabelDelegate <NSObject>
+
+- (void)disConnectedProbesButtonAction:(UIButton *)sender;
+
+
+@end
+
 @interface ADSKBLEConnectionTabel : UIView
 
+@property (nonatomic,weak)  id <ADSKBLEConnectionTabelDelegate> delegate;
+
+@property (strong, nonatomic) IBOutlet UIView *backGroundView;
 @property (nonatomic,weak) IBOutlet UITableView *tableView;
 
 @property (nonatomic,weak) IBOutlet UILabel  *numOfConnectedLabel;

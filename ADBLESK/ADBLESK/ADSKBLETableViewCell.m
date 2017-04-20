@@ -33,7 +33,7 @@
         }
         
     } else {
-        [self.nameLabel setTextColor:[UIColor colorWithRed:0/255 green:122/255 blue:255/255 alpha:1]];
+        [self.nameLabel setTextColor:[UIColor colorWithRed:0/255 green:104/255 blue:255/255 alpha:1]];
         [self.wifiImageView setHidden:YES];
         [self.selectedImageView setHidden:YES];
     }

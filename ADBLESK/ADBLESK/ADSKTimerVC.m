@@ -52,13 +52,16 @@
     
 }
 - (IBAction)TimerStrat:(UIButton *)sender {
+    
     if (self.time == 0) {
         return;
     }
-    self.probe.foodType = foodType_Timer;
-    self.probe.foodDegree = foodType_Null;
+    
     self.probe.targetTem = -1;
     self.probe.time = self.time;
+    self.probe.foodType = foodType_Timer;
+    self.probe.foodDegree = foodType_Null;
+
 
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
