@@ -1570,16 +1570,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOt-0v-kFJ">
-                                <rect key="frame" x="156.5" y="458.5" width="62.5" height="100"/>
+                                <rect key="frame" x="156.5" y="458.5" width="62.5" height="83"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="temperature" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecL-v0-glG">
-                                        <rect key="frame" x="-10.5" y="82" width="84.5" height="18"/>
+                                        <rect key="frame" x="-10.5" y="65" width="84.5" height="18"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" red="0.18823529410000001" green="0.0" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="if6-qx-Uag">
-                                        <rect key="frame" x="0.5" y="0.0" width="62.5" height="82"/>
+                                        <rect key="frame" x="0.5" y="0.0" width="62.5" height="65"/>
                                         <state key="normal" backgroundImage="Temperature浅黄"/>
                                         <connections>
                                             <action selector="TemperatureAction:" destination="Xgi-H2-6Sl" eventType="touchUpInside" id="j1m-Bn-i0h"/>
@@ -1597,16 +1597,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O9E-6Q-ONW">
-                                <rect key="frame" x="48.5" y="458.5" width="63" height="100"/>
+                                <rect key="frame" x="48.5" y="458.5" width="63" height="83"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKq-7d-fmE">
-                                        <rect key="frame" x="0.5" y="82" width="63" height="18"/>
+                                        <rect key="frame" x="0.5" y="65" width="63" height="18"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" red="0.18823529410000001" green="0.0" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywI-4W-Aq9">
-                                        <rect key="frame" x="0.5" y="0.0" width="63" height="82"/>
+                                        <rect key="frame" x="0.5" y="0.0" width="63" height="65"/>
                                         <state key="normal" backgroundImage="Timer浅黄"/>
                                         <connections>
                                             <action selector="timerAction:" destination="Xgi-H2-6Sl" eventType="touchUpInside" id="feU-FE-M2f"/>
@@ -1664,7 +1664,7 @@
                             <constraint firstItem="Gxt-fy-So7" firstAttribute="height" secondItem="iB1-Ne-E8Y" secondAttribute="height" id="mCZ-UG-kno"/>
                             <constraint firstItem="AOt-0v-kFJ" firstAttribute="centerX" secondItem="JLj-rg-pWh" secondAttribute="centerX" id="mEY-qM-cHG"/>
                             <constraint firstItem="PRT-3b-JUP" firstAttribute="width" secondItem="JLj-rg-pWh" secondAttribute="width" id="rh1-tU-Dvg"/>
-                            <constraint firstItem="AOt-0v-kFJ" firstAttribute="height" secondItem="JLj-rg-pWh" secondAttribute="height" multiplier="1.2" id="sU0-qa-KH0"/>
+                            <constraint firstItem="AOt-0v-kFJ" firstAttribute="height" secondItem="JLj-rg-pWh" secondAttribute="height" id="sU0-qa-KH0"/>
                             <constraint firstItem="PRT-3b-JUP" firstAttribute="centerY" secondItem="JLj-rg-pWh" secondAttribute="centerY" id="sXL-wz-OcJ"/>
                             <constraint firstItem="gVy-u8-2iC" firstAttribute="width" secondItem="q4q-k9-nve" secondAttribute="width" id="sew-iK-fLx"/>
                             <constraint firstItem="AOt-0v-kFJ" firstAttribute="leading" secondItem="O9E-6Q-ONW" secondAttribute="trailing" priority="750" constant="45" id="tmD-CM-L0o"/>
@@ -2826,7 +2826,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="WZ6-K0-o63">
-                                <rect key="frame" x="26" y="-6" width="323" height="111"/>
+                                <rect key="frame" x="26" y="-36" width="323" height="111"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GO-3h-Uxf">
                                         <rect key="frame" x="145.5" y="39" width="33" height="33"/>
@@ -2929,7 +2929,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="HB2-P7-hTo">
-                                <rect key="frame" x="26" y="125" width="323" height="111.5"/>
+                                <rect key="frame" x="26" y="95" width="323" height="111.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0p-KT-5Iz">
                                         <rect key="frame" x="160" y="37" width="64" height="38"/>
@@ -3008,7 +3008,7 @@ Unit</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="yXU-Yh-aOx">
-                                <rect key="frame" x="26" y="256.5" width="323" height="111"/>
+                                <rect key="frame" x="26" y="226.5" width="323" height="111"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdY-cR-lIc">
                                         <rect key="frame" x="38" y="8" width="89.5" height="95"/>
@@ -3242,6 +3242,6 @@ Unit</string>
         <image name="食谱按键环" width="286" height="285"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Pbv-Yk-Pwu"/>
+        <segue reference="7aR-Nf-FYF"/>
     </inferredMetricsTieBreakers>
 </document>

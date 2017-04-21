@@ -258,10 +258,11 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
 //    if (!self.lastCalculateToNowTime) {
 //        return 0;
 //    }
-    
-    self.time = ((self.targetTem - currentFoodTem) * self.lastCalculateToNowTime ) /(currentFoodTem - self.lastCalculateFoodTem);
-    self.lastCalculateFoodTem = currentFoodTem;
-    self.lastCalculateToNowTime = 0;
+    if (self.targetTem > currentFoodTem) {
+        self.time = ((self.targetTem - currentFoodTem) * self.lastCalculateToNowTime ) /(currentFoodTem - self.lastCalculateFoodTem);
+        self.lastCalculateFoodTem = currentFoodTem;
+        self.lastCalculateToNowTime = 0;
+    }
     return self.time;
      
 }

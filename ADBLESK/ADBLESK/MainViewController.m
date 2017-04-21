@@ -454,14 +454,12 @@
 
 - (IBAction)startButtonAction:(id)sender
 {
-    if ((self.currentProbe.foodType == foodType_Null && self.currentProbe.foodType != foodType_Timer) || (self.currentProbe.foodTem >= self.currentProbe.targetTem && self.currentProbe.foodType != foodType_Timer)  ) {
+    if ((self.currentProbe.foodType == foodType_Null && self.currentProbe.foodType != foodType_Timer) /*|| (self.currentProbe.foodTem >= self.currentProbe.targetTem && self.currentProbe.foodType != foodType_Timer) */ ) {
         return;
     }
     
     if (!self.currentProbe.isOpen) {  //
         
-    
-
         if(self.currentProbe.foodType != foodType_Timer) {
             self.currentProbe.time = (self.currentProbe.targetTem - self.currentProbe.foodTem) *15;
         }
@@ -512,7 +510,7 @@
             
             probe.foodTem  = foodTem;
             probe.grillTem  = grillTem;
-//            timeInfo = 4;
+
             if (probe.isOpen && probe.foodType != foodType_Timer) {
                 if ((probe.foodTem - probe.lastCalculateFoodTem) >= 5 ) {
                     [probe calculateNewTime:probe.foodTem];

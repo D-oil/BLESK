@@ -950,7 +950,6 @@
 			baseConfigurationReference = D19811F2EFFF31886210B7D3 /* Pods-ADBLESK.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: dong andong (QD95D6H6A8)";
 				DEVELOPMENT_TEAM = 4D49NLC4WA;
 				INFOPLIST_FILE = ADBLESK/Info.plist;
@@ -969,7 +968,6 @@
 			baseConfigurationReference = C73E1F1BB2249552FACD569D /* Pods-ADBLESK.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 4D49NLC4WA;
