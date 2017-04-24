@@ -16,5 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *ringTypeButton;
 
+@property (weak, nonatomic) IBOutlet UILabel *temUnitLabel;
+@property (weak, nonatomic) IBOutlet UILabel *alarmTypeLabel;
 
 @end

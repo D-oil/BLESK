@@ -145,22 +145,23 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
     }
 }
 
+
 #pragma mark - Tools
 + (foodDegree)getFoodDegreeFromString:(NSString *)string
 {
-    if ([string isEqualToString:@""]) {
+    if ([string isEqualToString:NSLocalizedString(@"cookDegree_null", nil)]) {
         return foodDegree_Null;
-    } else if ([string isEqualToString:@"Rare"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"cookDegree_rare", nil)]) {
         return foodDegree_Rare;
-    } else if ([string isEqualToString:@"Medium Rare"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"cookDegree_MediumRare", nil)]) {
         return foodDegree_MediumRare;
-    } else if ([string isEqualToString:@"Medium"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"cookDegree_Medium", nil)]) {
         return foodDegree_Medium;
-    } else if ([string isEqualToString:@"Medium Done"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"cookDegree_MediumDone", nil)]) {
         return foodDegree_MediumDone;
-    } else if ([string isEqualToString:@"Well Done"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"cookDegree_wellDone", nil)]) {
         return foodDegree_WellDone;
-    } else if ([string isEqualToString:@"Slow Cook"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"cookDegree_slowCook", nil)]) {
         return foodDegree_SlowDone;
     } else {
         NSLog(@"FoodDegree 字符串匹配错误！");
@@ -168,31 +169,33 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
     }
 }
 
+
+
 + (foodType)getFoodTypeFromString:(NSString *)string
 {
-    if ([string isEqualToString:@""]) {
+    if ([string isEqualToString:NSLocalizedString(@"foodType_null", nil)]) {
         return foodType_Null;
-    } else if ([string isEqualToString:@"Beef"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"foodType_beef", nil)]) {
         return foodType_Beef;
-    } else if ([string isEqualToString:@"Veal"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"foodType_veal", nil)]) {
         return foodType_Veal;
-    } else if ([string isEqualToString:@"Lamb"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"foodType_lamb", nil)]) {
         return foodType_Lamb;
-    } else if ([string isEqualToString:@"Venison"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"foodType_venison", nil)]) {
         return foodType_Venison;
-    } else if ([string isEqualToString:@"Pork"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"foodType_pork", nil)]) {
         return foodType_Pork;
-    } else if ([string isEqualToString:@"Chicken"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"foodType_chicken", nil)]) {
         return foodType_Chicker;
-    } else if ([string isEqualToString:@"Duck"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"foodType_duck", nil)]) {
         return foodType_Duck;
-    } else if ([string isEqualToString:@"Fish"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"foodType_fish", nil)]) {
         return foodType_Fish;
-    } else if ([string isEqualToString:@"Hamburger"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"foodType_hamburger", nil)]) {
         return foodType_Hamburger;
-    } else if ([string isEqualToString:@"Timer"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"foodType_timer", nil)]) {
         return foodType_Timer;
-    } else if ([string isEqualToString:@"Temperature"]) {
+    } else if ([string isEqualToString:NSLocalizedString(@"foodType_temperature", nil)]) {
         return foodType_Tempareture;
     } else  {
         NSLog(@"FoodType 字符串匹配错误！");
@@ -200,53 +203,56 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
     }
 }
 
+
 + (NSString *)getStringFromFoodDegree:(foodDegree)foodDegree
 {
     switch (foodDegree) {
         case foodDegree_Null:
-            return @"";
+            return NSLocalizedString(@"cookDegree_null", nil);
         case foodDegree_Rare:
-            return @"Rare";
+            return NSLocalizedString(@"cookDegree_rare", nil);
         case foodDegree_MediumRare:
-            return @"MediumRare";
+            return NSLocalizedString(@"cookDegree_MediumRare", nil);
         case foodDegree_Medium:
-            return @"Medium";
+            return NSLocalizedString(@"cookDegree_Medium", nil);
         case foodDegree_MediumDone:
-            return @"MediumDone";
+            return NSLocalizedString(@"cookDegree_MediumDone", nil);
         case foodDegree_WellDone:
-            return @"WellDone";
+            return NSLocalizedString(@"cookDegree_wellDone", nil);
         case foodDegree_SlowDone:
-            return @"SlowDone";
+            return NSLocalizedString(@"cookDegree_slowCook", nil);
     }
 }
+
+
 
 + (NSString *)getStringFromFoodType:(foodType)foodType
 {
     switch (foodType) {
         case foodType_Null:
-            return @"";
+            return NSLocalizedString(@"foodType_null", nil);
         case foodType_Beef:
-            return @"Beef";
+            return NSLocalizedString(@"foodType_beef", nil);
         case foodType_Veal:
-            return @"Veal";
+            return NSLocalizedString(@"foodType_veal", nil);
         case foodType_Lamb:
-            return @"Lamb";
+            return NSLocalizedString(@"foodType_lamb", nil);
         case foodType_Venison:
-            return @"Venison";
+            return NSLocalizedString(@"foodType_venison", nil);
         case foodType_Pork:
-            return @"Pork";
+            return NSLocalizedString(@"foodType_pork", nil);
         case foodType_Chicker:
-            return @"Chicken";
+            return NSLocalizedString(@"foodType_chicken", nil);
         case foodType_Duck:
-            return @"Duck";
+            return NSLocalizedString(@"foodType_duck", nil);
         case foodType_Fish:
-            return @"Fish";
+            return NSLocalizedString(@"foodType_fish", nil);
         case foodType_Hamburger:
-            return @"Hamburger";
+            return NSLocalizedString(@"foodType_hamburger", nil);
         case foodType_Timer:
-            return @"Timer";
+            return NSLocalizedString(@"foodType_timer", nil);
         case foodType_Tempareture:
-            return @"Temperature";
+            return NSLocalizedString(@"foodType_temperature", nil);
     }
 }
 

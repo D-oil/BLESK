@@ -133,7 +133,7 @@
 
     [self ItemNumButtonAction:self.navItem.oneButton];
     
-//    self.currentProbe.isConnected =YES;
+    self.currentProbe.isConnected =YES;
 //
 //    ADSKProbe *pro = self.probelist.probes[1];
 //    pro.isConnected = YES;

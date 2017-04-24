@@ -7,12 +7,17 @@
 */
 
 //mainViewController
+"button_Start" = "START";
+"button_Stop" = "STOP";
+
 "Please_open_BLE" = "Please open Bluetooth";
 "Bluetooth_scanning_Please_wait" = "Bluetooth scanning,Please wait!...";
 
 //setting vc
 "Cancel" = "Cancel";
 
+"settingVC_TemUnit" = "Temperature\nUnit";
+"seetingVC_ringType"= "Alarm Type";
 
 "settingVC_version" = "Version %@";
 "settingVC_selectAlarmTitle" = "Alarm Type";
@@ -23,3 +28,26 @@
 
 
 "disConnect_message" = "Disconnect with %@ ?";
+
+
+"cookDegree_null" = "";
+"cookDegree_rare" = "Rare";
+"cookDegree_MediumRare" = "Medium Rare";
+"cookDegree_Medium" = "Medium";
+"cookDegree_MediumDone" = "Medium Done";
+"cookDegree_wellDone" = "Well Done";
+"cookDegree_slowCook" = "Slow Cook";
+
+
+"foodType_null" = "";
+"foodType_beef" = "Beef";
+"foodType_veal" = "Veal";
+"foodType_lamb" = "Lamb";
+"foodType_venison" = "Venison";
+"foodType_pork" = "Pork";
+"foodType_chicken" = "Chicken";
+"foodType_duck" = "Duck";
+"foodType_fish" = "Fish";
+"foodType_hamburger" = "Hamburger";
+"foodType_timer" = "Timer";
+"foodType_temperature" = "Temperature";

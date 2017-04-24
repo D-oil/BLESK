@@ -35,6 +35,8 @@
     // Do any additional setup after loading the view.
 
     [self.versionLabel setText:[NSString stringWithFormat:NSLocalizedString(@"settingVC_version", nil),[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]]];
+    [self.temUnitLabel setText:NSLocalizedString(@"settingVC_TemUnit", nil)];
+    [self.alarmTypeLabel setText:NSLocalizedString(@"seetingVC_ringType", nil)];
     
     if (self.shareDelegate.symbol == temperatureSymbolC) {
         [self isSelectedC:YES];
@@ -72,7 +74,13 @@
 
 - (void)setRingButtonStr
 {
-    NSArray *ringTypeStrs = @[@"Ring",@"Vibration",@"Ring&Vibration"];
+//    "settingVC_selectSoundAction" = "声音";
+//    "settingVC_selectVibrationAction" = "振动";
+//    "settingVC_selectSoundAndVibrationAction" = "声音和振动";
+
+    NSArray *ringTypeStrs = @[NSLocalizedString(@"settingVC_selectSoundAction", nil),
+                              NSLocalizedString(@"settingVC_selectVibrationAction", nil),
+                              NSLocalizedString(@"settingVC_selectSoundAndVibrationAction", nil)];
     [self.ringTypeButton setTitle:ringTypeStrs[self.shareDelegate.ringType] forState:UIControlStateNormal];
 }
 

@@ -13,11 +13,11 @@
 - (void)setStopOrStart:(BOOL)stopOrStart {
     
     if (stopOrStart) {
-        [self setTitle:@"START" forState:UIControlStateNormal];
-        [self setTitle:@"START" forState:UIControlStateHighlighted];
+        [self setTitle:NSLocalizedString(@"button_Start", nil) forState:UIControlStateNormal];
+        [self setTitle:NSLocalizedString(@"button_Start", nil) forState:UIControlStateHighlighted];
     } else {
-        [self setTitle:@"STOP" forState:UIControlStateNormal];
-        [self setTitle:@"STOP" forState:UIControlStateHighlighted];
+        [self setTitle:NSLocalizedString(@"button_Stop", nil) forState:UIControlStateNormal];
+        [self setTitle:NSLocalizedString(@"button_Stop", nil) forState:UIControlStateHighlighted];
     }
     
 }

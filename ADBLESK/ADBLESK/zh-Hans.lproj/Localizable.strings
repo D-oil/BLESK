@@ -6,6 +6,10 @@
   Copyright © 2017年 andong. All rights reserved.
 */
 //mainView controller
+
+"button_Start" = "开始";
+"button_Stop" = "停止";
+
 "Please_open_BLE" = "请打开蓝牙开关";
 "Bluetooth_scanning_Please_wait" = "蓝牙扫描中，请稍后";
 
@@ -15,9 +19,33 @@
 "settingVC_selectAlarmTitle" = "提醒类型";
 "settingVC_selectAlarmMessage" = "请选择一个提醒类型";
 "settingVC_selectSoundAction" = "声音";
-"settingVC_selectVibrationAction" = "震动";
+"settingVC_selectVibrationAction" = "振动";
 "settingVC_selectSoundAndVibrationAction" = "声音和振动";
 
 
 //TabelView
 "disConnect_message" = "与%@断开连接？";
+
+"settingVC_TemUnit" = "温度单位";
+"seetingVC_ringType"= "报警类型";
+
+"cookDegree_null" = "";
+"cookDegree_rare" = "三分熟";
+"cookDegree_MediumRare" = "五分熟";
+"cookDegree_Medium" = "七分熟";
+"cookDegree_MediumDone" = "八分熟";
+"cookDegree_wellDone" = "全熟";
+"cookDegree_slowCook" = "";
+
+"foodType_null" = "";
+"foodType_beef" = "牛肉";
+"foodType_veal" = "小牛肉";
+"foodType_lamb" = "羊肉";
+"foodType_venison" = "鹿肉";
+"foodType_pork" = "猪肉";
+"foodType_chicken" = "鸡肉";
+"foodType_duck" = "鸭肉";
+"foodType_fish" = "鱼肉";
+"foodType_hamburger" = "汉堡";
+"foodType_timer" = "计时";
+"foodType_temperature" = "温度";

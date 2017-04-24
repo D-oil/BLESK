@@ -48,7 +48,21 @@
     // Do any additional setup after loading the view.
     
     self.imageNameList = @[@"",@"Beef暗红",@"Veal暗红",@"Lamb暗红",@"Venison暗红",@"Pork暗红",@"Chicken暗红",@"Duck暗红",@"Fish暗红",@"Hamburger暗红"];
-    self.foodNameList = @[@"",@"Beef",@"Veal",@"Lamb",@"Venison",@"Pork",@"Chicken",@"Duck",@"Fish",@"Hamburger"];
+
+    
+    self.foodNameList = @[NSLocalizedString(@"foodType_null", nil),
+                          NSLocalizedString(@"foodType_beef", nil),
+                          NSLocalizedString(@"foodType_veal", nil),
+                          NSLocalizedString(@"foodType_lamb", nil),
+                          NSLocalizedString(@"foodType_venison", nil),
+                          NSLocalizedString(@"foodType_pork", nil),
+                          NSLocalizedString(@"foodType_chicken", nil),
+                          NSLocalizedString(@"foodType_duck", nil),
+                          NSLocalizedString(@"foodType_fish", nil),
+                          NSLocalizedString(@"foodType_hamburger", nil),
+                          NSLocalizedString(@"foodType_timer", nil),
+                          NSLocalizedString(@"foodType_temperature", nil)
+                          ];
     
     
     [self loadImageWithTag:self.tag];

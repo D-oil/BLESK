@@ -136,7 +136,6 @@
 		92DE00581E324FF300A8EA5F /* ADSKNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKNavigationBar.m; sourceTree = "<group>"; };
 		92DE005C1E3269D100A8EA5F /* ADSKSettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKSettingVC.h; sourceTree = "<group>"; };
 		92DE005D1E3269D100A8EA5F /* ADSKSettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKSettingVC.m; sourceTree = "<group>"; };
-		92DE00611E327E9000A8EA5F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		92DE00661E3280FA00A8EA5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		92DE00681E3280FC00A8EA5F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		92F318BC1E3455410016C762 /* ADSKCookDegreeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKCookDegreeVC.h; sourceTree = "<group>"; };
@@ -158,6 +157,7 @@
 		92F462331E3109D000C9B2B3 /* ADBLESKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADBLESKUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F462371E3109D000C9B2B3 /* ADBLESKUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADBLESKUITests.m; sourceTree = "<group>"; };
 		92F462391E3109D000C9B2B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92FB44BA1EAE6E9F000FC7DB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		92FC37221E5E67DE00CA9670 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9F42195C186CB65ABCCB6078 /* libPods-ADBLESKUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ADBLESKUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C73E1F1BB2249552FACD569D /* Pods-ADBLESK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADBLESK.release.xcconfig"; path = "Pods/Target Support Files/Pods-ADBLESK/Pods-ADBLESK.release.xcconfig"; sourceTree = "<group>"; };
@@ -837,7 +837,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				92F462191E3109D000C9B2B3 /* Base */,
-				92DE00611E327E9000A8EA5F /* zh-Hans */,
+				92FB44BA1EAE6E9F000FC7DB /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
