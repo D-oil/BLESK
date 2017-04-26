@@ -42,6 +42,8 @@
 - (void)disConnectionModel;
 
 
+@property (nonatomic,assign) BOOL isFoodTemHigLightModel;
+
 - (void)startFoodTemHighlightModel;
 - (void)stopFoodTemHighlightModel;
 

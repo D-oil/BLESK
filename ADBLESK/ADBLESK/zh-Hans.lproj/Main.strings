@@ -1,0 +1,297 @@
+
+/* Class = "UILabel"; text = "70 ℃"; ObjectID = "0gn-OF-awa"; */
+"0gn-OF-awa.text" = "70 ℃";
+
+/* Class = "UILabel"; text = "300℃"; ObjectID = "0sF-6B-8cE"; */
+"0sF-6B-8cE.text" = "300℃";
+
+/* Class = "UILabel"; text = "200 ℃"; ObjectID = "1TC-X8-QrR"; */
+"1TC-X8-QrR.text" = "200 ℃";
+
+/* Class = "UIButton"; normalTitle = "1"; ObjectID = "4GO-3h-Uxf"; */
+"4GO-3h-Uxf.normalTitle" = "1";
+
+/* Class = "UIButton"; normalTitle = "4"; ObjectID = "4Xd-Qf-dgt"; */
+"4Xd-Qf-dgt.normalTitle" = "4";
+
+/* Class = "UILabel"; text = "200 ℃"; ObjectID = "4qz-gf-rTk"; */
+"4qz-gf-rTk.text" = "200 ℃";
+
+/* Class = "UILabel"; text = "70℃"; ObjectID = "57B-Zd-a75"; */
+"57B-Zd-a75.text" = "70℃";
+
+/* Class = "UILabel"; text = "52℃"; ObjectID = "59T-o2-2lg"; */
+"59T-o2-2lg.text" = "52℃";
+
+/* Class = "UIButton"; normalTitle = "STRAT"; ObjectID = "7Dw-0D-Osj"; */
+"7Dw-0D-Osj.normalTitle" = "开始";
+
+/* Class = "UILabel"; text = "Beef"; ObjectID = "7X6-4S-VZm"; */
+"7X6-4S-VZm.text" = "牛肉";
+
+/* Class = "UILabel"; text = "Grill"; ObjectID = "Ar9-Or-y0m"; */
+"Ar9-Or-y0m.text" = "烤炉";
+
+/* Class = "UILabel"; text = "Cook Degree"; ObjectID = "EaJ-i4-DO0"; */
+"EaJ-i4-DO0.text" = "生熟程度";
+
+/* Class = "UILabel"; text = "Current Temperature"; ObjectID = "GZa-N5-8oR"; */
+"GZa-N5-8oR.text" = "当前温度";
+
+/* Class = "UIButton"; normalTitle = "2"; ObjectID = "H0L-hz-pwQ"; */
+"H0L-hz-pwQ.normalTitle" = "2";
+
+/* Class = "UILabel"; text = "Setting"; ObjectID = "HIh-OL-dFc"; */
+"HIh-OL-dFc.text" = "设置";
+
+/* Class = "UILabel"; text = "Timer"; ObjectID = "HKq-7d-fmE"; */
+"HKq-7d-fmE.text" = "计时";
+
+/* Class = "UILabel"; text = "66℃"; ObjectID = "J95-WX-f6u"; */
+"J95-WX-f6u.text" = "66℃";
+
+/* Class = "UIButton"; normalTitle = "2"; ObjectID = "Jup-u4-xS1"; */
+"Jup-u4-xS1.normalTitle" = "2";
+
+/* Class = "UIButton"; normalTitle = "4"; ObjectID = "KYU-62-QFm"; */
+"KYU-62-QFm.normalTitle" = "4";
+
+/* Class = "UILabel"; text = "Well Done"; ObjectID = "KlX-u0-Uz5"; */
+"KlX-u0-Uz5.text" = "全熟";
+
+/* Class = "UIButton"; normalTitle = "STRAT"; ObjectID = "Ktt-9L-jGF"; */
+"Ktt-9L-jGF.normalTitle" = "开始";
+
+/* Class = "UILabel"; text = "70 ℃"; ObjectID = "L3j-Lu-0mg"; */
+"L3j-Lu-0mg.text" = "70 ℃";
+
+/* Class = "UILabel"; text = "Rare"; ObjectID = "ME3-BG-T93"; */
+"ME3-BG-T93.text" = "三分熟";
+
+/* Class = "UILabel"; text = "All Probes"; ObjectID = "MFC-fo-pdV"; */
+"MFC-fo-pdV.text" = "所有探针";
+
+/* Class = "UILabel"; text = "0:00"; ObjectID = "MIF-A1-TMr"; */
+"MIF-A1-TMr.text" = "0:00";
+
+/* Class = "UILabel"; text = "200 ℃"; ObjectID = "N2e-Ff-gQr"; */
+"N2e-Ff-gQr.text" = "200 ℃";
+
+/* Class = "UILabel"; text = "beef"; ObjectID = "Nbw-Km-fQv"; */
+"Nbw-Km-fQv.text" = "牛肉";
+
+/* Class = "UILabel"; text = "Grill"; ObjectID = "NqK-tD-XTe"; */
+"NqK-tD-XTe.text" = "烤炉";
+
+/* Class = "UILabel"; text = "Fish"; ObjectID = "Nwd-ne-YPT"; */
+"Nwd-ne-YPT.text" = "鱼肉";
+
+/* Class = "UILabel"; text = "__ __"; ObjectID = "Nxg-PL-K8w"; */
+"Nxg-PL-K8w.text" = "__ __";
+
+/* Class = "UIButton"; normalTitle = "Ring"; ObjectID = "O8u-dw-FeM"; */
+"O8u-dw-FeM.normalTitle" = "铃声";
+
+/* Class = "UILabel"; text = "Target"; ObjectID = "P8t-IM-0Pl"; */
+"P8t-IM-0Pl.text" = "目标温度";
+
+/* Class = "UILabel"; text = "Shenzhen Flamingo Technology Co.,Ltd"; ObjectID = "PP7-bo-XZQ"; */
+"PP7-bo-XZQ.text" = "Shenzhen Flamingo Technology Co.,Ltd";
+
+/* Class = "UILabel"; text = "70℃"; ObjectID = "PUm-Nr-6Ft"; */
+"PUm-Nr-6Ft.text" = "70℃";
+
+/* Class = "UILabel"; text = "well done"; ObjectID = "PlY-c6-tLX"; */
+"PlY-c6-tLX.text" = "全熟";
+
+/* Class = "UILabel"; text = "Grill"; ObjectID = "QQl-Mm-HUi"; */
+"QQl-Mm-HUi.text" = "烤炉";
+
+/* Class = "UILabel"; text = "Recipe"; ObjectID = "Qa9-4e-Sjn"; */
+"Qa9-4e-Sjn.text" = "食谱";
+
+/* Class = "UIButton"; normalTitle = "STRAT"; ObjectID = "Qee-kC-FO6"; */
+"Qee-kC-FO6.normalTitle" = "开始";
+
+/* Class = "UILabel"; text = "__ __"; ObjectID = "RRo-vr-VlP"; */
+"RRo-vr-VlP.text" = "__ __";
+
+/* Class = "UILabel"; text = "70 ℃"; ObjectID = "S0s-8M-sGj"; */
+"S0s-8M-sGj.text" = "70 ℃";
+
+/* Class = "UILabel"; text = "Beef"; ObjectID = "SVo-fD-cPD"; */
+"SVo-fD-cPD.text" = "牛肉";
+
+/* Class = "UILabel"; text = "Slow Cook"; ObjectID = "T1R-hq-Dta"; */
+"T1R-hq-Dta.text" = "Slow Cook";
+
+/* Class = "UILabel"; text = "well done"; ObjectID = "UKX-tu-f7H"; */
+"UKX-tu-f7H.text" = "全熟";
+
+/* Class = "UILabel"; text = "Medium Rare"; ObjectID = "Ulp-9Y-05S"; */
+"Ulp-9Y-05S.text" = "五分熟";
+
+/* Class = "UILabel"; text = "Target"; ObjectID = "V5y-PY-fw4"; */
+"V5y-PY-fw4.text" = "目标温度";
+
+/* Class = "UILabel"; text = "Grill"; ObjectID = "VAF-7F-CzU"; */
+"VAF-7F-CzU.text" = "烤炉";
+
+/* Class = "UILabel"; text = "Medium Done"; ObjectID = "VC2-nq-hV2"; */
+"VC2-nq-hV2.text" = "八分熟";
+
+/* Class = "UILabel"; text = "200 ℃"; ObjectID = "VRr-em-zgx"; */
+"VRr-em-zgx.text" = "200 ℃";
+
+/* Class = "UILabel"; text = "__ __"; ObjectID = "Vao-UM-88f"; */
+"Vao-UM-88f.text" = "__ __";
+
+/* Class = "UILabel"; text = "beef"; ObjectID = "Vca-iv-aac"; */
+"Vca-iv-aac.text" = "牛肉";
+
+/* Class = "UILabel"; text = "Prok"; ObjectID = "Xmf-wM-rdQ"; */
+"Xmf-wM-rdQ.text" = "猪肉";
+
+/* Class = "UILabel"; text = "beef"; ObjectID = "Xnn-WQ-dk7"; */
+"Xnn-WQ-dk7.text" = "牛肉";
+
+/* Class = "UILabel"; text = "Timer"; ObjectID = "YEr-gT-tTX"; */
+"YEr-gT-tTX.text" = "计时";
+
+/* Class = "UILabel"; text = "25℃"; ObjectID = "aMA-02-xxm"; */
+"aMA-02-xxm.text" = "25℃";
+
+/* Class = "UILabel"; text = "Target"; ObjectID = "aXx-6E-4os"; */
+"aXx-6E-4os.text" = "目标温度";
+
+/* Class = "UILabel"; text = "__ __"; ObjectID = "aoW-yR-isi"; */
+"aoW-yR-isi.text" = "__ __";
+
+/* Class = "UILabel"; text = "58℃"; ObjectID = "bUh-5s-Kqh"; */
+"bUh-5s-Kqh.text" = "58℃";
+
+/* Class = "UILabel"; text = "85℃"; ObjectID = "bq9-MU-eAo"; */
+"bq9-MU-eAo.text" = "85℃";
+
+/* Class = "UILabel"; text = "Chicken"; ObjectID = "dJw-az-kUk"; */
+"dJw-az-kUk.text" = "鸡肉";
+
+/* Class = "UILabel"; text = "temperature"; ObjectID = "dgb-Th-P11"; */
+"dgb-Th-P11.text" = "温度";
+
+/* Class = "UILabel"; text = "__ __"; ObjectID = "dvL-Q0-ZwH"; */
+"dvL-Q0-ZwH.text" = "__ __";
+
+/* Class = "UILabel"; text = "temperature"; ObjectID = "ecL-v0-glG"; */
+"ecL-v0-glG.text" = "温度";
+
+/* Class = "UIButton"; normalTitle = "START"; ObjectID = "ees-4S-ewC"; */
+"ees-4S-ewC.normalTitle" = "开始";
+
+/* Class = "UIButton"; selectedTitle = "START"; ObjectID = "ees-4S-ewC"; */
+"ees-4S-ewC.selectedTitle" = "开始";
+
+/* Class = "UILabel"; text = "Veal"; ObjectID = "fHU-71-uiP"; */
+"fHU-71-uiP.text" = "小牛肉";
+
+/* Class = "UILabel"; text = "Temperature"; ObjectID = "fNn-wL-MfI"; */
+"fNn-wL-MfI.text" = "温度";
+
+/* Class = "UILabel"; text = "0:06:00"; ObjectID = "fdV-3o-BhJ"; */
+"fdV-3o-BhJ.text" = "0:06:00";
+
+/* Class = "UILabel"; text = "Left Time"; ObjectID = "goa-EW-FR5"; */
+"goa-EW-FR5.text" = "剩余时间";
+
+/* Class = "UIButton"; normalTitle = "1"; ObjectID = "iTi-BD-CiW"; */
+"iTi-BD-CiW.normalTitle" = "1";
+
+/* Class = "UILabel"; text = "__ __"; ObjectID = "j5A-QT-5m3"; */
+"j5A-QT-5m3.text" = "__ __";
+
+/* Class = "UILabel"; text = "well done"; ObjectID = "jOh-Tc-FNr"; */
+"jOh-Tc-FNr.text" = "全熟";
+
+/* Class = "UILabel"; text = " Tiemr"; ObjectID = "jcC-yd-emH"; */
+"jcC-yd-emH.text" = " 计时";
+
+/* Class = "UILabel"; text = "0℃"; ObjectID = "k7v-QH-VhL"; */
+"k7v-QH-VhL.text" = "0℃";
+
+/* Class = "UILabel"; text = "Alarm Type"; ObjectID = "tdY-cR-lIc"; */
+"tdY-cR-lIc.text" = "报警类型";
+
+/* Class = "UIButton"; normalTitle = "3"; ObjectID = "kgz-Hp-AfX"; */
+"kgz-Hp-AfX.normalTitle" = "3";
+
+/* Class = "UILabel"; text = "Venison"; ObjectID = "mfD-7q-lhp"; */
+"mfD-7q-lhp.text" = "鹿肉";
+
+/* Class = "UILabel"; text = "62℃"; ObjectID = "o2g-00-jyP"; */
+"o2g-00-jyP.text" = "62℃";
+
+/* Class = "UILabel"; text = "Rare"; ObjectID = "odT-wS-7u1"; */
+"odT-wS-7u1.text" = "三分熟";
+
+/* Class = "UILabel"; text = "__ __"; ObjectID = "ooS-7D-ftm"; */
+"ooS-7D-ftm.text" = "__ __";
+
+/* Class = "UILabel"; text = "Target"; ObjectID = "p0G-Lh-Z4Q"; */
+"p0G-Lh-Z4Q.text" = "目标";
+
+/* Class = "UILabel"; text = "200℃"; ObjectID = "qch-vf-93p"; */
+"qch-vf-93p.text" = "200℃";
+
+/* Class = "UILabel"; text = "Hamburer"; ObjectID = "qmA-7M-hLk"; */
+"qmA-7M-hLk.text" = "汉堡";
+
+/* Class = "UIButton"; normalTitle = "℉"; ObjectID = "r8f-MB-q5P"; */
+"r8f-MB-q5P.normalTitle" = "℉";
+
+/* Class = "UILabel"; text = "__ __"; ObjectID = "rsw-Ex-Bi2"; */
+"rsw-Ex-Bi2.text" = "__ __";
+
+/* Class = "UILabel"; text = "Duck"; ObjectID = "ruo-wn-0sj"; */
+"ruo-wn-0sj.text" = "鸭肉";
+
+/* Class = "UILabel"; text = "Target"; ObjectID = "skl-eG-hAO"; */
+"skl-eG-hAO.text" = "目标温度";
+
+/* Class = "UILabel"; text = "70 ℃"; ObjectID = "tLh-OD-qus"; */
+"tLh-OD-qus.text" = "70 ℃";
+
+/* Class = "UILabel"; text = "Lamb"; ObjectID = "tQa-cb-cuk"; */
+"tQa-cb-cuk.text" = "羊肉";
+
+/* Class = "UILabel"; text = "Grill Done !"; ObjectID = "tc3-ZI-lZm"; */
+"tc3-ZI-lZm.text" = "Grill Done !";
+
+/* Class = "UIButton"; normalTitle = "3"; ObjectID = "uAY-Be-s4l"; */
+"uAY-Be-s4l.normalTitle" = "3";
+
+/* Class = "UILabel"; text = "Medium"; ObjectID = "uf2-k5-gD6"; */
+"uf2-k5-gD6.text" = "七分熟";
+
+/* Class = "UILabel"; text = "well done"; ObjectID = "ukX-jh-t6k"; */
+"ukX-jh-t6k.text" = "全熟";
+
+/* Class = "UILabel"; text = "Hour"; ObjectID = "v4o-1t-3Zu"; */
+"v4o-1t-3Zu.text" = "小时";
+
+/* Class = "UILabel"; text = "beef"; ObjectID = "v7K-lN-SP8"; */
+"v7K-lN-SP8.text" = "牛肉";
+
+/* Class = "UILabel"; text = "Version 1.0"; ObjectID = "xOe-fj-a3G"; */
+"xOe-fj-a3G.text" = "版本 1.0";
+
+/* Class = "UILabel"; text = "O℃"; ObjectID = "yna-D6-Vdm"; */
+"yna-D6-Vdm.text" = "O℃";
+
+/* Class = "UIButton"; normalTitle = "   All Probes   "; ObjectID = "z3p-xS-5IU"; */
+"z3p-xS-5IU.normalTitle" = "   所有探针   ";
+
+/* Class = "UILabel"; text = "Grill"; ObjectID = "zbz-FS-Yv1"; */
+"zbz-FS-Yv1.text" = "烤炉";
+
+/* Class = "UILabel"; text = "52℃"; ObjectID = "zuV-m1-maa"; */
+"zuV-m1-maa.text" = "52℃";

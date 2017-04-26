@@ -20,6 +20,8 @@
 
 @property (nonatomic,weak) IBOutlet UILabel *grillTemLabel;
 
+@property (nonatomic,assign)BOOL isGrillTemLightModel;
+
 - (void)setfoodImageStr:(NSString *)imageStr foodType:(NSString *)foodTypeStr cookDegreeStr:(NSString *)cookDegreeStr;
 - (void)setTagTemLabelText:(NSString *)tagTem;
 - (void)setGrillTemLabelText:(NSString *)grillTem;

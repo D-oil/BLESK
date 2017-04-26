@@ -52,6 +52,7 @@
 
 - (void)startGrillTemHighlightModel {
     [self.grillTemHighlightTiemr fire];
+    self.isGrillTemLightModel = YES;
 }
 
 - (void)grillTemShowOrHide {
@@ -61,6 +62,7 @@
 }
 
 - (void)stopGrillTemHighlightModel {
+    self.isGrillTemLightModel = NO;
     [self.grillTemHighlightTiemr invalidate];
     self.grillTemHighlightTiemr = nil;
     self.grillTemLabel.alpha = 1;

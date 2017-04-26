@@ -26,6 +26,11 @@ extern NSString *const kBBQTimeOutWarningNotification;
 extern NSString *const kgrillTemperatureWarningNotification;
 extern NSString *const kfoodTemperatureWarningNotification;
 
+extern NSString *const kgrillTemperatureHightNotification ;
+extern NSString *const kgrillTemperatureLowNotification ;
+extern NSString *const kfoodTemperatureHightNotification ;
+extern NSString *const kfoodTemperatureLowNotification ;
+
 typedef NS_ENUM(NSUInteger, foodType) {
     foodType_Null,      //空
     foodType_Beef,      //🐂

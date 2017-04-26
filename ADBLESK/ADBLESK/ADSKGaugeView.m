@@ -153,6 +153,7 @@
 }
 
 - (void)startFoodTemHighlightModel {
+    self.isFoodTemHigLightModel = YES;
     [self.foodTemHighlightTiemr fire];
 }
 - (void)foodTemShowOrHide {
@@ -162,6 +163,7 @@
 }
 
 - (void)stopFoodTemHighlightModel {
+    self.isFoodTemHigLightModel = NO;
     [self.foodTemHighlightTiemr invalidate];
     self.foodTemHighlightTiemr = nil;
     self.currentTemValueLabel.alpha = 1;

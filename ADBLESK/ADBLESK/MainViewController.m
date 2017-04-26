@@ -126,14 +126,22 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kgrillTemperatureWarningNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kfoodTemperatureWarningNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kBBQTimeOutWarningNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kBBQTimeOutWarningNotification object:nil];
 
+    //low hight
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kgrillTemperatureHightNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kgrillTemperatureLowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kfoodTemperatureHightNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kfoodTemperatureLowNotification object:nil];
     //初始化所有model
     self.probelist = [[ADSKProbeList alloc] init];
     //默认选择第一个探针model
 
-    [self ItemNumButtonAction:self.navItem.oneButton];
+    [self updateUIWithProbe:self.navItem.oneButton];
     
-    self.currentProbe.isConnected =YES;
+//    [self ItemNumButtonAction:self.navItem.oneButton];
+    
+//    self.currentProbe.isConnected =YES;
 //
 //    ADSKProbe *pro = self.probelist.probes[1];
 //    pro.isConnected = YES;
@@ -315,7 +323,25 @@
                 
                 
             }
-        }
+        } else if ([noti.name isEqualToString:kfoodTemperatureHightNotification]) {
+            
+            if (self.gaugeView.isFoodTemHigLightModel == NO) {
+                [self.gaugeView startFoodTemHighlightModel];
+            }
+            
+        } else if ([noti.name isEqualToString:kfoodTemperatureLowNotification]){
+            if (self.gaugeView.isFoodTemHigLightModel == YES) {
+                [self.gaugeView stopFoodTemHighlightModel];
+            }
+            
+        } else if ([noti.name isEqualToString:kgrillTemperatureHightNotification]) {
+            if (self.bottomView.isGrillTemLightModel == NO) {
+                [self.bottomView startGrillTemHighlightModel];
+            }
+        } else if ([noti.name isEqualToString:kgrillTemperatureLowNotification]){
+            if (self.bottomView.isGrillTemLightModel == YES) {
+                [self.bottomView stopGrillTemHighlightModel];
+            }}
     }
     
     
@@ -325,13 +351,13 @@
     if ([noti.name isEqualToString:kfoodTemperatureWarningNotification]){
         //处理当前探针的警告
         [self showWaningViewWithIdentifier:@"foodTemWarning" Title:@"食物高温报警" subTitle:nil body:nil];
-        [self.gaugeView startFoodTemHighlightModel];
+        
         
         
     } else if ([noti.name isEqualToString:kgrillTemperatureWarningNotification]){
 
         [self showWaningViewWithIdentifier:@"grillTemWarning" Title:@"炉温报警" subTitle:nil body:nil];
-        [self.bottomView startGrillTemHighlightModel];
+
     } else if ([noti.name isEqualToString:kBBQfinishedWarningNotification]){
         
         [self showWaningViewWithIdentifier:@"bbqfinished" Title:@"烧烤时间到" subTitle:nil body:@"您的食物已经烤熟"];
@@ -356,8 +382,7 @@
 }
 
 - (IBAction)warningViewOKButtonAction:(UIButton *)sender {
-    [self.gaugeView stopFoodTemHighlightModel];
-    [self.bottomView stopGrillTemHighlightModel];
+    
     [self.warningView warningViewHidden:YES withString:nil];
     [self.soundPlay stopWarning];
 }
@@ -383,11 +408,7 @@
 
 
 #pragma mark - All Action
-- (IBAction)ItemNumButtonAction:(ADSKNavItemButton *)sender {
-    
-    if (self.connectionTabel.alpha || self.warningView.alpha) {
-        return;
-    }
+-(void)updateUIWithProbe:(ADSKNavItemButton *)sender {
     
     self.currentProbe = self.probelist.probes[sender.tag];
     [self updateUIWithTargetTemperature:self.currentProbe.targetTem];
@@ -399,6 +420,19 @@
     [self updateUIWithConnectionState:self.currentProbe.isConnected];
     
     [self.navItem selectedNumButton:sender];
+}
+
+
+- (IBAction)ItemNumButtonAction:(ADSKNavItemButton *)sender {
+    
+    if (self.connectionTabel.alpha || self.warningView.alpha) {
+        return;
+    }
+    ADSKProbe *probe = self.probelist.probes [sender.tag];
+    if (!probe.isConnected) { return; }
+    
+
+    [self updateUIWithProbe:sender];
     
 }
 
@@ -507,6 +541,17 @@
     for (ADSKProbe *probe in self.probelist.probes) {
         if ([probe.UUID isEqualToString:peripheral.identifier.UUIDString]) {
             //当前设备UUID与当前模型对应，复制数据
+            if (foodTem >= 85) {
+                foodTem = 85;
+            } else if (foodTem <= 0){
+                foodTem = 0;
+            }
+            
+            if (grillTem >= 300) {
+                grillTem = 300;
+            } else if (grillTem <= 0){
+                grillTem = 0;
+            }
             
             probe.foodTem  = foodTem;
             probe.grillTem  = grillTem;
@@ -553,7 +598,7 @@
 
     CBPeripheral *peripheral = self.AllCBPeripherals[indexPath.row];
     if (peripheral.state == CBPeripheralStateConnected) {
-        for (ADSKProbe *probe in self.probelist.probes) {
+        for (ADSKProbe *probe in [self.probelist.probes reverseObjectEnumerator]) {
             if ([probe.UUID isEqualToString:peripheral.identifier.UUIDString]) {
                  [cell cellConnected:YES withSelectedImageStr:[ADSKBLEConnectionTabel getItemImageStrs][probe.ID] WithIndex:probe.ID];
             }
@@ -578,14 +623,22 @@
         
     }
     //当前选择设备未连接
-    else if (!self.currentProbe.isConnected) {
+    else /*if (!self.currentProbe.isConnected)*/ {
         
         CBPeripheral *currentPeripheral = self.AllCBPeripherals[indexPath.row];
+        [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         [self.bleManager connectPeripheral:currentPeripheral withFinshedBlock:^(BOOL success, CBPeripheral *peripheral) {
             //如果蓝牙连接成功，走成功流程
+            [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
             if (success) {
+
+                for (ADSKProbe *probe in [self.probelist.probes reverseObjectEnumerator]) {
+                    if(probe.isConnected== NO) {
+                        self.currentProbe = probe;
+                    }
+                }
                 self.currentProbe.peripheral = currentPeripheral;
-               
+                self.currentProbe.UUID = currentPeripheral.identifier.UUIDString;
                 
                 NSUInteger ID = self.currentProbe.ID;
                 
@@ -599,7 +652,6 @@
                 
                 [self.bleManager openPeripheral:currentPeripheral open:YES];
                 
-                self.currentProbe.UUID = currentPeripheral.identifier.UUIDString;
                 
                 [cell cellConnected:YES withSelectedImageStr:[ADSKBLEConnectionTabel getItemImageStrs][ID] WithIndex:ID];
                 
@@ -607,11 +659,20 @@
                 
                 [self.connectionTabel setTitleWithConnectedNum:[self.probelist getNumofConnectedProbe]];
                 
+                for (ADSKProbe *probe in [self.probelist.probes reverseObjectEnumerator]) {
+                    
+                    if (probe.isConnected == YES) {
+                        [self.navItem numButtonStateChange:numButtonTypeNoSelected_Connected    numButton: self.navItem.buttonArray [probe.ID] ];
+                    } else {
+                        [self.navItem numButtonStateChange:numButtonTypeNoSelected_Disconnected numButton: self.navItem.buttonArray [probe.ID] ];
+                    }
+                }
+                
                 [self.navItem numButtonStateChange:numButtonTypeSelected_Connected numButton:self.navItem.buttonArray[ID]];
             } else {
                 //失败
                 NSLog(@"ble断开连接！");
-                
+            
                 ADSKProbe *disconnectProbe = nil;
                 for (ADSKProbe *probe in self.probelist.probes) {
                     if ([probe.UUID isEqualToString:peripheral.identifier.UUIDString]) {
@@ -634,7 +695,7 @@
                     
                 }
 
-                
+                [self showWaningViewWithIdentifier:@"bleDisConnected" Title:@"设备断开连接" subTitle:@"你的设备已断开连接，去看看吧！" body:nil];
                 
             }
         }];
@@ -660,7 +721,7 @@
 //            self.currentProbe.peripheral = nil;
             [self.AllCBPeripherals removeObject:disConnectedPeripheral];
             
-            [self.navItem numButtonStateChange:numButtonTypeSelected_Disconnected numButton:self.navItem.buttonArray[self.willDisConnectedCell.index]];
+            [self.navItem numButtonStateChange:numButtonTypeNoSelected_Disconnected numButton:self.navItem.buttonArray[self.willDisConnectedCell.index]];
             
             [self.probelist setProbeDisconnectedWithIndex:self.willDisConnectedCell.index];
             

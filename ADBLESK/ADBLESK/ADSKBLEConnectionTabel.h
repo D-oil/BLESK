@@ -24,6 +24,7 @@
 
 @property (nonatomic,weak) IBOutlet UILabel  *numOfConnectedLabel;
 
+
 @property (nonatomic,weak) IBOutlet UIView *disConnectView;
 @property (nonatomic,weak) IBOutlet UILabel *disConnectMessageLabel;
 

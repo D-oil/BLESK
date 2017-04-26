@@ -25,6 +25,11 @@ NSString *const kBBQTimeOutWarningNotification = @"kBBQTimeOutWarningNotificatio
 NSString *const kgrillTemperatureWarningNotification = @"kgrillTemperatureWarningNotification";
 NSString *const kfoodTemperatureWarningNotification = @"kfoodTemperatureWarningNotification";
 
+NSString *const kgrillTemperatureHightNotification = @"kgrillTemperatureHightNotification";
+NSString *const kgrillTemperatureLowNotification = @"kgrillTemperatureLowNotification";
+NSString *const kfoodTemperatureHightNotification = @"kfoodTemperatureHightNotification";
+NSString *const kfoodTemperatureLowNotification = @"kfoodTemperatureLowNotification";
+
 NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
 
 @interface ADSKProbe ()
@@ -120,6 +125,12 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
         [[NSNotificationCenter defaultCenter] postNotificationName:kBBQfinishedWarningNotification object:self];
     }
     
+    if (foodTem >= 85 ) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kfoodTemperatureHightNotification object:self];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kfoodTemperatureLowNotification object:self];
+    }
+    
 
 }
 
@@ -133,7 +144,12 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
 
     _grillTem = grillTem;
     [[NSNotificationCenter defaultCenter] postNotificationName:kgrillTemperatureNotification object:self];
-    
+   
+    if (grillTem >= 275 ) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kgrillTemperatureHightNotification object:self];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kgrillTemperatureLowNotification object:self];
+    }
 }
 
 - (void)setTime:(NSInteger)time
