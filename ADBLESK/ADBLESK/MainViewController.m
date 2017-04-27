@@ -98,9 +98,6 @@
     }
 }
 
-
-
-
 - (void)viewDidLoad {
     
     [super viewDidLoad];
@@ -282,66 +279,37 @@
         }
         else if([noti.name isEqualToString:ktimeChangedNotification])
         {
-            
             [self.gaugeView setTimeLabelWithTime:self.currentProbe.time];
-            
-            if (self.currentProbe.foodType == foodType_Timer && self.currentProbe.isTimerFire == NO) {
-                
-//                [self.currentProbe startRemainingTimeWithTime:self.currentProbe.time completion:^(BOOL finished) {
-//                    if (finished) {
-//                        
-//                        [self.warningView warningViewHidden:NO withString:@"烧烤时间到"];
-//                        [self startButtonAction:nil];
-//                         [self.soundPlay startWarning];
-//                        [self alertMessageWithIdentifier:@"timeOut" title:@"烧烤时间到" subTitle:@"" body:@"您的食物已经烤熟"];
-//                        
-//                    }
-//                }];
-                
-            }
-        } else if ([noti.name isEqualToString:kFoodTypeChangeNotification]) {
+        }
+        else if ([noti.name isEqualToString:kFoodTypeChangeNotification])
+        {
             //foodType的变化要作为页面返回开始变了烧烤的模式标志
-            
             [self startButtonAction:nil];
-            switch (self.currentProbe.foodType) {
-                case foodType_Null:
-                    break;
-                case foodType_Beef:
-                case foodType_Veal:
-                case foodType_Lamb:
-                case foodType_Venison:
-                case foodType_Pork:
-                case foodType_Chicker:
-                case foodType_Duck:
-                case foodType_Fish:
-                case foodType_Hamburger:
-                    break;
-                case foodType_Tempareture:
-                    break;
-                case foodType_Timer:
-                    break;
-                
-                
-            }
-        } else if ([noti.name isEqualToString:kfoodTemperatureHightNotification]) {
-            
+        }
+        else if ([noti.name isEqualToString:kfoodTemperatureHightNotification])
+        {
             if (self.gaugeView.isFoodTemHigLightModel == NO) {
                 [self.gaugeView startFoodTemHighlightModel];
             }
-            
-        } else if ([noti.name isEqualToString:kfoodTemperatureLowNotification]){
+        }
+        else if ([noti.name isEqualToString:kfoodTemperatureLowNotification])
+        {
             if (self.gaugeView.isFoodTemHigLightModel == YES) {
                 [self.gaugeView stopFoodTemHighlightModel];
             }
-            
-        } else if ([noti.name isEqualToString:kgrillTemperatureHightNotification]) {
+        }
+        else if ([noti.name isEqualToString:kgrillTemperatureHightNotification])
+        {
             if (self.bottomView.isGrillTemLightModel == NO) {
                 [self.bottomView startGrillTemHighlightModel];
             }
-        } else if ([noti.name isEqualToString:kgrillTemperatureLowNotification]){
+        }
+        else if ([noti.name isEqualToString:kgrillTemperatureLowNotification])
+        {
             if (self.bottomView.isGrillTemLightModel == YES) {
                 [self.bottomView stopGrillTemHighlightModel];
-            }}
+            }
+        }
     }
     
     
@@ -351,8 +319,6 @@
     if ([noti.name isEqualToString:kfoodTemperatureWarningNotification]){
         //处理当前探针的警告
         [self showWaningViewWithIdentifier:@"foodTemWarning" Title:@"食物高温报警" subTitle:nil body:nil];
-        
-        
         
     } else if ([noti.name isEqualToString:kgrillTemperatureWarningNotification]){
 

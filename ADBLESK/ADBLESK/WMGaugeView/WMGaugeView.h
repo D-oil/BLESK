@@ -95,5 +95,7 @@ WMGaugeViewSubdivisionsAlignment;
 - (void)setTagTmpValue:(float)value animated:(BOOL)animated duration:(NSTimeInterval)duration completion:(void (^)(BOOL finished))completion;
 - (void)setfoodTmpValue:(float)value animated:(BOOL)animated duration:(NSTimeInterval)duration completion:(void (^)(BOOL finished))completion;
 
+
+
 - (void)deallocAllNeedle;
 @end

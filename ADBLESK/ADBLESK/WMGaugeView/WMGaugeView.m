@@ -306,7 +306,7 @@
         
         // For performance puporse, the needle layer is not scaled to [0-1] range
         foodTemlayer.frame = self.bounds;
-        [self.layer addSublayer:foodTemlayer];
+        
         
         // Draw needle
         [self drawfoodNeedle];
@@ -790,8 +790,15 @@
     animationCompletion = completion;
     
     double lastValue = _foodValue;
-    
+
     [self updatefoodValue:value];
+    
+    if (self.foodValue > 0) {
+        [self.layer addSublayer:foodTemlayer];
+    } else {
+        [foodTemlayer removeFromSuperlayer];
+    }
+    
     double middleValue = lastValue + (((lastValue + (_foodValue - lastValue) / 2.0) >= 0) ? (_foodValue - lastValue) / 2.0 : (lastValue - _foodValue) / 2.0);
     
     // Needle animation to target value

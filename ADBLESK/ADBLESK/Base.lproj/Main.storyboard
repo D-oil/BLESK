@@ -95,8 +95,8 @@
                                         <color key="textColor" red="0.55686274509803924" green="0.15686274509803921" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMA-02-xxm">
-                                        <rect key="frame" x="114" y="178.5" width="79" height="42"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_ _" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMA-02-xxm">
+                                        <rect key="frame" x="131" y="178.5" width="45" height="42"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="35"/>
                                         <color key="textColor" red="0.71764705882352942" green="0.0" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -590,8 +590,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bF-ut-3Lm">
                                         <rect key="frame" x="0.0" y="155" width="163" height="123"/>
                                         <subviews>
-                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Beef状态图标" translatesAutoresizingMaskIntoConstraints="NO" id="cg4-t5-qRk">
-                                                <rect key="frame" x="8" y="14" width="31" height="31"/>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" image="Beef状态图标" translatesAutoresizingMaskIntoConstraints="NO" id="cg4-t5-qRk">
+                                                <rect key="frame" x="8" y="14" width="31" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="TjU-bn-5xl"/>
                                                     <constraint firstAttribute="width" constant="31" id="oW4-UC-hfY"/>

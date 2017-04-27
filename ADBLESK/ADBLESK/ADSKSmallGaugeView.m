@@ -78,8 +78,15 @@
 - (void)setfoodTypeImageStr:(NSString *)foodTypeImageStr foodTypeStr:(NSString *)foodTypeStr cookDegreeStr:(NSString *)cookTypeStr
 {
     [self.foodTypeImageView setImage:[UIImage imageNamed:foodTypeImageStr]];
+    
     [self.foodTypeLabel setText:foodTypeStr];
+    
     [self.cookDegreeLabel setText:cookTypeStr];
+    
+    if ([foodTypeStr isEqualToString: NSLocalizedString(@"foodType_timer", nil)] || [foodTypeStr isEqualToString: NSLocalizedString(@"foodType_temperature", nil)]) {
+        [self.cookDegreeLabel setText:foodTypeStr];
+    }
+
 }
 
 - (void)setTagTemperatureWith:(int)tagTem WithTemSymbol:(temperatureSymbol)symbol
@@ -104,6 +111,7 @@
 
 - (void)setFoodTemperatureWith:(int)foodTem WithTemSymbol:(temperatureSymbol)symbol
 {
+    
     if (foodTem == -1) {
         self.temperatureLabel.text = @"_ _";
         return;
