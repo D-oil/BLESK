@@ -54,7 +54,15 @@
     probe.isConnected = NO;
 }
 
-
+- (NSInteger)connectedProbes {
+    NSInteger i = 0;
+    for (ADSKProbe *probe in self.probes) {
+        if (probe.isConnected) {
+            i++;
+        }
+    }
+    return i;
+}
 
 - (NSInteger)getOneDisConnectedProbeID;
 {

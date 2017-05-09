@@ -18,6 +18,8 @@
 - (void)setProbeDisconnectedWithIndex:(NSUInteger)index;
 
 
+@property (nonatomic,assign,readonly) NSInteger connectedProbes;
+
 //返回一个未连接设备的ID，如果全部连接了，返回0
 - (NSInteger)getOneDisConnectedProbeID;
 //获取已连接成功的设备的数量

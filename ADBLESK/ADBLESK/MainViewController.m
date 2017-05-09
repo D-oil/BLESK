@@ -138,10 +138,12 @@
     
 //    [self ItemNumButtonAction:self.navItem.oneButton];
     
-    self.currentProbe.isConnected =YES;
+    
+//    ADSKProbe *pro = self.probelist.probes[1];
+//    pro.isConnected = YES;
+//    self.currentProbe.isConnected =YES;
 
-    ADSKProbe *pro = self.probelist.probes[1];
-    pro.isConnected = YES;
+
     //
     self.tag = -1;
     
@@ -166,8 +168,8 @@
     if (connectionState) {
         [self.gaugeView initGaugeView];
         [self.navItem setItemConnected:YES];
-        [self.allProbesButton setEnabled:YES];
-        [self.allProbesButton setBackgroundColor:[UIColor colorWithRed:46/255.0 green:25/255.0 blue:18/255 alpha:1]];
+//        [self.allProbesButton setEnabled:YES];
+//        [self.allProbesButton setBackgroundColor:[UIColor colorWithRed:46/255.0 green:25/255.0 blue:18/255 alpha:1]];
         [self.recipeAddionButton setUserInteractionEnabled:YES];
         
         
@@ -178,8 +180,8 @@
     } else { //探针未连接
         [self.gaugeView disConnectionModel];
         [self.navItem setItemConnected:NO];
-        [self.allProbesButton setEnabled:NO];
-        [self.allProbesButton setBackgroundColor:[UIColor colorWithRed:108/255.0 green:101/255.0 blue:100/255 alpha:1]];
+//        [self.allProbesButton setEnabled:NO];
+//        [self.allProbesButton setBackgroundColor:[UIColor colorWithRed:108/255.0 green:101/255.0 blue:100/255 alpha:1]];
         [self.recipeAddionButton setUserInteractionEnabled:NO];
         [self.bottomView setHidden:YES];
         [self.startButton setHidden:YES];
@@ -250,6 +252,16 @@
     }
 }
 
+- (void)updateAllProbeButton {
+    if (self.probelist.connectedProbes > 1) {
+        [self.allProbesButton setEnabled:YES];
+        [self.allProbesButton setBackgroundColor:[UIColor colorWithRed:46/255.0 green:25/255.0 blue:18/255 alpha:1]];
+    } else {
+        [self.allProbesButton setEnabled:NO];
+        [self.allProbesButton setBackgroundColor:[UIColor colorWithRed:108/255.0 green:101/255.0 blue:100/255 alpha:1]];
+    }
+}
+
 //处理所有Noti
 - (void)probeNotification:(NSNotification *)noti
 {
@@ -258,6 +270,12 @@
         if ([noti.name isEqualToString:kConnectionChangeNotification])
         {
             [self updateUIWithConnectionState:self.currentProbe.isConnected];
+            
+            [self updateAllProbeButton];
+  
+            
+            
+
         }
         else if ([noti.name isEqualToString:kBatteryLowNotification])
         {
@@ -665,7 +683,7 @@
                     [self.navItem numButtonStateChange:numButtonTypeSelected_Disconnected numButton:self.navItem.buttonArray[disconnectProbe.ID]];
                     [self.probelist setProbeDisconnectedWithIndex:disconnectProbe.ID];
                  
-                    
+                    [self updateAllProbeButton];
                     [self.AllCBPeripherals removeObject:disconnectProbe];
                 } else {
                     [self.navItem numButtonStateChange:numButtonTypeNoSelected_Disconnected numButton:self.navItem.buttonArray[disconnectProbe.ID]];
@@ -711,7 +729,7 @@
             
         }];
     }
-    
+    [self updateAllProbeButton];
     [self.connectionTabel hideDisconnectView];
 }
 
