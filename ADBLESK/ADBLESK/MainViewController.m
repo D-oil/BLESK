@@ -138,10 +138,10 @@
     
 //    [self ItemNumButtonAction:self.navItem.oneButton];
     
-//    self.currentProbe.isConnected =YES;
-//
-//    ADSKProbe *pro = self.probelist.probes[1];
-//    pro.isConnected = YES;
+    self.currentProbe.isConnected =YES;
+
+    ADSKProbe *pro = self.probelist.probes[1];
+    pro.isConnected = YES;
     //
     self.tag = -1;
     
@@ -169,6 +169,8 @@
         [self.allProbesButton setEnabled:YES];
         [self.allProbesButton setBackgroundColor:[UIColor colorWithRed:46/255.0 green:25/255.0 blue:18/255 alpha:1]];
         [self.recipeAddionButton setUserInteractionEnabled:YES];
+        
+        
         
         [self.bottomView setHidden:NO];
         [self.startButton setHidden:NO];
@@ -384,6 +386,17 @@
     [self updateStartButtonWith:self.currentProbe.isOpen];
     [self.gaugeView setTimeLabelWithTime:self.currentProbe.time];
     [self updateUIWithConnectionState:self.currentProbe.isConnected];
+    
+    if (self.currentProbe.isConnected && self.currentProbe.isOpen) {
+        [self.recipeAddionButton setUserInteractionEnabled:NO];
+        [self.navItem.tintButton setHighlighted:YES];
+        [self.navItem.backgroundButton setUserInteractionEnabled:NO];
+        
+    } else if (self.currentProbe.isConnected && !self.currentProbe.isOpen){
+        [self.recipeAddionButton setUserInteractionEnabled:YES];
+        [self.navItem.tintButton setHighlighted:NO];
+        [self.navItem.backgroundButton setUserInteractionEnabled:YES];
+    }
     
     [self.navItem selectedNumButton:sender];
 }
