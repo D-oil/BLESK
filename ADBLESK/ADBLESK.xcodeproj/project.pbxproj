@@ -130,6 +130,8 @@
 		92C8DF691E339CA000E95372 /* ADSKRecipeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKRecipeVC.m; sourceTree = "<group>"; };
 		92C96C061E55C8E8009C839A /* BLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEManager.h; sourceTree = "<group>"; };
 		92C96C071E55C8E8009C839A /* BLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEManager.m; sourceTree = "<group>"; };
+		92D5DB7E1EC31C6300E4D05B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		92D5DB801EC31E9000E4D05B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		92D8762C1E5D64A900528EFC /* ADSKStartButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKStartButton.h; sourceTree = "<group>"; };
 		92D8762D1E5D64A900528EFC /* ADSKStartButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKStartButton.m; sourceTree = "<group>"; };
 		92DE00571E324FF300A8EA5F /* ADSKNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKNavigationBar.h; sourceTree = "<group>"; };
@@ -157,7 +159,6 @@
 		92F462331E3109D000C9B2B3 /* ADBLESKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADBLESKUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F462371E3109D000C9B2B3 /* ADBLESKUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADBLESKUITests.m; sourceTree = "<group>"; };
 		92F462391E3109D000C9B2B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92FB44BA1EAE6E9F000FC7DB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		92FC37221E5E67DE00CA9670 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9F42195C186CB65ABCCB6078 /* libPods-ADBLESKUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ADBLESKUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C73E1F1BB2249552FACD569D /* Pods-ADBLESK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADBLESK.release.xcconfig"; path = "Pods/Target Support Files/Pods-ADBLESK/Pods-ADBLESK.release.xcconfig"; sourceTree = "<group>"; };
@@ -837,7 +838,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				92F462191E3109D000C9B2B3 /* Base */,
-				92FB44BA1EAE6E9F000FC7DB /* zh-Hans */,
+				92D5DB7E1EC31C6300E4D05B /* zh-Hans */,
+				92D5DB801EC31E9000E4D05B /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -955,7 +957,7 @@
 				INFOPLIST_FILE = ADBLESK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.helio.vww01;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.skylight.dad.-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c11e557c-937d-43aa-9895-d06f8857c740";
 				PROVISIONING_PROFILE_SPECIFIER = DADpersonaldevelopmentProfile;
@@ -974,7 +976,7 @@
 				INFOPLIST_FILE = ADBLESK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.helio.vww01;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.skylight.dad.-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0409ac80-93ff-49e6-a204-647ed8e41361";
 				PROVISIONING_PROFILE_SPECIFIER = vww01_20160729_INHOUSEProfile;

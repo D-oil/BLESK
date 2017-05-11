@@ -123,7 +123,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kgrillTemperatureWarningNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kfoodTemperatureWarningNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kBBQTimeOutWarningNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kBBQTimeOutWarningNotification object:nil];
+
 
     //low hight
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kgrillTemperatureHightNotification object:nil];
@@ -138,11 +138,11 @@
     
 //    [self ItemNumButtonAction:self.navItem.oneButton];
     
-    
-//    ADSKProbe *pro = self.probelist.probes[1];
-//    pro.isConnected = YES;
-//    self.currentProbe.isConnected =YES;
 
+    
+    ADSKProbe *pro = self.probelist.probes[1];
+    pro.isConnected = YES;
+    self.currentProbe.isConnected =YES;
 
     //
     self.tag = -1;
@@ -272,9 +272,6 @@
             [self updateUIWithConnectionState:self.currentProbe.isConnected];
             
             [self updateAllProbeButton];
-  
-            
-            
 
         }
         else if ([noti.name isEqualToString:kBatteryLowNotification])
@@ -335,23 +332,30 @@
     
     
     
+    ADSKProbe *probe = noti.object;
+    NSInteger num = probe.ID;
+//    "finished_alarm_message" = "Probe %@ Grill Done!";
+//    "food_high_alarm_message" = "Temperature high Probe %@ ";
+//    "grill_high_alarm_message" = "Probe %@ grill temperature is too high！";
+//    "disconnect_alarm_message" = "Probe %@ Bluetooth Lost Connection!";
+    
     //这里要处理所有的报警事件
     if ([noti.name isEqualToString:kfoodTemperatureWarningNotification]){
         //处理当前探针的警告
-        [self showWaningViewWithIdentifier:@"foodTemWarning" Title:@"食物高温报警" subTitle:nil body:nil];
+        [self showWaningViewWithIdentifier:@"foodTemWarning" Title:[NSString stringWithFormat:NSLocalizedString(@"food_high_alarm_message", nil),[NSString stringWithFormat:@"%ld",num+1]] subTitle:nil body:nil];
         
     } else if ([noti.name isEqualToString:kgrillTemperatureWarningNotification]){
 
-        [self showWaningViewWithIdentifier:@"grillTemWarning" Title:@"炉温报警" subTitle:nil body:nil];
+        [self showWaningViewWithIdentifier:@"grillTemWarning" Title:[NSString stringWithFormat:NSLocalizedString(@"grill_high_alarm_message", nil),[NSString stringWithFormat:@"%ld",num +1]]  subTitle:nil body:nil];
 
     } else if ([noti.name isEqualToString:kBBQfinishedWarningNotification]){
         
-        [self showWaningViewWithIdentifier:@"bbqfinished" Title:@"烧烤时间到" subTitle:nil body:@"您的食物已经烤熟"];
+        [self showWaningViewWithIdentifier:@"bbqfinished" Title:[NSString stringWithFormat:NSLocalizedString(@"finished_alarm_message", nil),[NSString stringWithFormat:@"%ld",num+1]] subTitle:nil body:nil];
         [self startButtonAction:nil];
         
     } else if ([noti.name isEqualToString:kBBQTimeOutWarningNotification]) {
         
-        [self showWaningViewWithIdentifier:@"timeOut" Title:@"烧烤时间到" subTitle:nil body:@"您的食物已经烤熟"];
+        [self showWaningViewWithIdentifier:@"timeOut" Title:[NSString stringWithFormat:NSLocalizedString(@"finished_alarm_message", nil),[NSString stringWithFormat:@"%ld",num +1]]  subTitle:nil body:nil];
         [self startButtonAction:nil];
         
     }

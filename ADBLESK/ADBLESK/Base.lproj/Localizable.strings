@@ -51,3 +51,9 @@
 "foodType_hamburger" = "Hamburger";
 "foodType_timer" = "Timer";
 "foodType_temperature" = "Temperature";
+
+
+"finished_alarm_message" = "Probe %@ Grill Done!";
+"food_high_alarm_message" = "Temperature high Probe %@ ";
+"grill_high_alarm_message" = "Probe %@ grill temperature is too high！";
+"disconnect_alarm_message" = "Probe %@ Bluetooth Lost Connection!";

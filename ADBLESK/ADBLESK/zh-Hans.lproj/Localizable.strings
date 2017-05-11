@@ -49,3 +49,8 @@
 "foodType_hamburger" = "汉堡";
 "foodType_timer" = "计时";
 "foodType_temperature" = "温度";
+
+"finished_alarm_message" = "探针 %@ 烧烤完成!";
+"food_high_alarm_message" = "探针 %@ 食物温度过高!";
+"grill_high_alarm_message" = "探针 %@ 炉温过高！";
+"disconnect_alarm_message" = "探针 %@ 蓝牙断开!";

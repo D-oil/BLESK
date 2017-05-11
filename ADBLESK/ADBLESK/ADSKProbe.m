@@ -298,7 +298,7 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
 -(void)timeMinu {
     if (self.time> 0) {
         if (self.time == 1 && self.foodTem < self.targetTem) {
-            self.time += 3;
+            self.time += 10;
         }
         self.time -- ;
         
