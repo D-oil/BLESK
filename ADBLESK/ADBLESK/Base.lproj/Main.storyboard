@@ -2811,7 +2811,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="WZ6-K0-o63">
-                                <rect key="frame" x="26" y="-36" width="323" height="111"/>
+                                <rect key="frame" x="26" y="-6" width="323" height="111"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GO-3h-Uxf">
                                         <rect key="frame" x="145.5" y="39" width="33" height="33"/>
@@ -2914,10 +2914,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="HB2-P7-hTo">
-                                <rect key="frame" x="26" y="95" width="323" height="111.5"/>
+                                <rect key="frame" x="26" y="125" width="323" height="111.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0p-KT-5Iz">
-                                        <rect key="frame" x="160" y="37" width="64" height="38"/>
+                                        <rect key="frame" x="148" y="37" width="70" height="38"/>
                                         <color key="backgroundColor" red="0.99215686274509807" green="0.50196078431372548" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="hYl-te-kyk"/>
@@ -2931,65 +2931,26 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYp-bl-PnP" userLabel="Temperature Unit">
-                                        <rect key="frame" x="38" y="18" width="112" height="75.5"/>
+                                        <rect key="frame" x="20" y="18" width="118" height="75.5"/>
                                         <attributedString key="attributedText">
                                             <fragment>
                                                 <string key="content">Temperature
-Unit</string>
+       Unit</string>
                                                 <attributes>
                                                     <color key="NSColor" red="0.99216000000000004" green="0.50195999999999996" blue="0.10196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                        <tabStops>
-                                                            <textTab alignment="left" location="28">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="56">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="84">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="112">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="140">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="168">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="196">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="224">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="252">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="280">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="308">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="336">
-                                                                <options/>
-                                                            </textTab>
-                                                        </tabStops>
-                                                    </paragraphStyle>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8f-MB-q5P">
-                                        <rect key="frame" x="241" y="37.5" width="64" height="38"/>
+                                        <rect key="frame" x="235" y="37.5" width="70" height="38"/>
                                         <color key="backgroundColor" red="1" green="0.58039215686274503" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="DRr-jy-WqZ"/>
-                                            <constraint firstAttribute="width" constant="64" id="SF8-hB-CeG"/>
+                                            <constraint firstAttribute="width" constant="70" id="SF8-hB-CeG"/>
                                         </constraints>
                                         <state key="normal" title="℉" image="华氏度未选择">
                                             <color key="titleColor" red="0.27059" green="0.27059" blue="0.27059" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3008,30 +2969,30 @@ Unit</string>
                                     <constraint firstItem="r8f-MB-q5P" firstAttribute="leading" secondItem="g0p-KT-5Iz" secondAttribute="trailing" constant="17" id="b4b-ui-3wG"/>
                                     <constraint firstAttribute="bottom" secondItem="DYp-bl-PnP" secondAttribute="bottom" constant="18" id="bU2-iG-FdR"/>
                                     <constraint firstItem="g0p-KT-5Iz" firstAttribute="leading" secondItem="DYp-bl-PnP" secondAttribute="trailing" constant="10" id="cMi-St-hQw"/>
-                                    <constraint firstItem="DYp-bl-PnP" firstAttribute="leading" secondItem="HB2-P7-hTo" secondAttribute="leading" priority="750" constant="38" id="kZi-IK-J9G"/>
+                                    <constraint firstItem="DYp-bl-PnP" firstAttribute="leading" relation="lessThanOrEqual" secondItem="HB2-P7-hTo" secondAttribute="leading" priority="750" constant="20" id="kZi-IK-J9G"/>
                                     <constraint firstItem="r8f-MB-q5P" firstAttribute="centerY" secondItem="HB2-P7-hTo" secondAttribute="centerY" id="kpR-Za-Is6"/>
                                     <constraint firstItem="g0p-KT-5Iz" firstAttribute="centerY" secondItem="HB2-P7-hTo" secondAttribute="centerY" id="rYC-7W-Bmi"/>
                                     <constraint firstItem="r8f-MB-q5P" firstAttribute="width" secondItem="g0p-KT-5Iz" secondAttribute="width" id="wUf-bb-Gb5"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="yXU-Yh-aOx">
-                                <rect key="frame" x="26" y="226.5" width="323" height="111"/>
+                                <rect key="frame" x="26" y="256.5" width="323" height="111"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdY-cR-lIc">
-                                        <rect key="frame" x="38" y="8" width="89.5" height="95"/>
+                                        <rect key="frame" x="20" y="8" width="89.5" height="95"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Alarm Type">
                                                 <attributes>
                                                     <color key="NSColor" red="0.99215686274509807" green="0.50196078431372548" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="18" name="HelveticaNeue"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8u-dw-FeM">
-                                        <rect key="frame" x="147.5" y="37.5" width="155.5" height="36"/>
+                                        <rect key="frame" x="129.5" y="37.5" width="173.5" height="36"/>
                                         <color key="backgroundColor" red="1" green="0.58039215686274503" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                         <state key="normal" title="Ring">
@@ -3046,7 +3007,7 @@ Unit</string>
                                 <constraints>
                                     <constraint firstItem="tdY-cR-lIc" firstAttribute="top" secondItem="yXU-Yh-aOx" secondAttribute="top" constant="8" id="4M7-Xm-wQK"/>
                                     <constraint firstItem="O8u-dw-FeM" firstAttribute="centerY" secondItem="yXU-Yh-aOx" secondAttribute="centerY" id="DkP-6Q-wyH"/>
-                                    <constraint firstItem="tdY-cR-lIc" firstAttribute="leading" secondItem="yXU-Yh-aOx" secondAttribute="leading" constant="38" id="HAV-1B-urd"/>
+                                    <constraint firstItem="tdY-cR-lIc" firstAttribute="leading" secondItem="yXU-Yh-aOx" secondAttribute="leading" constant="20" id="HAV-1B-urd"/>
                                     <constraint firstAttribute="trailing" secondItem="O8u-dw-FeM" secondAttribute="trailing" priority="750" constant="20" id="XA5-Vq-KD3"/>
                                     <constraint firstAttribute="bottom" secondItem="tdY-cR-lIc" secondAttribute="bottom" constant="8" id="aIK-0G-7kM"/>
                                     <constraint firstAttribute="bottom" secondItem="tdY-cR-lIc" secondAttribute="bottom" constant="8" id="ddw-zF-Zdy"/>
@@ -3106,7 +3067,7 @@ Unit</string>
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="5Vq-hl-TZE">
                             <view key="customView" contentMode="scaleToFill" id="pIr-c5-GtA">
-                                <rect key="frame" x="16" y="-6" width="92" height="55"/>
+                                <rect key="frame" x="16" y="24" width="92" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NaL-kV-0jf">
@@ -3127,7 +3088,7 @@ Unit</string>
                             </view>
                         </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="0Mz-Or-Yni">
-                            <rect key="frame" x="114" y="5.5" width="156" height="33"/>
+                            <rect key="frame" x="114" y="35.5" width="156" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIh-OL-dFc">
@@ -3236,6 +3197,6 @@ Unit</string>
         <image name="食谱按键环" width="286" height="285"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Pbv-Yk-Pwu"/>
+        <segue reference="tId-Bo-OGh"/>
     </inferredMetricsTieBreakers>
 </document>

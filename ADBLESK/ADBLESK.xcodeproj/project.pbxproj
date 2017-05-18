@@ -29,10 +29,10 @@
 		92AD3A6A1E330DF700BE40FA /* ADSKGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A691E330DF700BE40FA /* ADSKGaugeView.m */; };
 		92AD3A6E1E33262800BE40FA /* ADSKAllProbesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A6D1E33262800BE40FA /* ADSKAllProbesVC.m */; };
 		92AD3A721E3349C600BE40FA /* ADSKBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AD3A711E3349C600BE40FA /* ADSKBottomView.m */; };
-		92B52CB01EA48D93005EFF62 /* ADSKBLEConnectionTabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B52CAF1EA48D93005EFF62 /* ADSKBLEConnectionTabel.xib */; };
 		92B873EC1E59D5AB00D448E2 /* ADSKWarningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B873EB1E59D5AB00D448E2 /* ADSKWarningView.m */; };
 		92BA28BE1E51FA41009E644D /* ADSKNavItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA28BD1E51FA41009E644D /* ADSKNavItemButton.m */; };
 		92BCEF351EA780AC00D5A7FA /* ADSKBLETableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BCEF341EA780AC00D5A7FA /* ADSKBLETableViewCell.xib */; };
+		92C0182D1ECC288400BC546D /* ADSKBLEConnectionTabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92C0182F1ECC288400BC546D /* ADSKBLEConnectionTabel.xib */; };
 		92C8DF6A1E339CA000E95372 /* ADSKRecipeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C8DF691E339CA000E95372 /* ADSKRecipeVC.m */; };
 		92C96C081E55C8E8009C839A /* BLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C96C071E55C8E8009C839A /* BLEManager.m */; };
 		92D8762E1E5D64A900528EFC /* ADSKStartButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D8762D1E5D64A900528EFC /* ADSKStartButton.m */; };
@@ -120,12 +120,13 @@
 		92AD3A6D1E33262800BE40FA /* ADSKAllProbesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKAllProbesVC.m; sourceTree = "<group>"; };
 		92AD3A701E3349C600BE40FA /* ADSKBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKBottomView.h; sourceTree = "<group>"; };
 		92AD3A711E3349C600BE40FA /* ADSKBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKBottomView.m; sourceTree = "<group>"; };
-		92B52CAF1EA48D93005EFF62 /* ADSKBLEConnectionTabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADSKBLEConnectionTabel.xib; sourceTree = "<group>"; };
 		92B873EA1E59D5AB00D448E2 /* ADSKWarningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKWarningView.h; sourceTree = "<group>"; };
 		92B873EB1E59D5AB00D448E2 /* ADSKWarningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKWarningView.m; sourceTree = "<group>"; };
 		92BA28BC1E51FA41009E644D /* ADSKNavItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKNavItemButton.h; sourceTree = "<group>"; };
 		92BA28BD1E51FA41009E644D /* ADSKNavItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKNavItemButton.m; sourceTree = "<group>"; };
 		92BCEF341EA780AC00D5A7FA /* ADSKBLETableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADSKBLETableViewCell.xib; sourceTree = "<group>"; };
+		92C0182E1ECC288400BC546D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/ADSKBLEConnectionTabel.xib"; sourceTree = "<group>"; };
+		92C018301ECC288700BC546D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ADSKBLEConnectionTabel.xib; sourceTree = "<group>"; };
 		92C8DF681E339CA000E95372 /* ADSKRecipeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSKRecipeVC.h; sourceTree = "<group>"; };
 		92C8DF691E339CA000E95372 /* ADSKRecipeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSKRecipeVC.m; sourceTree = "<group>"; };
 		92C96C061E55C8E8009C839A /* BLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEManager.h; sourceTree = "<group>"; };
@@ -243,7 +244,7 @@
 			children = (
 				92815A5C1E497F39006F0BF8 /* ADSKBLEConnectionTabel.h */,
 				92815A5D1E497F39006F0BF8 /* ADSKBLEConnectionTabel.m */,
-				92B52CAF1EA48D93005EFF62 /* ADSKBLEConnectionTabel.xib */,
+				92C0182F1ECC288400BC546D /* ADSKBLEConnectionTabel.xib */,
 				92815A591E49788C006F0BF8 /* ADSKBLETableViewCell.h */,
 				92815A5A1E49788C006F0BF8 /* ADSKBLETableViewCell.m */,
 				92BCEF341EA780AC00D5A7FA /* ADSKBLETableViewCell.xib */,
@@ -591,7 +592,7 @@
 				92F462221E3109D000C9B2B3 /* LaunchScreen.storyboard in Resources */,
 				92DE00651E3280FA00A8EA5F /* Localizable.strings in Resources */,
 				92BCEF351EA780AC00D5A7FA /* ADSKBLETableViewCell.xib in Resources */,
-				92B52CB01EA48D93005EFF62 /* ADSKBLEConnectionTabel.xib in Resources */,
+				92C0182D1ECC288400BC546D /* ADSKBLEConnectionTabel.xib in Resources */,
 				92088BA81E50B62500ED301F /* alarm.caf in Resources */,
 				92F4621F1E3109D000C9B2B3 /* Assets.xcassets in Resources */,
 				92F4621A1E3109D000C9B2B3 /* Main.storyboard in Resources */,
@@ -825,6 +826,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		92C0182F1ECC288400BC546D /* ADSKBLEConnectionTabel.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				92C0182E1ECC288400BC546D /* zh-Hans */,
+				92C018301ECC288700BC546D /* Base */,
+			);
+			name = ADSKBLEConnectionTabel.xib;
+			sourceTree = "<group>";
+		};
 		92DE00671E3280FA00A8EA5F /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

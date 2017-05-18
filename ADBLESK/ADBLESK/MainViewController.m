@@ -355,8 +355,10 @@
         
     } else if ([noti.name isEqualToString:kBBQTimeOutWarningNotification]) {
         
-        [self showWaningViewWithIdentifier:@"timeOut" Title:[NSString stringWithFormat:NSLocalizedString(@"finished_alarm_message", nil),[NSString stringWithFormat:@"%ld",num +1]]  subTitle:nil body:nil];
+//        [self showWaningViewWithIdentifier:@"timeOut" Title:[NSString stringWithFormat:NSLocalizedString(@"finished_alarm_message", nil),[NSString stringWithFormat:@"%ld",num +1]]  subTitle:[NSString stringWithFormat:NSLocalizedString(@"finished_alarm_message", nil),[NSString stringWithFormat:@"%ld",num +1]] body:nil];
         [self startButtonAction:nil];
+        
+        [self showWaningViewWithIdentifier:@"timeOut" Title:@"hello"  subTitle:@"yes" body:nil];
         
     }
     
@@ -380,17 +382,15 @@
 
 - (void)alertMessageWithIdentifier:(NSString *)identifier title:(NSString *)tltle subTitle:(NSString *)subTitle  body:(NSString *)body
 {
+    
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-    content.title = tltle;
-    content.subtitle = subTitle;
+    content.title = [NSString localizedUserNotificationStringForKey:tltle arguments:nil];
+    content.subtitle = [NSString localizedUserNotificationStringForKey:subTitle arguments:nil];
     content.body = body;
-    content.badge = @0;
     content.sound = [UNNotificationSound defaultSound];
     
-    //    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
-    
     UNNotificationRequest *localNot = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:nil];
-    [[UNUserNotificationCenter currentNotificationCenter]addNotificationRequest:localNot withCompletionHandler:^(NSError * _Nullable error) {
+    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:localNot withCompletionHandler:^(NSError * _Nullable error) {
         NSLog(@"本地推送完成！");
     }];
     
