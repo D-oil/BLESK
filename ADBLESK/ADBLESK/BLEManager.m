@@ -82,10 +82,18 @@
         for (CBCharacteristic *characteristic in service.characteristics) {
             NSLog(@"Discovered characteristic %@", characteristic);
             //对不同的characteristic执行不同的操作,有的通知状态设为YES
-            if ([characteristic.UUID.UUIDString isEqualToString:TEMPERATURE_SERVICE_TEMPERATURE_CHARACTERISTIC_NOTIFY] ||
-                [characteristic.UUID.UUIDString isEqualToString:TEMPERATURE_SERVICE_STATUS_CHARACTERISTIC_READ_NOTIFY] ){
+            if ([characteristic.UUID.UUIDString isEqualToString:TEMPERATURE_SERVICE_TEMPERATURE_CHARACTERISTIC_NOTIFY] ){
                 [peripheral setNotifyValue:isOpen forCharacteristic:characteristic];
+    
             }
+            
+            if ([characteristic.UUID.UUIDString isEqualToString:TEMPERATURE_SERVICE_STATUS_CHARACTERISTIC_READ_NOTIFY] )
+            {
+                if ([_delegate respondsToSelector:@selector(peripheral:receiveInfoWithStatusCharacteristic:)]) {
+                    [self.delegate peripheral:peripheral receiveInfoWithStatusCharacteristic:characteristic.value];
+                }
+            }
+            
         }
     }
 }
@@ -98,11 +106,27 @@
             //对不同的characteristic执行不同的操作,有的通知状态设为YES
             if ([characteristic.UUID.UUIDString isEqualToString:TEMPERATURE_SERVICE_STATUS_CHARACTERISTIC_READ_NOTIFY] ){
                 [peripheral readValueForCharacteristic:characteristic];
+                
+                
             }
+            
+            
         }
     }
 }
 
+- (void)writeDataToPeripheral:(CBPeripheral *)peripheral Data:(NSData *)data{
+    
+    for (CBService *service in peripheral.services) {
+        for (CBCharacteristic *characteristic in service.characteristics) {
+            
+            //对不同的characteristic执行不同的操作,有的通知状态设为YES
+            if ([characteristic.UUID.UUIDString isEqualToString:TEMPERATURE_SERVICE_COMMAND_CHARACTERISTIC_WRITE] ){
+                [peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+            }
+        }
+    }
+}
 #pragma mark - connected
 - (void)connectPeripheral:(CBPeripheral *)peripheral withFinshedBlock:(connectFinished)finishedBlock
 {
@@ -200,6 +224,7 @@ didDiscoverCharacteristicsForService:(CBService *)service
     
     return mutArray;
 }
+
 //读取到设备的数据
 - (void)peripheral:(CBPeripheral *)peripheral
 didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
@@ -232,12 +257,12 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
     } else if ([characteristic.UUID.UUIDString isEqualToString:TEMPERATURE_SERVICE_STATUS_CHARACTERISTIC_READ_NOTIFY] ) {
         
         
-        NSMutableArray *mutArray = [self getDataValueArrayWithData:characteristic.value];
-        if ([[mutArray lastObject] integerValue] == 1) {
+//        NSMutableArray *mutArray = [self getDataValueArrayWithData:characteristic.value];
+//        if ([[mutArray lastObject] integerValue] != 255) {
             if ([_delegate respondsToSelector:@selector(peripheral:receiveInfoWithStatusCharacteristic:)]) {
-                [self.delegate peripheral:peripheral receiveInfoWithStatusCharacteristic:nil];
+                [self.delegate peripheral:peripheral receiveInfoWithStatusCharacteristic:characteristic.value];
             }
-        }
+//        }
     }
 }
 

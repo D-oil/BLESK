@@ -23,7 +23,7 @@
 
 //#define TEMPERATURE_SERVICE_NAME_CHARACTERISTIC_READWRITE      @"FB01"
 #define TEMPERATURE_SERVICE_TEMPERATURE_CHARACTERISTIC_NOTIFY  @"FB02"
-//#define TEMPERATURE_SERVICE_COMMAND_CHARACTERISTIC_WRITE       @"FB03"
+#define TEMPERATURE_SERVICE_COMMAND_CHARACTERISTIC_WRITE       @"FB03"
 //#define TEMPERATURE_SERVICE_UPLOADTIME_CHARACTERISTIC_NOTIFY   @"FB04"
 #define TEMPERATURE_SERVICE_STATUS_CHARACTERISTIC_READ_NOTIFY @"FB05"
 
@@ -33,7 +33,7 @@ typedef void (^connectFinished)(BOOL success,CBPeripheral *peripheral);
 @protocol BLEManagerDelegate <NSObject>
 
 - (void)peripheral:(CBPeripheral *)peripheral receiveInfoWithFoodTemperature:(NSInteger)foodTem grillTemperature:(NSInteger) grillTem timeInfo:(NSInteger)timeInfo;
-- (void)peripheral:(CBPeripheral *)peripheral receiveInfoWithStatusCharacteristic:(NSString *)receiveInfo;
+- (void)peripheral:(CBPeripheral *)peripheral receiveInfoWithStatusCharacteristic:(NSData *)receiveInfo;
 
 @end
 
@@ -58,5 +58,8 @@ typedef void (^connectFinished)(BOOL success,CBPeripheral *peripheral);
 - (void)openPeripheral:(CBPeripheral *)peripheral open:(BOOL)isOpen;
 //读取电量值,会调用receiveInfoWithStatusCharacteristic 方法
 - (void)readStatusCharacteristicFromPeripheral:(CBPeripheral *)peripheral;
+
+- (void)writeDataToPeripheral:(CBPeripheral *)peripheral Data:(NSData *)data;
+
 
 @end

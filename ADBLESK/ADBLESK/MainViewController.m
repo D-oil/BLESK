@@ -140,9 +140,9 @@
     
 
     
-    ADSKProbe *pro = self.probelist.probes[1];
-    pro.isConnected = YES;
-    self.currentProbe.isConnected =YES;
+//    ADSKProbe *pro = self.probelist.probes[1];
+//    pro.isConnected = YES;
+//    self.currentProbe.isConnected =YES;
 
     //
     self.tag = -1;
@@ -355,10 +355,9 @@
         
     } else if ([noti.name isEqualToString:kBBQTimeOutWarningNotification]) {
         
-//        [self showWaningViewWithIdentifier:@"timeOut" Title:[NSString stringWithFormat:NSLocalizedString(@"finished_alarm_message", nil),[NSString stringWithFormat:@"%ld",num +1]]  subTitle:[NSString stringWithFormat:NSLocalizedString(@"finished_alarm_message", nil),[NSString stringWithFormat:@"%ld",num +1]] body:nil];
+        [self showWaningViewWithIdentifier:@"timeOut" Title:[NSString stringWithFormat:NSLocalizedString(@"finished_alarm_message", nil),[NSString stringWithFormat:@"%ld",num +1]]  subTitle:nil body:nil];
         [self startButtonAction:nil];
         
-        [self showWaningViewWithIdentifier:@"timeOut" Title:@"hello"  subTitle:@"yes" body:nil];
         
     }
     
@@ -383,16 +382,28 @@
 - (void)alertMessageWithIdentifier:(NSString *)identifier title:(NSString *)tltle subTitle:(NSString *)subTitle  body:(NSString *)body
 {
     
+    // 1、创建通知内容，注：这里得用可变类型的UNMutableNotificationContent，否则内容的属性是只读的
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-    content.title = [NSString localizedUserNotificationStringForKey:tltle arguments:nil];
-    content.subtitle = [NSString localizedUserNotificationStringForKey:subTitle arguments:nil];
+    // 标题
+    content.title = tltle;
+    // 次标题
+    content.subtitle = subTitle;
+    // 内容
     content.body = body;
+    // 通知的提示声音，这里用的默认的声音
     content.sound = [UNNotificationSound defaultSound];
-    
-    UNNotificationRequest *localNot = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:nil];
-    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:localNot withCompletionHandler:^(NSError * _Nullable error) {
-        NSLog(@"本地推送完成！");
+    // 标识符
+    content.categoryIdentifier = identifier;
+    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
+    // 3、创建通知请求
+    UNNotificationRequest *notificationRequest = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:trigger];
+    // 4、将请求加入通知中心
+    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:notificationRequest withCompletionHandler:^(NSError * _Nullable error) {
+        if (error == nil) {
+            NSLog(@"已成功加推送%@",notificationRequest.identifier);
+        }
     }];
+
     
 }
 
@@ -508,6 +519,8 @@
         [self.navItem.backgroundButton setUserInteractionEnabled:NO];
         self.currentProbe.isOpen = YES;
         
+        [self.bleManager writeDataToPeripheral:self.currentProbe.peripheral Data:[self.currentProbe getBLETransmissionData]];
+        
     } else {
         [self.currentProbe stopTimer];
         [self.startButton setStopOrStart:YES];
@@ -520,7 +533,11 @@
 //            [self.currentProbe stopRemainingTime];
 //            [self.gaugeView setTimeLabelWithTime:-1];
 //        }
-    
+        NSMutableData *data = [NSMutableData data];
+        UInt32 a = 0x0000000d;
+        Byte *byte = (Byte*)&a;
+        [data appendBytes:byte length:4];
+        [self.bleManager writeDataToPeripheral:self.currentProbe.peripheral Data:data];
     }
 }
 
@@ -575,9 +592,13 @@
 //    }
     
 }
-- (void)peripheral:(CBPeripheral *)peripheral receiveInfoWithStatusCharacteristic:(NSString *)receiveInfo
+- (void)peripheral:(CBPeripheral *)peripheral receiveInfoWithStatusCharacteristic:(NSData *)receiveInfo
 {
-    NSLog(@"peripheral %@ receiveInfoWithStatusCharacteristic call",peripheral);
+    for (ADSKProbe *probe in self.probelist.probes) {
+        if ([probe.UUID isEqualToString:peripheral.identifier.UUIDString]){
+            [probe setProbeInfoFrom:receiveInfo];
+        }
+    }
 }
 
 //tableView部分，先这样写，以后优化
@@ -628,82 +649,86 @@
         
         CBPeripheral *currentPeripheral = self.AllCBPeripherals[indexPath.row];
         [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-        [self.bleManager connectPeripheral:currentPeripheral withFinshedBlock:^(BOOL success, CBPeripheral *peripheral) {
-            //如果蓝牙连接成功，走成功流程
-            [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-            if (success) {
-
-                for (ADSKProbe *probe in [self.probelist.probes reverseObjectEnumerator]) {
-                    if(probe.isConnected== NO) {
-                        self.currentProbe = probe;
-                    }
-                }
-                self.currentProbe.peripheral = currentPeripheral;
-                self.currentProbe.UUID = currentPeripheral.identifier.UUIDString;
-                
-                NSUInteger ID = self.currentProbe.ID;
-                
-                [self updateUIWithTargetTemperature:self.currentProbe.targetTem];
-                [self updateUIWithGrillTemperature:self.currentProbe.grillTem];
-                [self updateUIWithFoodType:self.currentProbe.foodType foodDegree:self.currentProbe.foodDegree];
-                [self updateUIWithFoodTemperature:self.currentProbe.foodTem];
-                [self updateStartButtonWith:self.currentProbe.isOpen];
-                [self.gaugeView setTimeLabelWithTime:self.currentProbe.time];
-                [self updateUIWithConnectionState:self.currentProbe.isConnected];
-                
-                [self.bleManager openPeripheral:currentPeripheral open:YES];
-                
-                
-                [cell cellConnected:YES withSelectedImageStr:[ADSKBLEConnectionTabel getItemImageStrs][ID] WithIndex:ID];
-                
-                [self.probelist setProbeConnectedWithIndex:ID];
-                
-                [self.connectionTabel setTitleWithConnectedNum:[self.probelist getNumofConnectedProbe]];
-                
-                for (ADSKProbe *probe in [self.probelist.probes reverseObjectEnumerator]) {
-                    
-                    if (probe.isConnected == YES) {
-                        [self.navItem numButtonStateChange:numButtonTypeNoSelected_Connected    numButton: self.navItem.buttonArray [probe.ID] ];
-                    } else {
-                        [self.navItem numButtonStateChange:numButtonTypeNoSelected_Disconnected numButton: self.navItem.buttonArray [probe.ID] ];
-                    }
-                }
-                
-                [self.navItem numButtonStateChange:numButtonTypeSelected_Connected numButton:self.navItem.buttonArray[ID]];
-            } else {
-                //失败
-                NSLog(@"ble断开连接！");
-            
-                ADSKProbe *disconnectProbe = nil;
-                for (ADSKProbe *probe in self.probelist.probes) {
-                    if ([probe.UUID isEqualToString:peripheral.identifier.UUIDString]) {
-                        disconnectProbe = probe;
-                        disconnectProbe.isConnected = NO;
-                        [disconnectProbe stopTimer];
-                    }
-                }
-                //检测是否是当前的探针
-                if ([self.currentProbe isEqual:disconnectProbe]) {
-                    [self.navItem numButtonStateChange:numButtonTypeSelected_Disconnected numButton:self.navItem.buttonArray[disconnectProbe.ID]];
-                    [self.probelist setProbeDisconnectedWithIndex:disconnectProbe.ID];
-                 
-                    [self updateAllProbeButton];
-                    [self.AllCBPeripherals removeObject:disconnectProbe];
-                } else {
-                    [self.navItem numButtonStateChange:numButtonTypeNoSelected_Disconnected numButton:self.navItem.buttonArray[disconnectProbe.ID]];
-                    [self.AllCBPeripherals removeObject:disconnectProbe];
-        
-                    
-                }
-
-                [self showWaningViewWithIdentifier:@"bleDisConnected" Title:@"设备断开连接" subTitle:@"你的设备已断开连接，去看看吧！" body:nil];
-                
-            }
-        }];
-
-
+        [self connectProbe:currentPeripheral withCell:cell];
     }
 
+}
+
+- (void)connectProbe:(CBPeripheral *)currentPeripheral withCell:(ADSKBLETableViewCell *)cell{
+    
+    [self.bleManager connectPeripheral:currentPeripheral withFinshedBlock:^(BOOL success, CBPeripheral *peripheral) {
+        //如果蓝牙连接成功，走成功流程
+        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+        if (success) {
+            
+            for (ADSKProbe *probe in [self.probelist.probes reverseObjectEnumerator]) {
+                if(probe.isConnected== NO) {
+                    self.currentProbe = probe;
+                }
+            }
+            self.currentProbe.peripheral = currentPeripheral;
+            self.currentProbe.UUID = currentPeripheral.identifier.UUIDString;
+            
+            NSUInteger ID = self.currentProbe.ID;
+            
+            [self updateUIWithTargetTemperature:self.currentProbe.targetTem];
+            [self updateUIWithGrillTemperature:self.currentProbe.grillTem];
+            [self updateUIWithFoodType:self.currentProbe.foodType foodDegree:self.currentProbe.foodDegree];
+            [self updateUIWithFoodTemperature:self.currentProbe.foodTem];
+            [self updateStartButtonWith:self.currentProbe.isOpen];
+            [self.gaugeView setTimeLabelWithTime:self.currentProbe.time];
+            [self updateUIWithConnectionState:self.currentProbe.isConnected];
+            
+            [self.bleManager openPeripheral:currentPeripheral open:YES];
+            
+            
+            [cell cellConnected:YES withSelectedImageStr:[ADSKBLEConnectionTabel getItemImageStrs][ID] WithIndex:ID];
+            
+            [self.probelist setProbeConnectedWithIndex:ID];
+            
+            [self.connectionTabel setTitleWithConnectedNum:[self.probelist getNumofConnectedProbe]];
+            
+            for (ADSKProbe *probe in [self.probelist.probes reverseObjectEnumerator]) {
+                
+                if (probe.isConnected == YES) {
+                    [self.navItem numButtonStateChange:numButtonTypeNoSelected_Connected    numButton: self.navItem.buttonArray [probe.ID] ];
+                } else {
+                    [self.navItem numButtonStateChange:numButtonTypeNoSelected_Disconnected numButton: self.navItem.buttonArray [probe.ID] ];
+                }
+            }
+            
+            [self.navItem numButtonStateChange:numButtonTypeSelected_Connected numButton:self.navItem.buttonArray[ID]];
+        } else {
+            //失败
+            NSLog(@"ble断开连接！");
+            
+            ADSKProbe *disconnectProbe = nil;
+            for (ADSKProbe *probe in self.probelist.probes) {
+                if ([probe.UUID isEqualToString:peripheral.identifier.UUIDString]) {
+                    disconnectProbe = probe;
+                    disconnectProbe.isConnected = NO;
+                    [disconnectProbe stopTimer];
+                }
+            }
+            //检测是否是当前的探针
+            if ([self.currentProbe isEqual:disconnectProbe]) {
+                [self.navItem numButtonStateChange:numButtonTypeSelected_Disconnected numButton:self.navItem.buttonArray[disconnectProbe.ID]];
+                [self.probelist setProbeDisconnectedWithIndex:disconnectProbe.ID];
+                
+                [self updateAllProbeButton];
+                [self.AllCBPeripherals removeObject:disconnectProbe];
+            } else {
+                [self.navItem numButtonStateChange:numButtonTypeNoSelected_Disconnected numButton:self.navItem.buttonArray[disconnectProbe.ID]];
+                [self.AllCBPeripherals removeObject:disconnectProbe];
+                
+                
+            }
+            
+            // [self showWaningViewWithIdentifier:@"bleDisConnected" Title:@"设备断开连接" subTitle:@"你的设备已断开连接，去看看吧！" body:nil];
+            
+            [self connectProbe:disconnectProbe.peripheral withCell:nil];
+        }
+    }];
 }
 
 - (void)disConnectedProbesButtonAction:(UIButton *)sender {

@@ -86,7 +86,7 @@ typedef void(^timeRemainningfinishedBlock)(BOOL finished);
 //探针正在报警状态
 @property (nonatomic,assign) BOOL isAlarm;
 
-////计时器是否正在运行
+//计时器是否正在运行
 @property (nonatomic,assign) BOOL isTimerFire;
 
 @property (nonatomic,strong) CBPeripheral *peripheral;
@@ -106,7 +106,8 @@ typedef void(^timeRemainningfinishedBlock)(BOOL finished);
 - (void)startTimer;
 - (void)stopTimer;
 
-
+- (NSData *)getBLETransmissionData;
+- (void)setProbeInfoFrom:(NSData *)BLEData;
 
 - (NSUInteger)calculateNewTime:(NSUInteger) currentFoodTem;
 

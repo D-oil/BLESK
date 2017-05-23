@@ -55,9 +55,11 @@ NSString *const kApptempertureSymbolChangeNotification = @"kApptempertureSymbolC
     
     //iOS 10
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-    [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionCarPlay) completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (!error) {
             NSLog(@"request authorization succeeded!");
+            
+ 
         }
     }];
     

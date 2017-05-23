@@ -314,6 +314,136 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
     [self.timer invalidate];
     self.timer  = nil;
 }
+//foodType_Null,      //空
+//foodType_Beef,      //🐂
+//foodType_Veal,      //小🐂
+//foodType_Lamb,      //🐑
+//foodType_Venison,   //🦌
+//foodType_Pork,      //🐷
+//foodType_Chicker,   //🐔
+//foodType_Duck,      //鸭
+//foodType_Fish,      //🐟
+//foodType_Hamburger, //🍔
+//foodType_Timer,     //⏱️
+//foodType_Tempareture//🌡️
 
+- (NSData *)getBLETransmissionData {
+    NSMutableData *data = [NSMutableData data];
+    switch (self.foodType) {
+        case foodType_Null: {
+            UInt32 a = 0x0000000d;
+            Byte *byte = (Byte*)&a;
+            [data appendBytes:byte length:4];
+        }
+            break;
+        case foodType_Beef:
+        case foodType_Veal:
+        case foodType_Lamb:
+        case foodType_Venison:
+        case foodType_Pork:
+        case foodType_Chicker:
+        case foodType_Duck:
+        case foodType_Fish:
+        case foodType_Hamburger:
+        {
+            UInt32 a = 10;
+            Byte *byte = (Byte*)&a;
+            [data appendBytes:byte length:1];
+            
+            NSUInteger tem = (self.targetTem +40) * 10;
+            Byte *byte1 = (Byte*)&tem;
+            [data appendBytes:byte1 length:2];
+            
+            NSUInteger foodtype = self.foodType -1;
+            Byte *byte2 = (Byte*)&foodtype;
+            [data appendBytes:byte2 length:1];
+            
+        }
+            break;
+        case foodType_Timer:
+        {
+            UInt32 a = 11;
+            Byte *byte = (Byte*)&a;
+            [data appendBytes:byte length:1];
+            
+            NSUInteger time = (self.time * 60 +40) * 10;
+            Byte *byte1 = (Byte*)&time;
+            [data appendBytes:byte1 length:2];
+            
+            NSUInteger foodtype = 0;
+            Byte *byte2 = (Byte*)&foodtype;
+            [data appendBytes:byte2 length:1];
+            
+        }
+            break;
+        case foodType_Tempareture:
+            {
+                UInt32 a = 12;
+                Byte *byte = (Byte*)&a;
+                [data appendBytes:byte length:1];
+                
+                NSUInteger tem = (self.targetTem +40) * 10;
+                Byte *byte1 = (Byte*)&tem;
+                [data appendBytes:byte1 length:2];
+                
+                NSUInteger foodtype = 0;
+                Byte *byte2 = (Byte*)&foodtype;
+                [data appendBytes:byte2 length:1];
+            }
+                    break;
+    }
+    return data;
+}
+
+- (void)setProbeInfoFrom:(NSData *)BLEData {
+    UInt32 openedByte = 0;
+    [BLEData getBytes:&openedByte range:NSMakeRange(2, 1)];
+    if (openedByte >= 1) {
+//        self.isOpen = YES;
+    }
+    
+    switch (openedByte) {
+        //配方模式
+        case 1:
+        {
+            UInt32 tagTem = 0;
+            [BLEData getBytes:&tagTem range:NSMakeRange(3, 2)];
+            UInt32 tagModel = 0;
+            [BLEData getBytes:&tagModel range:NSMakeRange(5, 1)];
+     
+            self.targetTem = tagTem / 10 - 40;
+            self.foodType = tagModel;
+            [self calculateNewTime:self.foodTem];
+            [self startTimer];
+        }
+            break;
+        //定时
+        case 2:
+        {
+
+            UInt32 time = 0;
+            [BLEData getBytes:&time range:NSMakeRange(5, 1)];
+            self.time = time;
+            [self startTimer];
+        }
+            break;
+        //定温
+        case 3:
+        {
+            UInt32 tagTem = 0;
+            [BLEData getBytes:&tagTem range:NSMakeRange(3, 2)];
+            self.targetTem = tagTem / 10 - 40;
+            [self calculateNewTime:self.foodTem];
+            [self startTimer];
+        }
+            break;
+
+        default:
+            break;
+    }
+    
+    
+    
+}
 
 @end
