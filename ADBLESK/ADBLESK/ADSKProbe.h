@@ -101,7 +101,7 @@ typedef void(^timeRemainningfinishedBlock)(BOOL finished);
 + (NSString *)getStringFromFoodDegree:(foodDegree)foodDegree;
 + (NSString *)getStringFromFoodType:(foodType)foodType;
 
-
++ (foodDegree)getFoodDegreeFromfoodType:(foodType)foodType TagTem:(NSInteger)tagTem;
 
 - (void)startTimer;
 - (void)stopTimer;
@@ -111,4 +111,6 @@ typedef void(^timeRemainningfinishedBlock)(BOOL finished);
 
 - (NSUInteger)calculateNewTime:(NSUInteger) currentFoodTem;
 
+
++ (NSArray *)getTemWithTag:(NSInteger)tag;
 @end

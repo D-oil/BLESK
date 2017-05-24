@@ -59,6 +59,9 @@ typedef void (^connectFinished)(BOOL success,CBPeripheral *peripheral);
 //读取电量值,会调用receiveInfoWithStatusCharacteristic 方法
 - (void)readStatusCharacteristicFromPeripheral:(CBPeripheral *)peripheral;
 
+
+- (void)readInfoCharacteristicFromPeripheral:(CBPeripheral *)peripheral;
+
 - (void)writeDataToPeripheral:(CBPeripheral *)peripheral Data:(NSData *)data;
 
 

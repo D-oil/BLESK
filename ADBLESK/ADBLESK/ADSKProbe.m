@@ -314,18 +314,7 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
     [self.timer invalidate];
     self.timer  = nil;
 }
-//foodType_Null,      //空
-//foodType_Beef,      //🐂
-//foodType_Veal,      //小🐂
-//foodType_Lamb,      //🐑
-//foodType_Venison,   //🦌
-//foodType_Pork,      //🐷
-//foodType_Chicker,   //🐔
-//foodType_Duck,      //鸭
-//foodType_Fish,      //🐟
-//foodType_Hamburger, //🍔
-//foodType_Timer,     //⏱️
-//foodType_Tempareture//🌡️
+
 
 - (NSData *)getBLETransmissionData {
     NSMutableData *data = [NSMutableData data];
@@ -354,7 +343,7 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
             Byte *byte1 = (Byte*)&tem;
             [data appendBytes:byte1 length:2];
             
-            NSUInteger foodtype = self.foodType -1;
+            NSUInteger foodtype = self.foodType ;
             Byte *byte2 = (Byte*)&foodtype;
             [data appendBytes:byte2 length:1];
             
@@ -398,9 +387,7 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
 - (void)setProbeInfoFrom:(NSData *)BLEData {
     UInt32 openedByte = 0;
     [BLEData getBytes:&openedByte range:NSMakeRange(2, 1)];
-    if (openedByte >= 1) {
-//        self.isOpen = YES;
-    }
+
     
     switch (openedByte) {
         //配方模式
@@ -412,9 +399,10 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
             [BLEData getBytes:&tagModel range:NSMakeRange(5, 1)];
      
             self.targetTem = tagTem / 10 - 40;
-            self.foodType = tagModel;
             [self calculateNewTime:self.foodTem];
-            [self startTimer];
+            self.foodType = tagModel;
+            self.foodDegree = [ADSKProbe getFoodDegreeFromfoodType:self.foodType TagTem:self.targetTem];
+
         }
             break;
         //定时
@@ -424,7 +412,10 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
             UInt32 time = 0;
             [BLEData getBytes:&time range:NSMakeRange(5, 1)];
             self.time = time;
-            [self startTimer];
+        
+            self.foodType = foodType_Timer;
+            self.foodDegree = foodDegree_Null;
+
         }
             break;
         //定温
@@ -434,7 +425,8 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
             [BLEData getBytes:&tagTem range:NSMakeRange(3, 2)];
             self.targetTem = tagTem / 10 - 40;
             [self calculateNewTime:self.foodTem];
-            [self startTimer];
+            self.foodType = foodType_Tempareture;
+            self.foodDegree = foodDegree_Null;
         }
             break;
 
@@ -446,4 +438,31 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
     
 }
 
++ (foodDegree)getFoodDegreeFromfoodType:(foodType)foodType TagTem:(NSInteger)tagTem {
+    
+    foodDegree *degree = foodDegree_Null;
+
+    NSArray* foodTemArray = [ADSKProbe getTemWithTag:foodType -1];
+    degree = [foodTemArray indexOfObject:[NSString stringWithFormat:@"%ld",tagTem]] +1;
+    
+    return degree;
+    
+}
+
++ (NSArray *)getTemWithTag:(NSInteger)tag
+{
+    NSArray *foodTemArrays = @[
+                               @[@"52",@"58",@"62",@"66",@"70",@""],
+                               @[@"",@"",@"62",@"66",@"70",@""],
+                               @[@"",@"65",@"70",@"72",@"75",@""],
+                               @[@"",@"62",@"65",@"68",@"74",@""],
+                               @[@"",@"",@"65",@"68",@"75",@""],
+                               @[@"",@"",@"",@"75",@"79",@""],
+                               @[@"",@"",@"",@"68",@"75",@""],
+                               @[@"",@"",@"",@"54",@"62",@""],
+                               @[@"",@"",@"",@"72",@"76",@""],
+                               ];
+    return foodTemArrays[tag];
+    
+}
 @end

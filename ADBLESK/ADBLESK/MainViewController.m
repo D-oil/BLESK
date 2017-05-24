@@ -596,7 +596,10 @@
 {
     for (ADSKProbe *probe in self.probelist.probes) {
         if ([probe.UUID isEqualToString:peripheral.identifier.UUIDString]){
-            [probe setProbeInfoFrom:receiveInfo];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [probe setProbeInfoFrom:receiveInfo];
+            });
+            
         }
     }
 }
@@ -661,6 +664,8 @@
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         if (success) {
             
+            
+            
             for (ADSKProbe *probe in [self.probelist.probes reverseObjectEnumerator]) {
                 if(probe.isConnected== NO) {
                     self.currentProbe = probe;
@@ -698,6 +703,9 @@
             }
             
             [self.navItem numButtonStateChange:numButtonTypeSelected_Connected numButton:self.navItem.buttonArray[ID]];
+            
+            [self.bleManager readStatusCharacteristicFromPeripheral:currentPeripheral];
+            
         } else {
             //失败
             NSLog(@"ble断开连接！");
