@@ -392,12 +392,10 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
     switch (openedByte) {
         case 0:
         {
-
             self.targetTem = -1;
             self.foodType = foodType_Null;
             self.foodDegree = foodDegree_Null;
             self.isOpen = NO;
-            
         }
              break;
         //配方模式
@@ -422,7 +420,9 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
             UInt32 time = 0;
             [BLEData getBytes:&time range:NSMakeRange(5, 1)];
             self.time = time;
-        
+            
+            
+            
             self.foodType = foodType_Timer;
             self.foodDegree = foodDegree_Null;
 
@@ -435,6 +435,7 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
             [BLEData getBytes:&tagTem range:NSMakeRange(3, 2)];
             self.targetTem = tagTem / 10 - 40;
             [self calculateNewTime:self.foodTem];
+
             self.foodType = foodType_Tempareture;
             self.foodDegree = foodDegree_Null;
         }

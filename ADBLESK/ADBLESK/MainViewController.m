@@ -174,6 +174,7 @@
         
         
         
+        
         [self.bottomView setHidden:NO];
         [self.startButton setHidden:NO];
 
@@ -269,7 +270,10 @@
     if ([noti.object isEqual:self.currentProbe]) {
         if ([noti.name isEqualToString:kConnectionChangeNotification])
         {
+
             [self updateUIWithConnectionState:self.currentProbe.isConnected];
+
+
             
             [self updateAllProbeButton];
 
@@ -495,8 +499,12 @@
 
 - (IBAction)startButtonAction:(id)sender
 {
-    if (self.currentProbe.foodType == foodType_Null && self.currentProbe.foodDegree != foodDegree_Null) {
+    if (self.currentProbe.foodDegree == foodType_Null && self.currentProbe.foodDegree == foodType_Null) {
+        [self.startButton setStopOrStart:YES];
+    }
     
+    if (self.currentProbe.foodType == foodType_Null  && self.currentProbe.foodDegree != foodDegree_Null) {
+        
     } else if ((self.currentProbe.foodType == foodType_Null && self.currentProbe.foodType != foodType_Timer) /*|| (self.currentProbe.foodTem >= self.currentProbe.targetTem && self.currentProbe.foodType != foodType_Timer) */ ) {
         return;
     }
@@ -593,7 +601,7 @@
 {
     for (ADSKProbe *probe in self.probelist.probes) {
         if ([probe.UUID isEqualToString:peripheral.identifier.UUIDString]){
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [probe setProbeInfoFrom:receiveInfo];
             });
             

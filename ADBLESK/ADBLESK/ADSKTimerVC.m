@@ -74,6 +74,7 @@
 }
 - (IBAction)chooseHourAction:(UIButton *)sender {
     [self.timerView updateTimeLabelAfterchooseHoursButton:sender];
+    self.time = self.timerView.time;
 }
 
 
