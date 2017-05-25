@@ -334,11 +334,7 @@
     
     ADSKProbe *probe = noti.object;
     NSInteger num = probe.ID;
-//    "finished_alarm_message" = "Probe %@ Grill Done!";
-//    "food_high_alarm_message" = "Temperature high Probe %@ ";
-//    "grill_high_alarm_message" = "Probe %@ grill temperature is too high！";
-//    "disconnect_alarm_message" = "Probe %@ Bluetooth Lost Connection!";
-    
+
     //这里要处理所有的报警事件
     if ([noti.name isEqualToString:kfoodTemperatureWarningNotification]){
         //处理当前探针的警告
@@ -499,7 +495,9 @@
 
 - (IBAction)startButtonAction:(id)sender
 {
-    if ((self.currentProbe.foodType == foodType_Null && self.currentProbe.foodType != foodType_Timer) /*|| (self.currentProbe.foodTem >= self.currentProbe.targetTem && self.currentProbe.foodType != foodType_Timer) */ ) {
+    if (self.currentProbe.foodType == foodType_Null && self.currentProbe.foodDegree != foodDegree_Null) {
+    
+    } else if ((self.currentProbe.foodType == foodType_Null && self.currentProbe.foodType != foodType_Timer) /*|| (self.currentProbe.foodTem >= self.currentProbe.targetTem && self.currentProbe.foodType != foodType_Timer) */ ) {
         return;
     }
     
@@ -704,6 +702,8 @@
             [self.navItem numButtonStateChange:numButtonTypeSelected_Connected numButton:self.navItem.buttonArray[ID]];
             
             [self.bleManager readStatusCharacteristicFromPeripheral:currentPeripheral];
+            
+            [self warningViewOKButtonAction:nil];
             
         } else {
             //失败

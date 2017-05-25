@@ -392,9 +392,12 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
     switch (openedByte) {
         case 0:
         {
+
             self.targetTem = -1;
             self.foodType = foodType_Null;
             self.foodDegree = foodDegree_Null;
+            self.isOpen = NO;
+            
         }
              break;
         //配方模式
