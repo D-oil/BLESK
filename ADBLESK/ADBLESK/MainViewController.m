@@ -381,15 +381,14 @@
 
 - (void)alertMessageWithIdentifier:(NSString *)identifier title:(NSString *)tltle subTitle:(NSString *)subTitle  body:(NSString *)body
 {
-    
     // 1、创建通知内容，注：这里得用可变类型的UNMutableNotificationContent，否则内容的属性是只读的
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
     // 标题
     content.title = tltle;
     // 次标题
-    content.subtitle = subTitle;
+    content.subtitle = @" ";
     // 内容
-    content.body = body;
+    content.body = @" ";
     // 通知的提示声音，这里用的默认的声音
     content.sound = [UNNotificationSound defaultSound];
     // 标识符
@@ -732,7 +731,7 @@
                 
             }
             
-            // [self showWaningViewWithIdentifier:@"bleDisConnected" Title:@"设备断开连接" subTitle:@"你的设备已断开连接，去看看吧！" body:nil];
+             [self showWaningViewWithIdentifier:@"bleDisConnected" Title:[NSString stringWithFormat:NSLocalizedString(@"disconnect_alarm_message", nil),[NSString stringWithFormat:@"%ld",disconnectProbe.ID + 1]]  subTitle:@"你的设备已断开连接，去看看吧！" body:nil];
             
             [self connectProbe:disconnectProbe.peripheral withCell:nil];
         }

@@ -390,6 +390,13 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
 
     
     switch (openedByte) {
+        case 0:
+        {
+            self.targetTem = -1;
+            self.foodType = foodType_Null;
+            self.foodDegree = foodDegree_Null;
+        }
+             break;
         //配方模式
         case 1:
         {
@@ -440,7 +447,7 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
 
 + (foodDegree)getFoodDegreeFromfoodType:(foodType)foodType TagTem:(NSInteger)tagTem {
     
-    foodDegree *degree = foodDegree_Null;
+    foodDegree degree = foodDegree_Null;
 
     NSArray* foodTemArray = [ADSKProbe getTemWithTag:foodType -1];
     degree = [foodTemArray indexOfObject:[NSString stringWithFormat:@"%ld",tagTem]] +1;
