@@ -255,7 +255,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
     } else if ([characteristic.UUID.UUIDString isEqualToString:TEMPERATURE_SERVICE_STATUS_CHARACTERISTIC_READ_NOTIFY] ) {
         
         
-            NSLog(@"data ---- %@",characteristic.value);
+            NSLog(@"read data ---- %@",characteristic.value);
             if ([_delegate respondsToSelector:@selector(peripheral:receiveInfoWithStatusCharacteristic:)]) {
                 [self.delegate peripheral:peripheral receiveInfoWithStatusCharacteristic:characteristic.value];
             }

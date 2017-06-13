@@ -101,6 +101,8 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+//    self.navItem.middleView setBounds:CGRectMake(0, 0, 140, 90)
+    
     // Do any additional setup after loading the view, typically from a nib.
     self.bleManager = [[BLEManager alloc] init];
     self.bleManager.delegate = self;
@@ -130,6 +132,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kgrillTemperatureLowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kfoodTemperatureHightNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(probeNotification:) name:kfoodTemperatureLowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(TerminateApp) name:UIApplicationWillTerminateNotification object:nil];
     //初始化所有model
     self.probelist = [[ADSKProbeList alloc] init];
     //默认选择第一个探针model
@@ -139,11 +143,11 @@
 //    [self ItemNumButtonAction:self.navItem.oneButton];
     
 
-    
+//    
 //    ADSKProbe *pro = self.probelist.probes[1];
 //    pro.isConnected = YES;
 //    self.currentProbe.isConnected =YES;
-
+//
     //
     self.tag = -1;
     
@@ -171,12 +175,12 @@
 //        [self.allProbesButton setEnabled:YES];
 //        [self.allProbesButton setBackgroundColor:[UIColor colorWithRed:46/255.0 green:25/255.0 blue:18/255 alpha:1]];
         [self.recipeAddionButton setUserInteractionEnabled:YES];
-        
-        
-        
-        
         [self.bottomView setHidden:NO];
-        [self.startButton setHidden:NO];
+
+        if (self.currentProbe.foodType != foodType_Null) {
+            [self.startButton setHidden:NO];
+        }
+        
 
     } else { //探针未连接
         [self.gaugeView disConnectionModel];
@@ -501,6 +505,7 @@
 {
     if (self.currentProbe.foodDegree == foodType_Null && self.currentProbe.foodDegree == foodType_Null) {
         [self.startButton setStopOrStart:YES];
+        
     }
     
     if (self.currentProbe.foodType == foodType_Null  && self.currentProbe.foodDegree != foodDegree_Null) {
@@ -519,6 +524,9 @@
         
         [self.currentProbe startTimer];
         [self.startButton setStopOrStart:NO];
+        
+                [self.startButton setHidden:NO];
+        
         [self.recipeAddionButton setUserInteractionEnabled:NO];
         [self.navItem.tintButton setHighlighted:YES];
         [self.navItem.backgroundButton setUserInteractionEnabled:NO];
@@ -529,6 +537,11 @@
     } else {
         [self.currentProbe stopTimer];
         [self.startButton setStopOrStart:YES];
+        
+        if (self.currentProbe.foodType == foodType_Null ) {
+            [self.startButton setHidden:YES];
+        }
+        
         self.currentProbe.isOpen = NO;
         [self.recipeAddionButton setUserInteractionEnabled:YES];
         [self.navItem.backgroundButton setUserInteractionEnabled:YES];
@@ -601,10 +614,9 @@
 {
     for (ADSKProbe *probe in self.probelist.probes) {
         if ([probe.UUID isEqualToString:peripheral.identifier.UUIDString]){
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [probe setProbeInfoFrom:receiveInfo];
             });
-            
         }
     }
 }
@@ -691,7 +703,6 @@
             
             [self.bleManager openPeripheral:currentPeripheral open:YES];
             
-            
             [cell cellConnected:YES withSelectedImageStr:[ADSKBLEConnectionTabel getItemImageStrs][ID] WithIndex:ID];
             
             [self.probelist setProbeConnectedWithIndex:ID];
@@ -726,18 +737,20 @@
                 }
             }
             //检测是否是当前的探针
-            if ([self.currentProbe isEqual:disconnectProbe]) {
+//            if ([self.currentProbe isEqual:disconnectProbe]) {
                 [self.navItem numButtonStateChange:numButtonTypeSelected_Disconnected numButton:self.navItem.buttonArray[disconnectProbe.ID]];
                 [self.probelist setProbeDisconnectedWithIndex:disconnectProbe.ID];
                 
                 [self updateAllProbeButton];
                 [self.AllCBPeripherals removeObject:disconnectProbe];
-            } else {
-                [self.navItem numButtonStateChange:numButtonTypeNoSelected_Disconnected numButton:self.navItem.buttonArray[disconnectProbe.ID]];
-                [self.AllCBPeripherals removeObject:disconnectProbe];
+//            } else {
+//            
+//                [self.navItem numButtonStateChange:numButtonTypeNoSelected_Disconnected numButton:self.navItem.buttonArray[disconnectProbe.ID]];
+//                [self.probelist setProbeDisconnectedWithIndex:disconnectProbe.ID];
+//                [self.AllCBPeripherals removeObject:disconnectProbe];
+            
                 
-                
-            }
+//            }
             
              [self showWaningViewWithIdentifier:@"bleDisConnected" Title:[NSString stringWithFormat:NSLocalizedString(@"disconnect_alarm_message", nil),[NSString stringWithFormat:@"%ld",disconnectProbe.ID + 1]]  subTitle:@"你的设备已断开连接，去看看吧！" body:nil];
             
@@ -777,6 +790,12 @@
     [self.connectionTabel hideDisconnectView];
 }
 
+- (void)TerminateApp {
+    NSMutableData *data = [NSMutableData data];
+    UInt32 a = 0x0000000d;
+    Byte *byte = (Byte*)&a;
+    [data appendBytes:byte length:4];
+    [self.bleManager writeDataToPeripheral:self.currentProbe.peripheral Data:data];
+}
 
-                 
 @end

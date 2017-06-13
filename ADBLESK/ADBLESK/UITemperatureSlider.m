@@ -172,7 +172,7 @@
         
         CGPoint centerPoint = [UITemperatureSlider calcCircleCoordinateWithCenter:sliderButtonCenterPoint andWithAngle:startAngle andWithRadius:radius + kLineWidth];
 
-        CGPoint drawPoint =CGPointMake(centerPoint.x - (size.width*0.9), centerPoint.y - (size.height));
+        CGPoint drawPoint =CGPointMake(centerPoint.x - (size.width*0.4), centerPoint.y - (size.height));
         [str drawAtPoint:drawPoint withAttributes:nil];
         
         startAngle -= 17.4;
