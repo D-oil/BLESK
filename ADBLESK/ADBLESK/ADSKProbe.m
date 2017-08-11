@@ -345,10 +345,9 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
             Byte *byte1 = (Byte*)&tem;
             [data appendBytes:byte1 length:2];
             
-            NSUInteger foodtype = self.foodType ;
+            NSUInteger foodtype = self.foodType-1;
             Byte *byte2 = (Byte*)&foodtype;
             [data appendBytes:byte2 length:1];
-            
         }
             break;
         case foodType_Timer:
@@ -357,7 +356,7 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
             Byte *byte = (Byte*)&a;
             [data appendBytes:byte length:1];
             
-            NSUInteger time = (self.time * 60 +40) * 10;
+            NSUInteger time = self.time;// (self.time * 60 +40) * 10;
             Byte *byte1 = (Byte*)&time;
             [data appendBytes:byte1 length:2];
             
@@ -368,20 +367,20 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
         }
             break;
         case foodType_Tempareture:
-            {
-                UInt32 a = 12;
-                Byte *byte = (Byte*)&a;
-                [data appendBytes:byte length:1];
-                
-                NSUInteger tem = (self.targetTem +40) * 10;
-                Byte *byte1 = (Byte*)&tem;
-                [data appendBytes:byte1 length:2];
-                
-                NSUInteger foodtype = 0;
-                Byte *byte2 = (Byte*)&foodtype;
-                [data appendBytes:byte2 length:1];
-            }
-                    break;
+        {
+            UInt32 a = 12;
+            Byte *byte = (Byte*)&a;
+            [data appendBytes:byte length:1];
+            
+            NSUInteger tem = (self.targetTem +40) * 10;
+            Byte *byte1 = (Byte*)&tem;
+            [data appendBytes:byte1 length:2];
+            
+            NSUInteger foodtype = 0;
+            Byte *byte2 = (Byte*)&foodtype;
+            [data appendBytes:byte2 length:1];
+        }
+                break;
     }
     return data;
 }
@@ -411,7 +410,7 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
             [self calculateNewTime:self.foodTem];
             self.isOpen = NO;
 //            self.time = (self.targetTem - _foodTem ) * 30;
-            self.foodType = tagModel;
+            self.foodType = tagModel+1;
             self.foodDegree = [ADSKProbe getFoodDegreeFromfoodType:self.foodType TagTem:self.targetTem];
             
         }
@@ -421,7 +420,7 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
         {
 
             UInt32 time = 0;
-            [BLEData getBytes:&time range:NSMakeRange(5, 1)];
+            [BLEData getBytes:&time range:NSMakeRange(3, 2)];
 
             self.time = time;
             self.isOpen = NO;

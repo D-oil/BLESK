@@ -142,8 +142,11 @@
     
 //    [self ItemNumButtonAction:self.navItem.oneButton];
     
-
-//    
+//    for (ADSKProbe *probe in self.probelist.probes) {
+//        probe.isConnected = YES;
+//    }
+    
+//
 //    ADSKProbe *pro = self.probelist.probes[1];
 //    pro.isConnected = YES;
 //    self.currentProbe.isConnected =YES;
@@ -274,13 +277,9 @@
     if ([noti.object isEqual:self.currentProbe]) {
         if ([noti.name isEqualToString:kConnectionChangeNotification])
         {
-
             [self updateUIWithConnectionState:self.currentProbe.isConnected];
-
-
             
             [self updateAllProbeButton];
-
         }
         else if ([noti.name isEqualToString:kBatteryLowNotification])
         {

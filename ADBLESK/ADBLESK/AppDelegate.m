@@ -49,6 +49,14 @@ NSString *const kApptempertureSymbolChangeNotification = @"kApptempertureSymbolC
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    
+    //UM分析
+    UMConfigInstance.appKey = @"5940e722ae1bf85229001855";
+    UMConfigInstance.channelId = @"App Store";
+    [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:version];
+    
     //iOS 10 before
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
     [application registerUserNotificationSettings:settings];
@@ -68,7 +76,13 @@ NSString *const kApptempertureSymbolChangeNotification = @"kApptempertureSymbolC
     }];
     
     [[UIApplication sharedApplication] registerForRemoteNotifications];
+    
+    
+    
+    
     return YES;
+    
+ 
 }
 
 

@@ -28,6 +28,7 @@
 		7D5855D29FFC8FB3FB8C83C26B763909 /* Pods-ADBLESK-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ADBLESK-frameworks.sh"; sourceTree = "<group>"; };
 		826AC3DB7969C769F4F2778F0B93D2F3 /* Pods-ADBLESK-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ADBLESK-acknowledgements.markdown"; sourceTree = "<group>"; };
 		876CC8BB50D5BB78DB76FA25FFBE9C5D /* Pods-ADBLESKTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ADBLESKTests-frameworks.sh"; sourceTree = "<group>"; };
+		8C25EAD8F7548F701BB7D8791F2E07C0 /* UMMobClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UMMobClick.framework; path = "umsdk_IOS_analyics_no-idfa_v4.2.5/UMMobClick.framework"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		981ACDC382A7E9C641F5AE35F294BCA5 /* Pods-ADBLESKUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ADBLESKUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A719D97287CA7F0A5CACE7E74D12B7BF /* Pods-ADBLESK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ADBLESK.release.xcconfig"; sourceTree = "<group>"; };
@@ -87,6 +88,15 @@
 			path = "Target Support Files/Pods-ADBLESKUITests";
 			sourceTree = "<group>";
 		};
+		1F33C331928E41EF549224D15F938CD8 /* UMengAnalytics-NO-IDFA */ = {
+			isa = PBXGroup;
+			children = (
+				703C7CBD3AA783A1015040784C1D17CE /* Frameworks */,
+			);
+			name = "UMengAnalytics-NO-IDFA";
+			path = "UMengAnalytics-NO-IDFA";
+			sourceTree = "<group>";
+		};
 		3B8F35D235BB5ED5F02738EFF650EF30 /* Pods-ADBLESK */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +112,14 @@
 			path = "Target Support Files/Pods-ADBLESK";
 			sourceTree = "<group>";
 		};
+		59C884158ABA25D40820EB6FF206123B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1F33C331928E41EF549224D15F938CD8 /* UMengAnalytics-NO-IDFA */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6266391289849C42CE074CEB0F39E01C /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +128,14 @@
 				25D4B9A0CF342E8F40FCB605F1B5E6FA /* libPods-ADBLESKUITests.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		703C7CBD3AA783A1015040784C1D17CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C25EAD8F7548F701BB7D8791F2E07C0 /* UMMobClick.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
@@ -125,6 +151,7 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				59C884158ABA25D40820EB6FF206123B /* Pods */,
 				6266391289849C42CE074CEB0F39E01C /* Products */,
 				EE52D8A4C0505E4D2766025FD80E6B71 /* Targets Support Files */,
 			);

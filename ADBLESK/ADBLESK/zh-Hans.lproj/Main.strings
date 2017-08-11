@@ -237,7 +237,7 @@
 "ooS-7D-ftm.text" = "__ __";
 
 /* Class = "UILabel"; text = "Target"; ObjectID = "p0G-Lh-Z4Q"; */
-"p0G-Lh-Z4Q.text" = "目标";
+"p0G-Lh-Z4Q.text" = "目标温度";
 
 /* Class = "UILabel"; text = "200℃"; ObjectID = "qch-vf-93p"; */
 "qch-vf-93p.text" = "200℃";

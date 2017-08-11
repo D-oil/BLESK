@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import <UserNotifications/UserNotifications.h>
-
+#import "UMMobClick/MobClick.h"
 
 
 extern  NSString *const kApptempertureSymbolChangeNotification;
