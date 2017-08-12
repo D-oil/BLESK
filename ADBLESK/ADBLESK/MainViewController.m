@@ -65,6 +65,9 @@
 @property (nonatomic,assign) float tem;
 
 
+@property (nonatomic,assign) BOOL isConnecting;
+
+
 
 @end
 
@@ -622,7 +625,6 @@
 
 //tableView部分，先这样写，以后优化
 #pragma mark - tableView Delegate
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.AllCBPeripherals.count;
@@ -675,20 +677,25 @@
 
 - (void)connectProbe:(CBPeripheral *)currentPeripheral withCell:(ADSKBLETableViewCell *)cell{
     
+    
+    
     [self.bleManager connectPeripheral:currentPeripheral withFinshedBlock:^(BOOL success, CBPeripheral *peripheral) {
         //如果蓝牙连接成功，走成功流程
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         if (success) {
             
-            
-            
+        
             for (ADSKProbe *probe in [self.probelist.probes reverseObjectEnumerator]) {
                 if(probe.isConnected== NO) {
                     self.currentProbe = probe;
                 }
             }
+            NSLog(@"self.currentProbe = %@",self.currentProbe);
+            NSLog(@"currentPeripheral = %@",currentPeripheral);
             self.currentProbe.peripheral = currentPeripheral;
             self.currentProbe.UUID = currentPeripheral.identifier.UUIDString;
+            
+            NSLog(@"UUIDString = %@",currentPeripheral.identifier.UUIDString);
             
             NSUInteger ID = self.currentProbe.ID;
             
@@ -736,24 +743,29 @@
                 }
             }
             //检测是否是当前的探针
-//            if ([self.currentProbe isEqual:disconnectProbe]) {
-                [self.navItem numButtonStateChange:numButtonTypeSelected_Disconnected numButton:self.navItem.buttonArray[disconnectProbe.ID]];
-                [self.probelist setProbeDisconnectedWithIndex:disconnectProbe.ID];
-                
-                [self updateAllProbeButton];
-                [self.AllCBPeripherals removeObject:disconnectProbe];
-//            } else {
-//            
-//                [self.navItem numButtonStateChange:numButtonTypeNoSelected_Disconnected numButton:self.navItem.buttonArray[disconnectProbe.ID]];
-//                [self.probelist setProbeDisconnectedWithIndex:disconnectProbe.ID];
-//                [self.AllCBPeripherals removeObject:disconnectProbe];
             
-                
-//            }
+            [self.navItem numButtonStateChange:numButtonTypeSelected_Disconnected numButton:self.navItem.buttonArray[disconnectProbe.ID]];
+            [self.probelist setProbeDisconnectedWithIndex:disconnectProbe.ID];
+            if ([self.currentProbe isEqual:disconnectProbe]) {
+                [self updateAllProbeButton];
+            } else {
+            }
+            [self.AllCBPeripherals removeObject:disconnectProbe];
             
              [self showWaningViewWithIdentifier:@"bleDisConnected" Title:[NSString stringWithFormat:NSLocalizedString(@"disconnect_alarm_message", nil),[NSString stringWithFormat:@"%ld",disconnectProbe.ID + 1]]  subTitle:@"你的设备已断开连接，去看看吧！" body:nil];
             
-            [self connectProbe:disconnectProbe.peripheral withCell:nil];
+            if (self.bleManager.isConnected) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self connectProbe:disconnectProbe.peripheral withCell:nil];
+                });
+            } else {
+                 [self connectProbe:disconnectProbe.peripheral withCell:nil];
+            }
+            
+       
+            
+
+        
         }
     }];
 }

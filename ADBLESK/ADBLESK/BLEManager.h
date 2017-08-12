@@ -28,7 +28,8 @@
 #define TEMPERATURE_SERVICE_STATUS_CHARACTERISTIC_READ_NOTIFY @"FB05"
 
 typedef void (^connectFinished)(BOOL success,CBPeripheral *peripheral);
-typedef void (^disconnectFinished)(BOOL success,CBPeripheral *peripheral);
+
+typedef void (^userDisconnectBlock)(BOOL success,CBPeripheral *peripheral);
 
 @protocol BLEManagerDelegate <NSObject>
 
@@ -64,6 +65,6 @@ typedef void (^disconnectFinished)(BOOL success,CBPeripheral *peripheral);
 
 - (void)writeDataToPeripheral:(CBPeripheral *)peripheral Data:(NSData *)data;
 
-
+@property (nonatomic,assign)BOOL isConnected;
 
 @end

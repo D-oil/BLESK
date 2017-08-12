@@ -21,6 +21,8 @@
 
 @property (nonatomic,strong)connectFinished connectFinishedBlock;
 
+@property (nonatomic,strong)userDisconnectBlock userDisconnectBlock;
+
 @end
 
 
@@ -49,6 +51,7 @@
     if (self) {
         NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], CBCentralManagerOptionShowPowerAlertKey, nil];
         self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:options];
+        
     }
     return self;
 }
@@ -128,14 +131,28 @@
 #pragma mark - connected
 - (void)connectPeripheral:(CBPeripheral *)peripheral withFinshedBlock:(connectFinished)finishedBlock
 {
-    [self.centralManager connectPeripheral:peripheral options:nil];
-    self.connectFinishedBlock = finishedBlock;
-}
+    if (self.isConnected == NO) {
+        if (peripheral != nil) {
+    
+            NSLog(@"peripheral.identifier.UUIDString ====== %@",peripheral.identifier.UUIDString);
+            [self.centralManager connectPeripheral:peripheral options:nil];
+            self.isConnected = YES;
+            self.connectFinishedBlock = finishedBlock;
+        }
+    } else {
+        finishedBlock(NO,peripheral);
+    }
 
-- (void)disconnectPeripheral:(CBPeripheral *)peripheral withFinshedBlock:(connectFinished)finishedBlock
+    
+    
+}
+//手动断开连接
+- (void)disconnectPeripheral:(CBPeripheral *)peripheral withFinshedBlock:(userDisconnectBlock)finishedBlock
 {
-    [self.centralManager cancelPeripheralConnection:peripheral];
-    self.connectFinishedBlock = finishedBlock;
+    if (peripheral != nil) {
+        [self.centralManager cancelPeripheralConnection:peripheral];
+        self.userDisconnectBlock  = finishedBlock;
+    }
 }
 
 #pragma mark - Delegate
@@ -175,11 +192,13 @@ didDisconnectPeripheral:(CBPeripheral *)peripheral
 {
     [self.connectedCBPeripherals removeObject:peripheral];
     if (error) {
+        NSLog(@"异常断开连接 The connection has timed out unexpectedly");
         self.connectFinishedBlock(NO,peripheral);
     } else {
-        self.connectFinishedBlock(YES,peripheral);
+        //调用系统方法 正常断开连接
+        self.userDisconnectBlock(YES,peripheral);
     }
-//    self.connectFinishedBlock = nil;
+    
 }
 
 //discover server
@@ -196,17 +215,10 @@ didDiscoverServices:(NSError *)error
 didDiscoverCharacteristicsForService:(CBService *)service
              error:(NSError *)error
 {
-    
+    NSLog(@"didDiscoverCharacteristicsForService ----- %@",peripheral);
+
+    self.isConnected = NO;
     self.connectFinishedBlock(YES,peripheral);
-//    self.connectFinishedBlock = nil;
-//    for (CBCharacteristic *characteristic in service.characteristics) {
-//        NSLog(@"Discovered characteristic %@", characteristic);
-//        //对不同的characteristic执行不同的操作,有的通知状态设为YES
-//         if ([characteristic.UUID.UUIDString isEqualToString:TEMPERATURE_SERVICE_TEMPERATURE_CHARACTERISTIC_NOTIFY] ||
-//             [characteristic.UUID.UUIDString isEqualToString:TEMPERATURE_SERVICE_STATUS_CHARACTERISTIC_READ_NOTIFY] ){
-//            [peripheral setNotifyValue:YES forCharacteristic:characteristic];
-//        }
-//    }
     
 }
 
