@@ -66,5 +66,5 @@ typedef void (^userDisconnectBlock)(BOOL success,CBPeripheral *peripheral);
 - (void)writeDataToPeripheral:(CBPeripheral *)peripheral Data:(NSData *)data;
 
 @property (nonatomic,assign)BOOL isConnected;
-
+@property (nonatomic,strong) NSMutableArray * reConnectedPeripherals;
 @end

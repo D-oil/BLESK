@@ -27,7 +27,16 @@
 
 
 @implementation BLEManager
+
+
 #pragma mark - property
+- (NSMutableArray *)reConnectedPeripherals {
+    if (_reConnectedPeripherals == nil) {
+        _reConnectedPeripherals = [NSMutableArray array];
+    }
+    return _reConnectedPeripherals;
+}
+
 - (NSMutableArray *)CBPeripherals
 {
     if (_CBPeripherals == nil) {
@@ -51,6 +60,7 @@
     if (self) {
         NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], CBCentralManagerOptionShowPowerAlertKey, nil];
         self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:options];
+        [self addObserver:self forKeyPath:@"reConnectedPeripherals" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
         
     }
     return self;
@@ -131,13 +141,17 @@
 #pragma mark - connected
 - (void)connectPeripheral:(CBPeripheral *)peripheral withFinshedBlock:(connectFinished)finishedBlock
 {
+    NSLog(@"[connectPeripheral] finishedBlock = %@",finishedBlock);
     if (self.isConnected == NO) {
-        if (peripheral != nil) {
+        if (peripheral != nil && peripheral.state == CBPeripheralStateDisconnected) {
     
             NSLog(@"peripheral.identifier.UUIDString ====== %@",peripheral.identifier.UUIDString);
             [self.centralManager connectPeripheral:peripheral options:nil];
             self.isConnected = YES;
             self.connectFinishedBlock = finishedBlock;
+            NSLog(@"[connectPeripheral] connectFinishedBlock = %@",self.connectFinishedBlock);
+        } else {
+            NSLog(@"peripheral.name = %@ peripheral.state == CBPeripheralStateDisconnected ",peripheral.name);
         }
     } else {
         finishedBlock(NO,peripheral);
@@ -192,10 +206,11 @@ didDisconnectPeripheral:(CBPeripheral *)peripheral
 {
     [self.connectedCBPeripherals removeObject:peripheral];
     if (error) {
-        NSLog(@"异常断开连接 The connection has timed out unexpectedly");
+        NSLog(@"异常断开连接 The connection has timed out unexpectedl peripheralName = %@", peripheral.name);
         self.connectFinishedBlock(NO,peripheral);
     } else {
         //调用系统方法 正常断开连接
+        NSLog(@"正常断开,不需要重连");
         self.userDisconnectBlock(YES,peripheral);
     }
     
@@ -216,9 +231,8 @@ didDiscoverCharacteristicsForService:(CBService *)service
              error:(NSError *)error
 {
     NSLog(@"didDiscoverCharacteristicsForService ----- %@",peripheral);
-
-    self.isConnected = NO;
     self.connectFinishedBlock(YES,peripheral);
+    self.isConnected = NO;
     
 }
 
@@ -245,9 +259,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         //大小端问题，需要把获取到的3／4字节交换，5/6字节交换。
         NSData *data = nil;
         if (characteristic.value.length >6) {
-           data = [characteristic.value subdataWithRange:NSMakeRange(2, 5)];
+            data = [characteristic.value subdataWithRange:NSMakeRange(2, 5)];
         } else {
-        data = [characteristic.value subdataWithRange:NSMakeRange(2, 4)];
+            data = [characteristic.value subdataWithRange:NSMakeRange(2, 4)];
         }
 
         NSMutableArray *mutArray = [self getDataValueArrayWithData:data];

@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import <UserNotifications/UserNotifications.h>
 #import "UMMobClick/MobClick.h"
-
+#import <CocoaLumberjack/CocoaLumberjack.h>
 
 extern  NSString *const kApptempertureSymbolChangeNotification;
 

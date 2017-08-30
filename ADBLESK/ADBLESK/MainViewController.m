@@ -22,7 +22,7 @@
 #import "ADSKProbeList.h"
 
 #import "LxxSoundPlay.h"
-
+#import <CocoaLumberjack/CocoaLumberjack.h>
 
 //临时添加
 #import "ADSKBLETableViewCell.h"
@@ -677,14 +677,20 @@
 
 - (void)connectProbe:(CBPeripheral *)currentPeripheral withCell:(ADSKBLETableViewCell *)cell{
     
-    
+    NSLog(@"[MainView] connectProbe = %@ withCell = %@",currentPeripheral.name,cell.nameLabel.text);
     
     [self.bleManager connectPeripheral:currentPeripheral withFinshedBlock:^(BOOL success, CBPeripheral *peripheral) {
         //如果蓝牙连接成功，走成功流程
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         if (success) {
             
-        
+            if ([self.bleManager.reConnectedPeripherals containsObject:currentPeripheral] == YES) {
+                [self.bleManager.reConnectedPeripherals removeObject:currentPeripheral];
+            } else {
+                NSLog(@"不包含这个设备 %@ 连接一个错误的设备",currentPeripheral.name);
+            }
+            
+            NSLog(@"self.bleManager connectPeripheral = %@ withFinshedBlock = %d",currentPeripheral.name,success);
             for (ADSKProbe *probe in [self.probelist.probes reverseObjectEnumerator]) {
                 if(probe.isConnected== NO) {
                     self.currentProbe = probe;
@@ -732,7 +738,7 @@
             
         } else {
             //失败
-            NSLog(@"ble断开连接！");
+            NSLog(@"ble异常断开连接！");
             
             ADSKProbe *disconnectProbe = nil;
             for (ADSKProbe *probe in self.probelist.probes) {
@@ -742,6 +748,7 @@
                     [disconnectProbe stopTimer];
                 }
             }
+            NSLog(@"遍历出来的 disconnectProbe isConnected---- %d   disconnectCBPeri name %@",disconnectProbe.isConnected,disconnectProbe.peripheral.name);
             //检测是否是当前的探针
             
             [self.navItem numButtonStateChange:numButtonTypeSelected_Disconnected numButton:self.navItem.buttonArray[disconnectProbe.ID]];
@@ -752,19 +759,24 @@
             }
             [self.AllCBPeripherals removeObject:disconnectProbe];
             
-             [self showWaningViewWithIdentifier:@"bleDisConnected" Title:[NSString stringWithFormat:NSLocalizedString(@"disconnect_alarm_message", nil),[NSString stringWithFormat:@"%ld",disconnectProbe.ID + 1]]  subTitle:@"你的设备已断开连接，去看看吧！" body:nil];
+            if ([self.bleManager.reConnectedPeripherals containsObject:disconnectProbe.peripheral] == NO) {
+                [self.bleManager.reConnectedPeripherals addObject:disconnectProbe.peripheral];
+            }
+            NSLog(@"self.bleManager.reConnectedPeripherals %@",self.bleManager.reConnectedPeripherals);
             
             if (self.bleManager.isConnected) {
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [self connectProbe:disconnectProbe.peripheral withCell:nil];
+                    NSLog(@"[connectProbe reconnected after 2s");
+                
+                    [self connectProbe:self.bleManager.reConnectedPeripherals.firstObject withCell:nil];
                 });
+                return;
             } else {
-                 [self connectProbe:disconnectProbe.peripheral withCell:nil];
+                 NSLog(@"[connectProbe reconnected]");
+                [self connectProbe:self.bleManager.reConnectedPeripherals.firstObject withCell:nil];
             }
             
-       
-            
-
+            [self showWaningViewWithIdentifier:@"bleDisConnected" Title:[NSString stringWithFormat:NSLocalizedString(@"disconnect_alarm_message", nil),[NSString stringWithFormat:@"%ld",disconnectProbe.ID + 1]]  subTitle:@"你的设备已断开连接，去看看吧！" body:nil];
         
         }
     }];

@@ -27,7 +27,10 @@
             probe.foodTem = -1;
             probe.targetTem = -1;
             [_probes addObject:probe];
+            NSLog(@"%@",probe);
         }
+        
+        
     }
     return _probes;
 }

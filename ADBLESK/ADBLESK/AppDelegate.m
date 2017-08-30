@@ -7,7 +7,10 @@
 //
 
 #import "AppDelegate.h"
+
+
 NSString *const kApptempertureSymbolChangeNotification = @"kApptempertureSymbolChangeNotification";
+
 
 @interface AppDelegate ()
 
@@ -49,6 +52,18 @@ NSString *const kApptempertureSymbolChangeNotification = @"kApptempertureSymbolC
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    //Log
+//    [DDLog addLogger:[DDTTYLogger sharedInstance]]; // TTY = Xcode console
+//    [DDLog addLogger:[DDASLLogger sharedInstance]]; // ASL = Apple System Logs
+//    
+//    DDFileLogger *fileLogger = [[DDFileLogger alloc] init]; // File Logger
+//    fileLogger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
+//    fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
+//    
+//    [DDLog addLogger:fileLogger];
+
+    //添加内部打印日志
+    [self redirectNSlogToDocumentFolder];
     
     //UM分析
     UMConfigInstance.appKey = @"5940e722ae1bf85229001855";
@@ -158,6 +173,26 @@ NSString *const kApptempertureSymbolChangeNotification = @"kApptempertureSymbolC
         NSLog(@"Unresolved error %@, %@", error, error.userInfo);
         abort();
     }
+}
+
+#pragma mark - 每次启动都保存一个日志
+- (void)redirectNSlogToDocumentFolder
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
+    [formatter setDateFormat:@"yyyy-MM-dd HH-mm-ss"]; //每次启动后都保存一个新的日志文件中
+    NSString *logName = [formatter stringFromDate:[NSDate date]];
+    
+    NSArray *paths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSString *documentDirectory = [paths objectAtIndex:0];
+    NSString *fileName = [NSString stringWithFormat:@"%@.log",logName];//注意不是NSData!
+    NSString *logFilePath = [documentDirectory stringByAppendingPathComponent:fileName];
+    //先删除已经存在的文件
+    NSFileManager *defaultManager = [NSFileManager defaultManager];
+    [defaultManager removeItemAtPath:logFilePath error:nil];
+    // 将log输入到文件
+    freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stdout);
+    freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
 }
 
 @end
