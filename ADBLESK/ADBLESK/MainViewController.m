@@ -67,11 +67,18 @@
 
 @property (nonatomic,assign) BOOL isConnecting;
 
-
+@property (nonatomic,strong) NSMutableArray *alreadyNotiNum;
 
 @end
 
 @implementation MainViewController
+
+- (NSMutableArray *)alreadyNotiNum {
+    if (_alreadyNotiNum == nil) {
+        _alreadyNotiNum = [NSMutableArray array];
+    }
+    return _alreadyNotiNum;
+}
 
 - (LxxSoundPlay *)soundPlay {
     if (_soundPlay == nil) {
@@ -684,6 +691,17 @@
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         if (success) {
             
+            if (self.alreadyNotiNum.count) {
+                NSString *removeUuid;
+                for (NSString *uuid in self.alreadyNotiNum) {
+                    if ([currentPeripheral.identifier.UUIDString isEqualToString:uuid]) {
+                        removeUuid = uuid;
+                    }
+                }
+                [self.alreadyNotiNum removeObject:removeUuid];
+            }
+            
+
             if ([self.bleManager.reConnectedPeripherals containsObject:currentPeripheral] == YES) {
                 [self.bleManager.reConnectedPeripherals removeObject:currentPeripheral];
             } else {
@@ -704,7 +722,7 @@
             NSLog(@"UUIDString = %@",currentPeripheral.identifier.UUIDString);
             
             NSUInteger ID = self.currentProbe.ID;
-            
+
             [self updateUIWithTargetTemperature:self.currentProbe.targetTem];
             [self updateUIWithGrillTemperature:self.currentProbe.grillTem];
             [self updateUIWithFoodType:self.currentProbe.foodType foodDegree:self.currentProbe.foodDegree];
@@ -764,6 +782,21 @@
             }
             NSLog(@"self.bleManager.reConnectedPeripherals %@",self.bleManager.reConnectedPeripherals);
             
+            BOOL isalreadyNoti = NO;
+            for (NSString *uuid in self.alreadyNotiNum) {
+                if ([disconnectProbe.UUID isEqualToString: uuid]) {
+                    isalreadyNoti = YES;
+                }
+            }
+            
+            if (isalreadyNoti == NO) {
+                [self showWaningViewWithIdentifier:@"bleDisConnected" Title:[NSString stringWithFormat:NSLocalizedString(@"disconnect_alarm_message", nil),[NSString stringWithFormat:@"%ld",disconnectProbe.ID + 1]]  subTitle:@"你的设备已断开连接，去看看吧！" body:nil];
+                [self.alreadyNotiNum addObject:disconnectProbe.UUID];
+                
+            }
+   
+            
+            
             if (self.bleManager.isConnected) {
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     NSLog(@"[connectProbe reconnected after 2s");
@@ -776,7 +809,7 @@
                 [self connectProbe:self.bleManager.reConnectedPeripherals.firstObject withCell:nil];
             }
             
-            [self showWaningViewWithIdentifier:@"bleDisConnected" Title:[NSString stringWithFormat:NSLocalizedString(@"disconnect_alarm_message", nil),[NSString stringWithFormat:@"%ld",disconnectProbe.ID + 1]]  subTitle:@"你的设备已断开连接，去看看吧！" body:nil];
+
         
         }
     }];
@@ -791,11 +824,21 @@
     
     //点击确认断开链接
     if (sender.tag) {
-    
+        
         CBPeripheral *disConnectedPeripheral = self.AllCBPeripherals[[self.connectionTabel.tableView indexPathForCell:self.willDisConnectedCell].row];
         [self.bleManager disconnectPeripheral:disConnectedPeripheral withFinshedBlock:^(BOOL success, CBPeripheral *CBPeripheral) {
             
 //            self.currentProbe.peripheral = nil;
+            if (self.alreadyNotiNum.count) {
+                NSString *removeUuid;
+                for (NSString *uuid in self.alreadyNotiNum) {
+                    if ([disConnectedPeripheral.identifier.UUIDString isEqualToString:uuid]) {
+                        removeUuid = uuid;
+                    }
+                }
+                [self.alreadyNotiNum removeObject:removeUuid];
+            }
+            
             [self.AllCBPeripherals removeObject:disConnectedPeripheral];
             
             [self.navItem numButtonStateChange:numButtonTypeNoSelected_Disconnected numButton:self.navItem.buttonArray[self.willDisConnectedCell.index]];

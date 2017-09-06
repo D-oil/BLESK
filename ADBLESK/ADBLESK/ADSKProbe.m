@@ -421,11 +421,12 @@ NSString *const kBatteryLowNotification = @"kBatteryLowNotification";
 
             UInt32 time = 0;
             [BLEData getBytes:&time range:NSMakeRange(3, 2)];
-
+            self.targetTem = -1;
             self.time = time;
             self.isOpen = NO;
             self.foodType = foodType_Timer;
             self.foodDegree = foodDegree_Null;
+           
         }
             break;
         //定温

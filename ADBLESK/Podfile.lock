@@ -1,12 +1,20 @@
 PODS:
+  - CocoaLumberjack (3.2.1):
+    - CocoaLumberjack/Default (= 3.2.1)
+    - CocoaLumberjack/Extensions (= 3.2.1)
+  - CocoaLumberjack/Default (3.2.1)
+  - CocoaLumberjack/Extensions (3.2.1):
+    - CocoaLumberjack/Default
   - UMengAnalytics-NO-IDFA (4.2.5)
 
 DEPENDENCIES:
+  - CocoaLumberjack
   - UMengAnalytics-NO-IDFA
 
 SPEC CHECKSUMS:
+  CocoaLumberjack: 2800c03334042fe80589423c8d80e582dcaec482
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
 
-PODFILE CHECKSUM: 61f5056eec960782218b6e598bd443c7f049eebe
+PODFILE CHECKSUM: 60cb86bc407790080e98901459fbf78373da03bc
 
 COCOAPODS: 1.2.0
